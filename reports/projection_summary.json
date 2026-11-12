@@ -1,0 +1,11 @@
+{
+    "analysis_name": "GeoPulse Planar Metric Coordinate Transformation",
+    "origin_reference": {
+        "latitude": -37.818,
+        "longitude": 144.9671,
+        "label": "Flinders/Swanston Intersection"
+    },
+    "total_projected_nodes": 91,
+    "mean_radial_distance_m": 1081.1,
+    "max_radial_distance_m": 4209.7
+}
