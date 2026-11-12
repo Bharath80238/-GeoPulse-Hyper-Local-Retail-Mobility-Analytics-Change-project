@@ -11,3 +11,8 @@ data/raw/*
 !data/raw/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
+
+data/raw/pedestrian_counts_hourly.csv
+
+!data/raw/sensor_locations.csv
+!data/raw/synthetic_gps_pings.csv
