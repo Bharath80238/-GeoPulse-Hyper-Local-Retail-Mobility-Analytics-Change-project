@@ -1,0 +1,10 @@
+{
+    "analysis_name": "GeoPulse Standard Diurnal Daypart Segmentation",
+    "total_hourly_records": 24,
+    "phase_volume_shares_pct": {
+        "Phase 1: Morning Commute & Breakfast (06:00 - 10:59)": 17.95,
+        "Phase 2: Midday Commercial & Lunch (11:00 - 15:59)": 38.01,
+        "Phase 3: Evening Rush & Happy Hour (16:00 - 19:59)": 28.22,
+        "Phase 4: Late-Night & Overnight Economy (20:00 - 05:59)": 15.83
+    }
+}
