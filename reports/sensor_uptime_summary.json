@@ -1,0 +1,43 @@
+{
+    "analysis_name": "GeoPulse Sensor Telemetry Integrity Audit",
+    "total_sensors_audited": 91,
+    "mean_recorded_observations": 2747.3,
+    "mean_uptime_pct": 21.31,
+    "telemetry_health_distribution": {
+        "Intermittent / Sparsely Sampled Sensor": 73,
+        "Optimal Health (High Fidelity Telemetry)": 15,
+        "Acceptable Continuity (Moderate Gaps)": 3
+    },
+    "top_reliable_sensors": [
+        {
+            "sensor_name": "BouHbr_T",
+            "recorded_hourly_observations": 12891,
+            "uptime_pct": 100.0,
+            "telemetry_health_tier": "Optimal Health (High Fidelity Telemetry)"
+        },
+        {
+            "sensor_name": "PriNW_T",
+            "recorded_hourly_observations": 12718,
+            "uptime_pct": 98.66,
+            "telemetry_health_tier": "Optimal Health (High Fidelity Telemetry)"
+        },
+        {
+            "sensor_name": "NewQ_T",
+            "recorded_hourly_observations": 12716,
+            "uptime_pct": 98.64,
+            "telemetry_health_tier": "Optimal Health (High Fidelity Telemetry)"
+        },
+        {
+            "sensor_name": "WatCit_T",
+            "recorded_hourly_observations": 12715,
+            "uptime_pct": 98.63,
+            "telemetry_health_tier": "Acceptable Continuity (Moderate Gaps)"
+        },
+        {
+            "sensor_name": "QV_T",
+            "recorded_hourly_observations": 12706,
+            "uptime_pct": 98.56,
+            "telemetry_health_tier": "Optimal Health (High Fidelity Telemetry)"
+        }
+    ]
+}
