@@ -1,0 +1,24 @@
+{
+    "coordinate_reference_system": "EPSG:4326 (WGS84)",
+    "study_area": "Melbourne Central Business District (CBD) & Retail Environs",
+    "total_georeferenced_sensors": 91,
+    "bounding_box": {
+        "min_latitude": -37.825791,
+        "max_latitude": -37.794324,
+        "min_longitude": 144.929734,
+        "max_longitude": 144.974677,
+        "span_latitude_km": 3.493,
+        "span_longitude_km": 3.955
+    },
+    "retail_gravity_centroid": {
+        "latitude": -37.812852,
+        "longitude": 144.961087,
+        "description": "Melbourne Town Hall / Bourke St Mall Intersection"
+    },
+    "quadrant_distribution": {
+        "north_west": 14,
+        "north_east": 24,
+        "south_west": 16,
+        "south_east": 37
+    }
+}
