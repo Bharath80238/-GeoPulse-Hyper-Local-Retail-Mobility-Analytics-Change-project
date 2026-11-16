@@ -1,0 +1,37 @@
+{
+    "analysis_name": "GeoPulse Rush-Hour Flow Acceleration Analytics",
+    "total_sensors": 58,
+    "mean_surge_multiplier": 3.84,
+    "top_surge_accelerators": [
+        {
+            "sensor_name": "Flagstaff Station",
+            "rush_surge_multiplier": 13.91,
+            "morning_peak_volume": 3379.0,
+            "evening_peak_volume": 2419.0
+        },
+        {
+            "sensor_name": "Bourke St Bridge",
+            "rush_surge_multiplier": 11.82,
+            "morning_peak_volume": 2894.9,
+            "evening_peak_volume": 2706.4
+        },
+        {
+            "sensor_name": "Southern Cross Station",
+            "rush_surge_multiplier": 10.53,
+            "morning_peak_volume": 1210.4,
+            "evening_peak_volume": 1149.8
+        },
+        {
+            "sensor_name": "Victoria Point",
+            "rush_surge_multiplier": 8.21,
+            "morning_peak_volume": 653.8,
+            "evening_peak_volume": 726.1
+        },
+        {
+            "sensor_name": "Collins Place (North)",
+            "rush_surge_multiplier": 7.78,
+            "morning_peak_volume": 1310.9,
+            "evening_peak_volume": 1113.5
+        }
+    ]
+}
