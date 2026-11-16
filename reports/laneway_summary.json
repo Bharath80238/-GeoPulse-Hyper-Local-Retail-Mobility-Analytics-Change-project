@@ -1,0 +1,36 @@
+{
+    "analysis_name": "GeoPulse Melbourne Laneway Permeability Analytics",
+    "typology_counts": {
+        "Primary Commercial Boulevard": 38,
+        "Prime Pedestrian Concourse / Transit Hub": 10,
+        "Secondary Laneway / Connector Arcade": 10
+    },
+    "mean_laneway_permeability_index": 58.94,
+    "top_permeable_laneways": [
+        {
+            "full_name": "Elizabeth St-La Trobe St (East)",
+            "avg_hourly_footfall": 981.4046639231824,
+            "laneway_permeability_index": 100.0
+        },
+        {
+            "full_name": "Flinders La-Swanston St (West)",
+            "avg_hourly_footfall": 1928.4717948717948,
+            "laneway_permeability_index": 100.0
+        },
+        {
+            "full_name": "Little Collins St-Swanston St (East)",
+            "avg_hourly_footfall": 927.8106995884774,
+            "laneway_permeability_index": 100.0
+        },
+        {
+            "full_name": "Flagstaff Station",
+            "avg_hourly_footfall": 715.357590441975,
+            "laneway_permeability_index": 91.65
+        },
+        {
+            "full_name": "Collins Place (South)",
+            "avg_hourly_footfall": 457.0796850393701,
+            "laneway_permeability_index": 58.5
+        }
+    ]
+}

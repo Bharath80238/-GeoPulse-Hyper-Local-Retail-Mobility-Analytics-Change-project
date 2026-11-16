@@ -1,0 +1,59 @@
+sensor_id,sensor_name,full_name,latitude,longitude,avg_hourly_footfall,street_typology,spillover_capture_ratio,laneway_permeability_index
+1,Bou292_T,Bourke Street Mall (North),-37.8134944,144.96515324,896.7296062992126,Prime Pedestrian Concourse / Transit Hub,1.76,100.0
+2,Bou283_T,Bourke Street Mall (South),-37.81380667,144.96516719,1081.307716535433,Prime Pedestrian Concourse / Transit Hub,2.13,100.0
+3,Swa295_T,Melbourne Central,-37.81101523,144.96429485,1085.8828909759086,Prime Pedestrian Concourse / Transit Hub,2.13,100.0
+4,Swa123_T,Town Hall (West),-37.81487988,144.9660878,1454.0617274230376,Primary Commercial Boulevard,2.86,100.0
+5,PriNW_T,Princes Bridge,-37.81874249,144.96787656,948.0712376159773,Prime Pedestrian Concourse / Transit Hub,1.86,100.0
+6,FliS_T,Flinders Street Station Underpass,-37.81911704,144.96558256,1019.9059842519684,Prime Pedestrian Concourse / Transit Hub,2.0,100.0
+25,MCEC_T,Melbourne Convention Exhibition Centre,-37.82401776,144.95604426,1066.1607142857142,Primary Commercial Boulevard,2.1,100.0
+22,Eli274_T,Flinders St-Elizabeth St (East),-37.81786445,144.96506823,1804.268493150685,Primary Commercial Boulevard,3.55,100.0
+24,Col620_T,Spencer St-Collins St (North),-37.81887962,144.95449198,1449.2191780821918,Primary Commercial Boulevard,2.85,100.0
+28,VAC_T,The Arts Centre,-37.82129924,144.96879309,1063.5747282608695,Primary Commercial Boulevard,2.09,100.0
+47,Eli250_T,Melbourne Central-Elizabeth St (East),-37.81160331,144.96220077,1004.2606310013717,Prime Pedestrian Concourse / Transit Hub,1.97,100.0
+58,Bou688_T,Bourke St - Spencer St (North),-37.81686074,144.95358075,823.0685871056241,Primary Commercial Boulevard,1.62,100.0
+57,BouBri_T,Bourke St Bridge,-37.8176735,144.95025595,800.3064516129032,Prime Pedestrian Concourse / Transit Hub,1.57,100.0
+55,Eli380_T,Elizabeth St-La Trobe St (East),-37.80988941,144.96134331,981.4046639231824,Secondary Laneway / Connector Arcade,1.93,100.0
+41,Swa31,Flinders La-Swanston St (West),-37.81668633,144.96689733,1928.4717948717948,Secondary Laneway / Connector Arcade,3.79,100.0
+45,Swa148_T,Little Collins St-Swanston St (East),-37.81414074,144.9660938,927.8106995884774,Secondary Laneway / Connector Arcade,1.82,100.0
+35,SouthB_T,Southbank,-37.82017828,144.96508877,1056.1006802721088,Primary Commercial Boulevard,2.08,100.0
+53,Col254_T,Collins Street (North),-37.8156419,144.965499,766.8547945205479,Primary Commercial Boulevard,1.51,98.15
+13,Wil277_T,Flagstaff Station,-37.81239679,144.95652653,715.357590441975,Secondary Laneway / Connector Arcade,1.41,91.65
+15,QV_T,State Library,-37.81064378,144.96447132,700.2797890760271,Primary Commercial Boulevard,1.38,89.7
+16,Col270_T,Australia on Collins,-37.81573422,144.96521044,691.5929824561404,Primary Commercial Boulevard,1.36,88.4
+21,Rus180_T,Bourke St-Russell St (West),-37.81244703,144.96778757,651.3794520547946,Primary Commercial Boulevard,1.28,83.2
+19,LtB210_T,Chinatown-Swanston St (North),-37.81237202,144.96550671,610.0643835616438,Primary Commercial Boulevard,1.2,78.0
+26,Eli483_T,QV Market-Elizabeth St (West),-37.80869542,144.96049404,581.5383561643836,Primary Commercial Boulevard,1.14,74.1
+30,Lon189_T,Lonsdale St (South),-37.81121849,144.96656807,537.3561643835617,Primary Commercial Boulevard,1.06,68.9
+17,Col15_T,Collins Place (South),-37.81362542,144.97323592,457.0796850393701,Secondary Laneway / Connector Arcade,0.9,58.5
+52,Eli263_T,Elizabeth St-Lonsdale St (South),-37.81252157,144.9619401,452.36625514403295,Primary Commercial Boulevard,0.89,57.85
+61,RMIT14_T,RMIT Building 14,-37.80767455,144.96309115,444.77503429355284,Primary Commercial Boulevard,0.87,56.55
+29,AG_T,St Kilda Rd-Alexandra Gardens,-37.81965808,144.96863453,444.94650205761315,Primary Commercial Boulevard,0.87,56.55
+23,Col623_T,Spencer St-Collins St (South),-37.81909256,144.95452749,416.9054794520548,Primary Commercial Boulevard,0.82,53.3
+20,LtB170_T,Chinatown-Lt Bourke St (South),-37.81172913,144.9682466,404.33698630136985,Primary Commercial Boulevard,0.79,51.35
+18,Col12_T,Collins Place (North),-37.81344861,144.97305354,370.52996298921175,Secondary Laneway / Connector Arcade,0.73,47.45
+56,Lon364_T,Lonsdale St - Elizabeth St (North),-37.81234775,144.96153311,351.13903743315507,Primary Commercial Boulevard,0.69,44.85
+9,Col700_T,Southern Cross Station,-37.81982992,144.95102556,336.06566929133857,Prime Pedestrian Concourse / Transit Hub,0.66,42.9
+36,Que85_T,Queen St (West),-37.81652527,144.96121063,332.9575923392613,Primary Commercial Boulevard,0.65,42.25
+14,SanBri_T,Sandridge Bridge,-37.82011242,144.96291898,326.1792913385827,Prime Pedestrian Concourse / Transit Hub,0.64,41.6
+40,Spr201_T,Lonsdale St-Spring St (West),-37.80999341,144.97227588,298.1111111111111,Primary Commercial Boulevard,0.59,38.35
+48,QVMQ_T,QVM-Queen St (East),-37.80631581,144.95866698,282.2002743484225,Primary Commercial Boulevard,0.55,35.75
+50,Lyg309_T,Faraday St-Lygon St (West),-37.79808191,144.96721014,282.01097393689986,Primary Commercial Boulevard,0.55,35.75
+7,Fed_T,Birrarung Marr,-37.81862929,144.97169395,262.80940355940356,Primary Commercial Boulevard,0.52,33.8
+31,Lyg161_T,Lygon St (West),-37.8016968,144.96658911,255.56037991858886,Primary Commercial Boulevard,0.5,32.5
+42,UM1_T,Grattan St-Swanston St (West),-37.80008565,144.96386412,223.81893004115227,Primary Commercial Boulevard,0.44,28.6
+10,BouHbr_T,Victoria Point,-37.81876473,144.94710545,215.65821115506944,Primary Commercial Boulevard,0.42,27.3
+39,AlfPl_T,Alfred Place,-37.81379749,144.96995745,199.47413793103448,Secondary Laneway / Connector Arcade,0.39,25.35
+12,NewQ_T,New Quay,-37.81457987,144.94292398,198.5793488518402,Primary Commercial Boulevard,0.39,25.35
+49,Eli501_T,QVM-Therry St (South),-37.80730067,144.95956055,186.83539094650206,Primary Commercial Boulevard,0.37,24.05
+37,Lyg260_T,Lygon St (East),-37.80310271,144.96671452,158.21380243572395,Primary Commercial Boulevard,0.31,20.15
+27,Vic_T,QV Market-Peel St,-37.80606888,144.95644693,147.1392,Primary Commercial Boulevard,0.29,18.85
+62,Lat224_T,La Trobe St (North),-37.80996494,144.96216521,148.18792866941016,Secondary Laneway / Connector Arcade,0.29,18.85
+34,Fli32_T,Flinders St-Spark La,-37.81537985,144.9741505,138.76849315068492,Secondary Laneway / Connector Arcade,0.27,17.55
+59,RMIT_T,Building 80 RMIT,-37.80825648,144.96304859,132.67078189300412,Primary Commercial Boulevard,0.26,16.9
+51,Fra118_T,QVM-Franklin St (North),-37.80841814,144.95906317,130.62825788751715,Primary Commercial Boulevard,0.26,16.9
+54,Swa607_T,Lincoln-Swanston (West),-37.804024,144.963084,129.36488340192045,Primary Commercial Boulevard,0.25,16.25
+11,WatCit_T,Waterfront City,-37.81564989,144.93970695,117.70853322847032,Primary Commercial Boulevard,0.23,14.95
+43,UM2_T,Monash Rd-Swanston St (West),-37.79844525,144.96411782,117.08230452674897,Primary Commercial Boulevard,0.23,14.95
+46,Pel147_T,Pelham St (South),-37.80240719,144.96156731,91.29308005427409,Primary Commercial Boulevard,0.18,11.7
+8,WebBN_T,Webb Bridge,-37.82293543,144.94717511,88.19813786344332,Prime Pedestrian Concourse / Transit Hub,0.17,11.05
+44,UM3_T,Tin Alley-Swanston St (West),-37.79690473,144.96440378,64.84087791495199,Secondary Laneway / Connector Arcade,0.13,8.45
