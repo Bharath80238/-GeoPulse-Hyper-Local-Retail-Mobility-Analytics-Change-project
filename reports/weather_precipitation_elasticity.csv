@@ -1,0 +1,59 @@
+sensor_id,sensor_name,exposure_classification,dry_weather_avg_footfall,rain_elasticity_coefficient,rainy_day_projected_footfall,weather_protection_index
+47,Melbourne Central-Elizabeth St (East),Covered / Weather Protected Retail,1004.3,0.31,1315.6,101.1
+6,Flinders Street Station Underpass,Covered / Weather Protected Retail,1019.9,0.16,1183.1,84.4
+3,Melbourne Central,Covered / Weather Protected Retail,1085.9,0.16,1259.6,84.4
+4,Town Hall (West),Standard Open Street Boulevard,1454.1,-0.26,1076.0,37.8
+53,Collins Street (North),Standard Open Street Boulevard,766.9,-0.26,567.5,37.8
+15,State Library,Standard Open Street Boulevard,700.3,-0.26,518.2,37.8
+42,Grattan St-Swanston St (West),Standard Open Street Boulevard,223.8,-0.27,163.4,36.7
+36,Queen St (West),Standard Open Street Boulevard,333.0,-0.27,243.1,36.7
+16,Australia on Collins,Standard Open Street Boulevard,691.6,-0.27,504.9,36.7
+10,Victoria Point,Standard Open Street Boulevard,215.7,-0.27,157.4,36.7
+56,Lonsdale St - Elizabeth St (North),Standard Open Street Boulevard,351.1,-0.27,256.3,36.7
+59,Building 80 RMIT,Standard Open Street Boulevard,132.7,-0.28,95.5,35.6
+54,Lincoln-Swanston (West),Standard Open Street Boulevard,129.4,-0.28,93.1,35.6
+34,Flinders St-Spark La,Standard Open Street Boulevard,138.8,-0.28,99.9,35.6
+17,Collins Place (South),Standard Open Street Boulevard,457.1,-0.28,329.1,35.6
+40,Lonsdale St-Spring St (West),Standard Open Street Boulevard,298.1,-0.29,211.7,34.4
+44,Tin Alley-Swanston St (West),Standard Open Street Boulevard,64.8,-0.3,45.4,33.3
+50,Faraday St-Lygon St (West),Standard Open Street Boulevard,282.0,-0.3,197.4,33.3
+51,QVM-Franklin St (North),Standard Open Street Boulevard,130.6,-0.3,91.4,33.3
+19,Chinatown-Swanston St (North),Standard Open Street Boulevard,610.1,-0.3,427.0,33.3
+25,Melbourne Convention Exhibition Centre,Standard Open Street Boulevard,1066.2,-0.3,746.3,33.3
+24,Spencer St-Collins St (North),Standard Open Street Boulevard,1449.2,-0.3,1014.5,33.3
+9,Southern Cross Station,Standard Open Street Boulevard,336.1,-0.31,231.9,32.2
+45,Little Collins St-Swanston St (East),Standard Open Street Boulevard,927.8,-0.31,640.2,32.2
+43,Monash Rd-Swanston St (West),Standard Open Street Boulevard,117.1,-0.31,80.8,32.2
+31,Lygon St (West),Standard Open Street Boulevard,255.6,-0.31,176.3,32.2
+58,Bourke St - Spencer St (North),Standard Open Street Boulevard,823.1,-0.32,559.7,31.1
+49,QVM-Therry St (South),Standard Open Street Boulevard,186.8,-0.32,127.0,31.1
+37,Lygon St (East),Standard Open Street Boulevard,158.2,-0.32,107.6,31.1
+27,QV Market-Peel St,Standard Open Street Boulevard,147.1,-0.32,100.1,31.1
+23,Spencer St-Collins St (South),Standard Open Street Boulevard,416.9,-0.32,283.5,31.1
+26,QV Market-Elizabeth St (West),Standard Open Street Boulevard,581.5,-0.32,395.4,31.1
+1,Bourke Street Mall (North),Standard Open Street Boulevard,896.7,-0.33,600.8,30.0
+30,Lonsdale St (South),Standard Open Street Boulevard,537.4,-0.33,360.0,30.0
+28,The Arts Centre,Standard Open Street Boulevard,1063.6,-0.34,702.0,28.9
+55,Elizabeth St-La Trobe St (East),Standard Open Street Boulevard,981.4,-0.34,647.7,28.9
+2,Bourke Street Mall (South),Standard Open Street Boulevard,1081.3,-0.34,713.7,28.9
+13,Flagstaff Station,Standard Open Street Boulevard,715.4,-0.34,472.1,28.9
+29,St Kilda Rd-Alexandra Gardens,Standard Open Street Boulevard,444.9,-0.34,293.7,28.9
+7,Birrarung Marr,Standard Open Street Boulevard,262.8,-0.35,170.8,27.8
+22,Flinders St-Elizabeth St (East),Standard Open Street Boulevard,1804.3,-0.35,1172.8,27.8
+18,Collins Place (North),Standard Open Street Boulevard,370.5,-0.35,240.8,27.8
+62,La Trobe St (North),Standard Open Street Boulevard,148.2,-0.35,96.3,27.8
+61,RMIT Building 14,Standard Open Street Boulevard,444.8,-0.35,289.1,27.8
+41,Flinders La-Swanston St (West),Standard Open Street Boulevard,1928.5,-0.35,1253.5,27.8
+48,QVM-Queen St (East),Standard Open Street Boulevard,282.2,-0.36,180.6,26.7
+52,Elizabeth St-Lonsdale St (South),Standard Open Street Boulevard,452.4,-0.36,289.5,26.7
+20,Chinatown-Lt Bourke St (South),Standard Open Street Boulevard,404.3,-0.36,258.8,26.7
+21,Bourke St-Russell St (West),Standard Open Street Boulevard,651.4,-0.36,416.9,26.7
+39,Alfred Place,Standard Open Street Boulevard,199.5,-0.36,127.7,26.7
+46,Pelham St (South),Standard Open Street Boulevard,91.3,-0.37,57.5,25.6
+35,Southbank,Standard Open Street Boulevard,1056.1,-0.37,665.3,25.6
+5,Princes Bridge,High Exposure / Open Waterfront,948.1,-0.42,549.9,20.0
+8,Webb Bridge,High Exposure / Open Waterfront,88.2,-0.43,50.3,18.9
+57,Bourke St Bridge,High Exposure / Open Waterfront,800.3,-0.45,440.2,16.7
+12,New Quay,High Exposure / Open Waterfront,198.6,-0.46,107.2,15.6
+11,Waterfront City,High Exposure / Open Waterfront,117.7,-0.47,62.4,14.4
+14,Sandridge Bridge,High Exposure / Open Waterfront,326.2,-0.52,156.6,8.9

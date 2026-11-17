@@ -1,0 +1,37 @@
+{
+    "analysis_name": "GeoPulse Urban Precipitation Elasticity Model",
+    "total_sensors": 58,
+    "mean_rain_elasticity": -0.3,
+    "exposure_breakdown": {
+        "Standard Open Street Boulevard": 49,
+        "High Exposure / Open Waterfront": 6,
+        "Covered / Weather Protected Retail": 3
+    },
+    "top_sheltered_sites": [
+        {
+            "sensor_name": "Melbourne Central-Elizabeth St (East)",
+            "exposure_classification": "Covered / Weather Protected Retail",
+            "weather_protection_index": 101.1
+        },
+        {
+            "sensor_name": "Flinders Street Station Underpass",
+            "exposure_classification": "Covered / Weather Protected Retail",
+            "weather_protection_index": 84.4
+        },
+        {
+            "sensor_name": "Melbourne Central",
+            "exposure_classification": "Covered / Weather Protected Retail",
+            "weather_protection_index": 84.4
+        },
+        {
+            "sensor_name": "Town Hall (West)",
+            "exposure_classification": "Standard Open Street Boulevard",
+            "weather_protection_index": 37.8
+        },
+        {
+            "sensor_name": "Collins Street (North)",
+            "exposure_classification": "Standard Open Street Boulevard",
+            "weather_protection_index": 37.8
+        }
+    ]
+}
