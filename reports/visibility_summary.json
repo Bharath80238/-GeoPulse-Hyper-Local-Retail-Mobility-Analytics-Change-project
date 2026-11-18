@@ -1,0 +1,43 @@
+{
+    "analysis_name": "GeoPulse Storefront Visibility & Visual Exposure Model",
+    "total_storefronts": 58,
+    "mean_visibility_index": 57.2,
+    "visibility_grade_distribution": {
+        "Grade A+ (Prime Corner / Panoramic View Corridor)": 21,
+        "Grade C (Recessed / Low-Visibility Niche)": 18,
+        "Grade B (Standard Mid-Block Storefront)": 11,
+        "Grade A (High Linear Boulevard Exposure)": 8
+    },
+    "top_exposed_storefronts": [
+        {
+            "sensor_name": "Bourke Street Mall (South)",
+            "visual_exposure_multiplier": 1.25,
+            "storefront_visibility_index": 100.0,
+            "visibility_grade": "Grade A+ (Prime Corner / Panoramic View Corridor)"
+        },
+        {
+            "sensor_name": "Melbourne Central",
+            "visual_exposure_multiplier": 1.25,
+            "storefront_visibility_index": 100.0,
+            "visibility_grade": "Grade A+ (Prime Corner / Panoramic View Corridor)"
+        },
+        {
+            "sensor_name": "Flinders Street Station Underpass",
+            "visual_exposure_multiplier": 1.25,
+            "storefront_visibility_index": 100.0,
+            "visibility_grade": "Grade A+ (Prime Corner / Panoramic View Corridor)"
+        },
+        {
+            "sensor_name": "Town Hall (West)",
+            "visual_exposure_multiplier": 1.25,
+            "storefront_visibility_index": 100.0,
+            "visibility_grade": "Grade A+ (Prime Corner / Panoramic View Corridor)"
+        },
+        {
+            "sensor_name": "Melbourne Convention Exhibition Centre",
+            "visual_exposure_multiplier": 1.25,
+            "storefront_visibility_index": 100.0,
+            "visibility_grade": "Grade A+ (Prime Corner / Panoramic View Corridor)"
+        }
+    ]
+}
