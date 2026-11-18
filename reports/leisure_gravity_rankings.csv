@@ -1,0 +1,59 @@
+sensor_id,sensor_name,sensor_desc,weekend_avg,weekday_avg,evening_avg,weekend_elasticity,leisure_gravity_index,leisure_tier
+41,Swa31,Flinders La-Swanston St (West),1713.129943502825,2021.8921568627452,2026.111111111111,0.85,81.14,Premier Experiential / Nightlife Anchor
+22,Eli274_T,Flinders St-Elizabeth St (East),1499.6106194690265,1940.8809523809523,2044.888888888889,0.77,79.21,Premier Experiential / Nightlife Anchor
+4,Swa123_T,Town Hall (West),1386.6022478070176,1481.2452225781508,1339.794137022398,0.94,75.47,Premier Experiential / Nightlife Anchor
+3,Swa295_T,Melbourne Central,1033.4155251141553,1106.9154558974947,1406.7967145790553,0.93,72.78,High Leisure Dining Corridor
+28,VAC_T,The Arts Centre,1124.4026548672566,1036.6196078431371,1060.0928961748634,1.08,72.0,High Leisure Dining Corridor
+35,SouthB_T,Southbank,979.6431718061674,1090.265748031496,1275.8251366120219,0.9,71.01,High Leisure Dining Corridor
+55,Eli380_T,Elizabeth St-La Trobe St (East),890.1733333333333,1022.1329365079365,1319.6055555555556,0.87,70.11,High Leisure Dining Corridor
+25,MCEC_T,Melbourne Convention Exhibition Centre,1048.361111111111,1073.2805555555556,1006.6904761904761,0.98,69.98,High Leisure Dining Corridor
+5,PriNW_T,Princes Bridge,955.3488499452355,945.1396426207809,1008.6628289473684,1.01,69.25,High Leisure Dining Corridor
+47,Eli250_T,Melbourne Central-Elizabeth St (East),900.3111111111111,1050.6666666666667,1045.4666666666667,0.86,67.83,High Leisure Dining Corridor
+45,Swa148_T,Little Collins St-Swanston St (East),841.3866666666667,966.3928571428571,1094.3944444444444,0.87,67.65,High Leisure Dining Corridor
+24,Col620_T,Spencer St-Collins St (North),805.4646017699115,1737.8869047619048,1198.5055555555555,0.46,64.94,High Leisure Dining Corridor
+19,LtB210_T,Chinatown-Swanston St (North),600.5619469026549,614.3253968253969,1085.0444444444445,0.98,64.85,High Leisure Dining Corridor
+21,Rus180_T,Bourke St-Russell St (West),663.4513274336283,645.9662698412699,928.65,1.03,64.74,High Leisure Dining Corridor
+6,FliS_T,Flinders Street Station Underpass,749.1702302631579,1129.0138091029607,936.8402503293808,0.66,63.26,High Leisure Dining Corridor
+30,Lon189_T,Lonsdale St (South),582.8318584070796,516.9642857142857,815.8222222222222,1.13,62.85,High Leisure Dining Corridor
+2,Bou283_T,Bourke Street Mall (South),970.7360197368421,1125.868647812638,556.1225296442688,0.86,62.33,High Leisure Dining Corridor
+1,Bou292_T,Bourke Street Mall (North),813.3763706140351,930.3213654441007,551.6432806324111,0.87,60.46,High Leisure Dining Corridor
+15,QV_T,State Library,593.1389421759386,743.4460638180412,735.6640342217835,0.8,59.46,High Leisure Dining Corridor
+26,Eli483_T,QV Market-Elizabeth St (West),615.7964601769911,566.1765873015873,543.25,1.09,59.06,High Leisure Dining Corridor
+20,LtB170_T,Chinatown-Lt Bourke St (South),450.7212389380531,383.53769841269843,661.5611111111111,1.18,58.43,High Leisure Dining Corridor
+29,AG_T,St Kilda Rd-Alexandra Gardens,479.18666666666667,429.6607142857143,481.8888888888889,1.12,55.46,High Leisure Dining Corridor
+58,Bou688_T,Bourke St - Spencer St (North),516.9911111111111,959.7103174603175,693.7555555555556,0.54,55.43,High Leisure Dining Corridor
+53,Col254_T,Collins Street (North),584.3761061946902,848.6805555555555,507.93888888888887,0.69,54.77,Balanced Community Strip
+31,Lyg161_T,Lygon St (West),322.3436123348018,225.83529411764707,465.3224043715847,1.43,53.32,Balanced Community Strip
+7,Fed_T,Birrarung Marr,360.0238095238095,223.50996285038838,347.6175337186898,1.61,52.96,Balanced Community Strip
+57,BouBri_T,Bourke St Bridge,464.2227722772277,941.7416666666667,570.7619047619048,0.49,51.97,Balanced Community Strip
+11,WatCit_T,Waterfront City,233.78362092577376,70.95322153574581,134.69934210526316,3.29,51.92,Balanced Community Strip
+52,Eli263_T,Elizabeth St-Lonsdale St (South),381.84,483.8511904761905,516.8277777777778,0.79,51.23,Balanced Community Strip
+50,Lyg309_T,Faraday St-Lygon St (West),322.15555555555557,264.0892857142857,410.5722222222222,1.22,50.45,Balanced Community Strip
+12,NewQ_T,New Quay,295.0646044347112,159.68928610835263,270.7099638276883,1.85,50.23,Balanced Community Strip
+61,RMIT14_T,RMIT Building 14,332.56888888888886,494.8670634920635,499.77777777777777,0.67,48.52,Balanced Community Strip
+16,Col270_T,Australia on Collins,503.94739918176504,766.7126813289658,312.8977591036415,0.66,48.15,Balanced Community Strip
+48,QVMQ_T,QVM-Queen St (East),317.0755555555556,266.6309523809524,256.5833333333333,1.19,45.37,Balanced Community Strip
+14,SanBri_T,Sandridge Bridge,283.78125,343.2659080866107,353.631093544137,0.83,44.63,Balanced Community Strip
+56,Lon364_T,Lonsdale St - Elizabeth St (North),279.93220338983053,383.9609375,383.9347826086956,0.73,44.54,Balanced Community Strip
+37,Lyg260_T,Lygon St (East),180.8815789473684,148.09980430528375,239.80327868852459,1.22,39.03,Low Leisure Vitality (Office / Commuter Dominated)
+49,Eli501_T,QVM-Therry St (South),218.66666666666666,172.625,168.66666666666666,1.27,37.91,Low Leisure Vitality (Office / Commuter Dominated)
+36,Que85_T,Queen St (West),207.61777777777777,388.69169960474306,302.50555555555553,0.53,37.48,Low Leisure Vitality (Office / Commuter Dominated)
+23,Col623_T,Spencer St-Collins St (South),177.06637168141592,524.452380952381,276.21666666666664,0.34,33.45,Low Leisure Vitality (Office / Commuter Dominated)
+27,Vic_T,QV Market-Peel St,169.95238095238096,138.7527352297593,138.98717948717947,1.22,32.96,Low Leisure Vitality (Office / Commuter Dominated)
+40,Spr201_T,Lonsdale St-Spring St (West),170.9111111111111,354.8968253968254,237.9111111111111,0.48,32.67,Low Leisure Vitality (Office / Commuter Dominated)
+62,Lat224_T,La Trobe St (North),142.93777777777777,150.53174603174602,193.95,0.95,32.38,Low Leisure Vitality (Office / Commuter Dominated)
+17,Col15_T,Collins Place (South),160.04769736842104,576.7850198851082,250.56225296442688,0.28,30.95,Low Leisure Vitality (Office / Commuter Dominated)
+51,Fra118_T,QVM-Franklin St (North),131.1688888888889,130.38690476190476,133.48333333333332,1.01,28.23,Low Leisure Vitality (Office / Commuter Dominated)
+42,UM1_T,Grattan St-Swanston St (West),119.16444444444444,270.53968253968253,183.14444444444445,0.44,25.98,Low Leisure Vitality (Office / Commuter Dominated)
+34,Fli32_T,Flinders St-Spark La,97.00442477876106,157.49603174603175,136.51666666666668,0.62,22.3,Low Leisure Vitality (Office / Commuter Dominated)
+18,Col12_T,Collins Place (North),92.15026048807239,482.68758285461774,194.2078392621871,0.19,21.95,Low Leisure Vitality (Office / Commuter Dominated)
+54,Swa607_T,Lincoln-Swanston (West),86.29333333333334,148.59325396825398,142.8,0.58,21.21,Low Leisure Vitality (Office / Commuter Dominated)
+10,BouHbr_T,Victoria Point,83.51895355045382,269.78545653362494,160.45840077695047,0.31,19.95,Low Leisure Vitality (Office / Commuter Dominated)
+59,RMIT_T,Building 80 RMIT,92.35555555555555,150.66865079365078,94.08333333333333,0.61,18.02,Low Leisure Vitality (Office / Commuter Dominated)
+13,Wil277_T,Flagstaff Station,39.844243132670954,985.8158418158418,300.69607843137254,0.04,16.45,Low Leisure Vitality (Office / Commuter Dominated)
+9,Col700_T,Southern Cross Station,58.5890899122807,447.8900795404331,149.56225296442688,0.13,14.18,Low Leisure Vitality (Office / Commuter Dominated)
+39,AlfPl_T,Alfred Place,68.87931034482759,330.0689655172414,115.44444444444444,0.21,13.91,Low Leisure Vitality (Office / Commuter Dominated)
+43,UM2_T,Monash Rd-Swanston St (West),58.96,143.0297619047619,84.88333333333334,0.41,10.79,Low Leisure Vitality (Office / Commuter Dominated)
+8,WebBN_T,Webb Bridge,61.31890660592255,99.00893266147503,63.52653200958576,0.62,9.96,Low Leisure Vitality (Office / Commuter Dominated)
+46,Pel147_T,Pelham St (South),52.03913043478261,109.10059171597634,76.02197802197803,0.48,8.95,Low Leisure Vitality (Office / Commuter Dominated)
+44,UM3_T,Tin Alley-Swanston St (West),37.72,76.9484126984127,60.516666666666666,0.49,3.46,Low Leisure Vitality (Office / Commuter Dominated)

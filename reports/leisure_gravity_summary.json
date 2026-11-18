@@ -1,0 +1,48 @@
+{
+    "analysis_name": "GeoPulse Leisure Gravity & Experiential Vitality",
+    "total_sensors": 58,
+    "mean_leisure_gravity_index": 46.34,
+    "leisure_tier_distribution": {
+        "Low Leisure Vitality (Office / Commuter Dominated)": 22,
+        "High Leisure Dining Corridor": 20,
+        "Balanced Community Strip": 13,
+        "Premier Experiential / Nightlife Anchor": 3
+    },
+    "top_leisure_destinations": [
+        {
+            "sensor_desc": "Flinders La-Swanston St (West)",
+            "weekend_avg": 1713.129943502825,
+            "weekend_elasticity": 0.85,
+            "leisure_gravity_index": 81.14,
+            "leisure_tier": "Premier Experiential / Nightlife Anchor"
+        },
+        {
+            "sensor_desc": "Flinders St-Elizabeth St (East)",
+            "weekend_avg": 1499.6106194690265,
+            "weekend_elasticity": 0.77,
+            "leisure_gravity_index": 79.21,
+            "leisure_tier": "Premier Experiential / Nightlife Anchor"
+        },
+        {
+            "sensor_desc": "Town Hall (West)",
+            "weekend_avg": 1386.6022478070176,
+            "weekend_elasticity": 0.94,
+            "leisure_gravity_index": 75.47,
+            "leisure_tier": "Premier Experiential / Nightlife Anchor"
+        },
+        {
+            "sensor_desc": "Melbourne Central",
+            "weekend_avg": 1033.4155251141553,
+            "weekend_elasticity": 0.93,
+            "leisure_gravity_index": 72.78,
+            "leisure_tier": "High Leisure Dining Corridor"
+        },
+        {
+            "sensor_desc": "The Arts Centre",
+            "weekend_avg": 1124.4026548672566,
+            "weekend_elasticity": 1.08,
+            "leisure_gravity_index": 72.0,
+            "leisure_tier": "High Leisure Dining Corridor"
+        }
+    ]
+}
