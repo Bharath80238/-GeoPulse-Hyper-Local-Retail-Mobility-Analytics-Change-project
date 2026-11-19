@@ -1,0 +1,37 @@
+{
+    "analysis_name": "GeoPulse Transit Catchment Modal Split",
+    "total_nodes_modeled": 58,
+    "role_breakdown": {
+        "Pedestrian Laneway / Local Destination": 29,
+        "High-Frequency Tram Commercial Spine": 19,
+        "Major Rail Terminal / High-Volume Gateway": 10
+    },
+    "mean_commute_intensity_ratio": 1.4,
+    "top_transit_gateways": [
+        {
+            "sensor_name": "Southern Cross Station",
+            "commute_intensity_ratio": 2.38,
+            "modal_share_heavy_rail_pct": 65.0
+        },
+        {
+            "sensor_name": "Spencer St-Collins St (North)",
+            "commute_intensity_ratio": 1.9,
+            "modal_share_heavy_rail_pct": 65.0
+        },
+        {
+            "sensor_name": "Spencer St-Collins St (South)",
+            "commute_intensity_ratio": 1.87,
+            "modal_share_heavy_rail_pct": 65.0
+        },
+        {
+            "sensor_name": "Bourke St - Spencer St (North)",
+            "commute_intensity_ratio": 1.79,
+            "modal_share_heavy_rail_pct": 65.0
+        },
+        {
+            "sensor_name": "Flinders Street Station Underpass",
+            "commute_intensity_ratio": 1.71,
+            "modal_share_heavy_rail_pct": 65.0
+        }
+    ]
+}

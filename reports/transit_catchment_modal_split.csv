@@ -1,0 +1,59 @@
+sensor_id,sensor_name,transit_role,avg_hourly_footfall,peak_commute_footfall,commute_intensity_ratio,modal_share_heavy_rail_pct,modal_share_tram_light_rail_pct,modal_share_pure_pedestrian_pct
+13,Flagstaff Station,Pedestrian Laneway / Local Destination,715.4,1994.5,2.79,15.0,25.0,60.0
+57,Bourke St Bridge,High-Frequency Tram Commercial Spine,800.3,1994.9,2.49,25.0,50.0,25.0
+9,Southern Cross Station,Major Rail Terminal / High-Volume Gateway,336.1,800.4,2.38,65.0,20.0,15.0
+18,Collins Place (North),High-Frequency Tram Commercial Spine,370.5,861.9,2.33,25.0,50.0,25.0
+10,Victoria Point,Pedestrian Laneway / Local Destination,215.7,485.4,2.25,15.0,25.0,60.0
+17,Collins Place (South),High-Frequency Tram Commercial Spine,457.1,886.4,1.94,25.0,50.0,25.0
+24,Spencer St-Collins St (North),Major Rail Terminal / High-Volume Gateway,1449.2,2760.6,1.9,65.0,20.0,15.0
+23,Spencer St-Collins St (South),Major Rail Terminal / High-Volume Gateway,416.9,781.4,1.87,65.0,20.0,15.0
+58,Bourke St - Spencer St (North),Major Rail Terminal / High-Volume Gateway,823.1,1471.4,1.79,65.0,20.0,15.0
+8,Webb Bridge,Pedestrian Laneway / Local Destination,88.2,153.8,1.74,15.0,25.0,60.0
+6,Flinders Street Station Underpass,Major Rail Terminal / High-Volume Gateway,1019.9,1740.8,1.71,65.0,20.0,15.0
+59,Building 80 RMIT,Pedestrian Laneway / Local Destination,132.7,224.0,1.69,15.0,25.0,60.0
+14,Sandridge Bridge,Pedestrian Laneway / Local Destination,326.2,504.9,1.55,15.0,25.0,60.0
+34,Flinders St-Spark La,Major Rail Terminal / High-Volume Gateway,138.8,208.8,1.51,65.0,20.0,15.0
+25,Melbourne Convention Exhibition Centre,Pedestrian Laneway / Local Destination,1066.2,1594.1,1.5,15.0,25.0,60.0
+7,Birrarung Marr,Pedestrian Laneway / Local Destination,262.8,395.2,1.5,15.0,25.0,60.0
+44,Tin Alley-Swanston St (West),High-Frequency Tram Commercial Spine,64.8,96.5,1.49,25.0,50.0,25.0
+28,The Arts Centre,Pedestrian Laneway / Local Destination,1063.6,1544.9,1.45,15.0,25.0,60.0
+35,Southbank,Pedestrian Laneway / Local Destination,1056.1,1515.5,1.44,15.0,25.0,60.0
+40,Lonsdale St-Spring St (West),Pedestrian Laneway / Local Destination,298.1,426.7,1.43,15.0,25.0,60.0
+43,Monash Rd-Swanston St (West),High-Frequency Tram Commercial Spine,117.1,167.1,1.43,25.0,50.0,25.0
+46,Pelham St (South),Pedestrian Laneway / Local Destination,91.3,129.8,1.42,15.0,25.0,60.0
+5,Princes Bridge,Pedestrian Laneway / Local Destination,948.1,1336.0,1.41,15.0,25.0,60.0
+39,Alfred Place,Pedestrian Laneway / Local Destination,199.5,277.8,1.39,15.0,25.0,60.0
+54,Lincoln-Swanston (West),High-Frequency Tram Commercial Spine,129.4,178.8,1.38,25.0,50.0,25.0
+22,Flinders St-Elizabeth St (East),Major Rail Terminal / High-Volume Gateway,1804.3,2492.2,1.38,65.0,20.0,15.0
+36,Queen St (West),Pedestrian Laneway / Local Destination,333.0,457.9,1.38,15.0,25.0,60.0
+41,Flinders La-Swanston St (West),Major Rail Terminal / High-Volume Gateway,1928.5,2589.9,1.34,65.0,20.0,15.0
+61,RMIT Building 14,Pedestrian Laneway / Local Destination,444.8,591.8,1.33,15.0,25.0,60.0
+29,St Kilda Rd-Alexandra Gardens,Pedestrian Laneway / Local Destination,444.9,593.0,1.33,15.0,25.0,60.0
+55,Elizabeth St-La Trobe St (East),High-Frequency Tram Commercial Spine,981.4,1257.7,1.28,25.0,50.0,25.0
+52,Elizabeth St-Lonsdale St (South),High-Frequency Tram Commercial Spine,452.4,568.2,1.26,25.0,50.0,25.0
+47,Melbourne Central-Elizabeth St (East),Major Rail Terminal / High-Volume Gateway,1004.3,1255.2,1.25,65.0,20.0,15.0
+27,QV Market-Peel St,Pedestrian Laneway / Local Destination,147.1,183.7,1.25,15.0,25.0,60.0
+56,Lonsdale St - Elizabeth St (North),High-Frequency Tram Commercial Spine,351.1,434.7,1.24,25.0,50.0,25.0
+42,Grattan St-Swanston St (West),High-Frequency Tram Commercial Spine,223.8,275.9,1.23,25.0,50.0,25.0
+45,Little Collins St-Swanston St (East),High-Frequency Tram Commercial Spine,927.8,1115.1,1.2,25.0,50.0,25.0
+53,Collins Street (North),High-Frequency Tram Commercial Spine,766.9,911.6,1.19,25.0,50.0,25.0
+15,State Library,Pedestrian Laneway / Local Destination,700.3,817.9,1.17,15.0,25.0,60.0
+50,Faraday St-Lygon St (West),Pedestrian Laneway / Local Destination,282.0,321.3,1.14,15.0,25.0,60.0
+51,QVM-Franklin St (North),Pedestrian Laneway / Local Destination,130.6,147.2,1.13,15.0,25.0,60.0
+12,New Quay,Pedestrian Laneway / Local Destination,198.6,220.9,1.11,15.0,25.0,60.0
+48,QVM-Queen St (East),Pedestrian Laneway / Local Destination,282.2,312.4,1.11,15.0,25.0,60.0
+3,Melbourne Central,Major Rail Terminal / High-Volume Gateway,1085.9,1181.3,1.09,65.0,20.0,15.0
+26,QV Market-Elizabeth St (West),High-Frequency Tram Commercial Spine,581.5,617.4,1.06,25.0,50.0,25.0
+37,Lygon St (East),Pedestrian Laneway / Local Destination,158.2,167.4,1.06,15.0,25.0,60.0
+16,Australia on Collins,High-Frequency Tram Commercial Spine,691.6,735.8,1.06,25.0,50.0,25.0
+4,Town Hall (West),Pedestrian Laneway / Local Destination,1454.1,1517.3,1.04,15.0,25.0,60.0
+30,Lonsdale St (South),Pedestrian Laneway / Local Destination,537.4,551.8,1.03,15.0,25.0,60.0
+31,Lygon St (West),Pedestrian Laneway / Local Destination,255.6,262.5,1.03,15.0,25.0,60.0
+62,La Trobe St (North),Pedestrian Laneway / Local Destination,148.2,153.2,1.03,15.0,25.0,60.0
+1,Bourke Street Mall (North),High-Frequency Tram Commercial Spine,896.7,900.6,1.0,25.0,50.0,25.0
+2,Bourke Street Mall (South),High-Frequency Tram Commercial Spine,1081.3,1073.1,0.99,25.0,50.0,25.0
+21,Bourke St-Russell St (West),High-Frequency Tram Commercial Spine,651.4,645.2,0.99,25.0,50.0,25.0
+20,Chinatown-Lt Bourke St (South),High-Frequency Tram Commercial Spine,404.3,378.5,0.94,25.0,50.0,25.0
+19,Chinatown-Swanston St (North),High-Frequency Tram Commercial Spine,610.1,563.3,0.92,25.0,50.0,25.0
+11,Waterfront City,Pedestrian Laneway / Local Destination,117.7,107.4,0.91,15.0,25.0,60.0
+49,QVM-Therry St (South),Pedestrian Laneway / Local Destination,186.8,168.4,0.9,15.0,25.0,60.0
