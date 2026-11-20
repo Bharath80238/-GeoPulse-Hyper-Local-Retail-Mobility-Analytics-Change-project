@@ -1,0 +1,35 @@
+{
+  "project": "GeoPulse: Hyper-Local Retail Mobility Analytics",
+  "author": "Amit Prajapati (Member 3 - Retail Mobility Analyst)",
+  "ingestion_timestamp": "2026-11-20 03:55:59Z",
+  "sensor_metadata": {
+    "total_sensors": 91,
+    "active_sensors": 74,
+    "lat_range": [
+      -37.82579137,
+      -37.79432414
+    ],
+    "lon_range": [
+      144.92973379,
+      144.97467661
+    ]
+  },
+  "pedestrian_counts_sample": {
+    "total_records_ingested": 250000,
+    "distinct_sensors_captured": 58,
+    "date_range": [
+      "2009-05-01 00:00:00",
+      "2022-08-15 19:00:00"
+    ],
+    "total_footfall_volume": 151851314,
+    "mean_hourly_footfall": 607.41,
+    "max_hourly_footfall": 15979
+  },
+  "database_storage": {
+    "sqlite_database_path": "data/processed/geopulse.db",
+    "indexed_tables": [
+      "sensor_locations",
+      "hourly_pedestrian_counts"
+    ]
+  }
+}
