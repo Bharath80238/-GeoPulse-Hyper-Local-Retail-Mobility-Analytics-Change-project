@@ -1,0 +1,93 @@
+{
+    "total_sensors_analyzed": 58,
+    "mean_store_viability_index": 56.49,
+    "median_store_viability_index": 57.33,
+    "max_store_viability_index": 83.72,
+    "min_store_viability_index": 23.27,
+    "tier_distribution": {
+        "Tier 2 - High-Yield Commercial Hub": 23,
+        "Tier 4 - Peripheral / Low-Footfall": 21,
+        "Tier 3 - Moderate Local Catchment": 13,
+        "Tier 1 - Flagship Catchment": 1
+    },
+    "precinct_average_viability": {
+        "Central Retail Core (Bourke St Mall)": 71.49,
+        "Southbank Promenade & Waterfront": 65.79,
+        "Flinders Transit Hub (Commuter Spine)": 60.59,
+        "Chinatown & East End Dining": 44.06,
+        "Northern University Corridor": 33.44,
+        "Docklands Harbourside Precinct": 30.96
+    },
+    "top_10_retail_catchments": [
+        {
+            "rank": 1,
+            "sensor_name": "Flinders La-Swanston St (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 83.72,
+            "viability_tier": "Tier 1 - Flagship Catchment"
+        },
+        {
+            "rank": 2,
+            "sensor_name": "Flinders St-Elizabeth St (East)",
+            "precinct_name": "Flinders Transit Hub (Commuter Spine)",
+            "store_viability_index": 79.69,
+            "viability_tier": "Tier 2 - High-Yield Commercial Hub"
+        },
+        {
+            "rank": 3,
+            "sensor_name": "Town Hall (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 79.07,
+            "viability_tier": "Tier 2 - High-Yield Commercial Hub"
+        },
+        {
+            "rank": 4,
+            "sensor_name": "Melbourne Central",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 76.65,
+            "viability_tier": "Tier 2 - High-Yield Commercial Hub"
+        },
+        {
+            "rank": 5,
+            "sensor_name": "Melbourne Central-Elizabeth St (East)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 75.73,
+            "viability_tier": "Tier 2 - High-Yield Commercial Hub"
+        },
+        {
+            "rank": 6,
+            "sensor_name": "Southbank",
+            "precinct_name": "Southbank Promenade & Waterfront",
+            "store_viability_index": 75.66,
+            "viability_tier": "Tier 2 - High-Yield Commercial Hub"
+        },
+        {
+            "rank": 7,
+            "sensor_name": "The Arts Centre",
+            "precinct_name": "Southbank Promenade & Waterfront",
+            "store_viability_index": 75.23,
+            "viability_tier": "Tier 2 - High-Yield Commercial Hub"
+        },
+        {
+            "rank": 8,
+            "sensor_name": "Melbourne Convention Exhibition Centre",
+            "precinct_name": "Southbank Promenade & Waterfront",
+            "store_viability_index": 74.96,
+            "viability_tier": "Tier 2 - High-Yield Commercial Hub"
+        },
+        {
+            "rank": 9,
+            "sensor_name": "Little Collins St-Swanston St (East)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 74.9,
+            "viability_tier": "Tier 2 - High-Yield Commercial Hub"
+        },
+        {
+            "rank": 10,
+            "sensor_name": "Bourke St-Russell St (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 74.56,
+            "viability_tier": "Tier 2 - High-Yield Commercial Hub"
+        }
+    ]
+}
