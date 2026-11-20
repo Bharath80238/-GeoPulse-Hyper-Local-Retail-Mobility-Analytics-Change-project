@@ -1,0 +1,47 @@
+{
+  "analysis": "GeoPulse Temporal Mobility & Daypart Dynamics",
+  "author": "Amit Prajapati (Member 3 - Retail Mobility Analyst)",
+  "overall_footfall_volume": 151851314,
+  "peak_hourly_interval": 17,
+  "peak_hourly_mean_footfall": 1429.8,
+  "weekday_mean_hourly": 658.25,
+  "weekend_mean_hourly": 482.65,
+  "weekend_surge_ratio": 0.733,
+  "daypart_volume_shares": [
+    {
+      "daypart": "Evening Shopping & Rush (17:00 - 19:59)",
+      "total_footfall": 30564481,
+      "avg_hourly": 1018.2,
+      "volume_share_pct": 20.13
+    },
+    {
+      "daypart": "Inter-Peak Hours",
+      "total_footfall": 36925577,
+      "avg_hourly": 613.9,
+      "volume_share_pct": 24.32
+    },
+    {
+      "daypart": "Lunch & Midday Retail (11:00 - 14:59)",
+      "total_footfall": 46408442,
+      "avg_hourly": 1160.1,
+      "volume_share_pct": 30.56
+    },
+    {
+      "daypart": "Morning Commute (07:00 - 09:59)",
+      "total_footfall": 19320267,
+      "avg_hourly": 640.6,
+      "volume_share_pct": 12.72
+    },
+    {
+      "daypart": "Night-Time Economy (21:00 - 04:59)",
+      "total_footfall": 18632547,
+      "avg_hourly": 207.8,
+      "volume_share_pct": 12.27
+    }
+  ],
+  "retail_behavior_distribution": {
+    "Weekday Commuter-Dominant Corridor": 28,
+    "Balanced Commercial Zone": 22,
+    "Weekend Destination / Leisure Hub": 8
+  }
+}
