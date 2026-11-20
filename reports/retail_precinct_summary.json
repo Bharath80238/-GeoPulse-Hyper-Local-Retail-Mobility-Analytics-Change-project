@@ -1,0 +1,55 @@
+{
+  "analysis_name": "GeoPulse Retail Precinct Spatial Profile",
+  "author": "Amit Prajapati (Member 3 - Retail Mobility Analyst)",
+  "total_sensors_mapped": 91,
+  "active_precincts": [
+    {
+      "retail_precinct": "Central Retail Core (Bourke St Mall)",
+      "sensor_count": 26,
+      "total_precinct_footfall": 79241591,
+      "mean_hourly_footfall": 518.2,
+      "max_peak_footfall": 8052.0,
+      "mean_dist_to_cbd_m": 476.7
+    },
+    {
+      "retail_precinct": "Chinatown & East End Dining",
+      "sensor_count": 12,
+      "total_precinct_footfall": 13657090,
+      "mean_hourly_footfall": 214.7,
+      "max_peak_footfall": 6691.0,
+      "mean_dist_to_cbd_m": 614.5
+    },
+    {
+      "retail_precinct": "Docklands Harbourside Precinct",
+      "sensor_count": 10,
+      "total_precinct_footfall": 6801849,
+      "mean_hourly_footfall": 53.2,
+      "max_peak_footfall": 10354.0,
+      "mean_dist_to_cbd_m": 2534.1
+    },
+    {
+      "retail_precinct": "Flinders Transit Hub (Commuter Spine)",
+      "sensor_count": 24,
+      "total_precinct_footfall": 43863809,
+      "mean_hourly_footfall": 472.9,
+      "max_peak_footfall": 15979.0,
+      "mean_dist_to_cbd_m": 978.0
+    },
+    {
+      "retail_precinct": "Northern University Corridor",
+      "sensor_count": 9,
+      "total_precinct_footfall": 968230,
+      "mean_hourly_footfall": 146.9,
+      "max_peak_footfall": 1640.0,
+      "mean_dist_to_cbd_m": 1980.9
+    },
+    {
+      "retail_precinct": "Southbank Promenade & Waterfront",
+      "sensor_count": 10,
+      "total_precinct_footfall": 7318745,
+      "mean_hourly_footfall": 360.0,
+      "max_peak_footfall": 4059.0,
+      "mean_dist_to_cbd_m": 1186.9
+    }
+  ]
+}
