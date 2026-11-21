@@ -1,0 +1,55 @@
+{
+    "analysis_name": "GeoPulse Retail Tenant Site Allocation Framework",
+    "total_sites_analyzed": 58,
+    "tenant_category_breakdown": {
+        "Artisan Boutique / Specialty Retail": 18,
+        "QSR / Grab-and-Go": 17,
+        "Convenience Retail / Essential Services": 17,
+        "Luxury / Flagship Brand": 4,
+        "Experiential Dining / Nightlife": 2
+    },
+    "sample_recommendations": [
+        {
+            "sensor_name": "Flinders La-Swanston St (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 83.72,
+            "primary_recommended_tenant": "Luxury / Flagship Brand",
+            "strategic_rationale": "Exceptional pedestrian gravity, high precinct synergy, and high footfall density."
+        },
+        {
+            "sensor_name": "Flinders St-Elizabeth St (East)",
+            "precinct_name": "Flinders Transit Hub (Commuter Spine)",
+            "store_viability_index": 79.69,
+            "primary_recommended_tenant": "QSR / Grab-and-Go",
+            "strategic_rationale": "Heavy weekday commuter flows with high peak turnover; ideal for quick-service F&B."
+        },
+        {
+            "sensor_name": "Town Hall (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 79.07,
+            "primary_recommended_tenant": "Luxury / Flagship Brand",
+            "strategic_rationale": "Exceptional pedestrian gravity, high precinct synergy, and high footfall density."
+        },
+        {
+            "sensor_name": "Melbourne Central",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 76.65,
+            "primary_recommended_tenant": "Luxury / Flagship Brand",
+            "strategic_rationale": "Exceptional pedestrian gravity, high precinct synergy, and high footfall density."
+        },
+        {
+            "sensor_name": "Melbourne Central-Elizabeth St (East)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 75.73,
+            "primary_recommended_tenant": "Luxury / Flagship Brand",
+            "strategic_rationale": "Exceptional pedestrian gravity, high precinct synergy, and high footfall density."
+        },
+        {
+            "sensor_name": "Southbank",
+            "precinct_name": "Southbank Promenade & Waterfront",
+            "store_viability_index": 75.66,
+            "primary_recommended_tenant": "Convenience Retail / Essential Services",
+            "strategic_rationale": "Consistent, low-variance pedestrian flow suitable for daily essentials and pharmacy."
+        }
+    ]
+}

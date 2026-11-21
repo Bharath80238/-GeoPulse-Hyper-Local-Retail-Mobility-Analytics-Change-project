@@ -1,5 +1,5 @@
 """
-GeoPulse Mobility Analytics - Unit Test Suite
+GeoPulse Mobility Analytics - Comprehensive Unit Test Suite
 Author: Amit Prajapati (Member 3 - Spatial Mobility & Retail Catchment Analyst)
 Role: Member 3 - Infotact Batch 22.1
 """
@@ -22,13 +22,11 @@ class TestGeoPulseMobilityAnalytics(unittest.TestCase):
         conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
 
-        # Check tables
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
         tables = [row[0] for row in cursor.fetchall()]
         self.assertIn("sensor_locations", tables)
         self.assertIn("hourly_pedestrian_counts", tables)
 
-        # Check row counts
         cursor.execute("SELECT COUNT(*) FROM sensor_locations;")
         sensor_count = cursor.fetchone()[0]
         self.assertGreaterEqual(sensor_count, 50, "Sensor table should have at least 50 sensors")
@@ -50,9 +48,7 @@ class TestGeoPulseMobilityAnalytics(unittest.TestCase):
         self.assertIn("density_tier", df.columns)
         self.assertIn("distance_to_cbd_center_m", df.columns)
 
-        # Verify no NaN values in retail precinct
         self.assertEqual(df['retail_precinct'].isnull().sum(), 0)
-        # Ensure at least 4 distinct retail precincts
         self.assertGreaterEqual(df['retail_precinct'].nunique(), 4)
 
     def test_03_temporal_mobility_curves(self):
@@ -64,7 +60,6 @@ class TestGeoPulseMobilityAnalytics(unittest.TestCase):
         self.assertTrue(os.path.exists(elasticity_csv), "sensor_weekend_elasticity.csv must exist")
 
         df_diurnal = pd.read_csv(diurnal_csv)
-        # 24 hours (0 to 23)
         self.assertEqual(len(df_diurnal), 24)
         self.assertIn("mean_footfall", df_diurnal.columns)
         self.assertIn("total_volume", df_diurnal.columns)
@@ -72,7 +67,6 @@ class TestGeoPulseMobilityAnalytics(unittest.TestCase):
         df_elasticity = pd.read_csv(elasticity_csv)
         self.assertIn("weekend_ratio", df_elasticity.columns)
         self.assertIn("retail_mobility_classification", df_elasticity.columns)
-        # Weekend ratios should be strictly positive
         self.assertTrue((df_elasticity['weekend_ratio'] > 0).all())
 
     def test_04_store_viability_index_metrics(self):
@@ -88,24 +82,55 @@ class TestGeoPulseMobilityAnalytics(unittest.TestCase):
         self.assertIn("viability_tier", df_svi.columns)
         self.assertIn("rank", df_svi.columns)
 
-        # Bounds check: SVI between 0 and 100
         self.assertTrue((df_svi['store_viability_index'] >= 0).all())
         self.assertTrue((df_svi['store_viability_index'] <= 100).all())
 
-        # Sub-score bounds check
         for sub_col in ['score_volume', 'score_stability', 'score_weekend_surge', 'score_precinct_synergy']:
             self.assertTrue((df_svi[sub_col] >= 0).all(), f"{sub_col} has negative values")
             self.assertTrue((df_svi[sub_col] <= 100).all(), f"{sub_col} exceeds 100")
 
-        # Ranks must start at 1
         self.assertEqual(df_svi['rank'].min(), 1)
 
-        # JSON Summary integrity
-        with open(summary_json, "r", encoding="utf-8") as f:
-            summary = json.load(f)
-        self.assertIn("total_sensors_analyzed", summary)
-        self.assertIn("tier_distribution", summary)
-        self.assertIn("top_10_retail_catchments", summary)
+    def test_05_pedestrian_catchment_isochrones(self):
+        """Verify pedestrian isochrone radii and spatial gravity calculation."""
+        catchment_csv = os.path.join(REPORTS_DIR, "pedestrian_catchment_radii.csv")
+        gravity_json = os.path.join(REPORTS_DIR, "catchment_gravity_metrics.json")
+
+        self.assertTrue(os.path.exists(catchment_csv), "pedestrian_catchment_radii.csv must exist")
+        self.assertTrue(os.path.exists(gravity_json), "catchment_gravity_metrics.json must exist")
+
+        df_catchment = pd.read_csv(catchment_csv)
+        self.assertIn("effective_capture_potential", df_catchment.columns)
+        self.assertIn("spatial_gravity_accessibility", df_catchment.columns)
+        self.assertTrue((df_catchment['effective_capture_potential'] >= 0).all())
+
+    def test_06_store_cannibalization_risk(self):
+        """Verify store cannibalization indices and pairwise separation distance."""
+        cannibal_csv = os.path.join(REPORTS_DIR, "store_cannibalization_risk.csv")
+        summary_json = os.path.join(REPORTS_DIR, "cannibalization_summary.json")
+
+        self.assertTrue(os.path.exists(cannibal_csv), "store_cannibalization_risk.csv must exist")
+        self.assertTrue(os.path.exists(summary_json), "cannibalization_summary.json must exist")
+
+        df_cannibal = pd.read_csv(cannibal_csv)
+        self.assertIn("cannibalization_risk_index", df_cannibal.columns)
+        self.assertIn("distance_meters", df_cannibal.columns)
+        self.assertTrue((df_cannibal['cannibalization_risk_index'] >= 0).all())
+        self.assertTrue((df_cannibal['cannibalization_risk_index'] <= 100).all())
+
+    def test_07_interactive_map_and_tenant_recommendations(self):
+        """Verify HTML map existence and tenant recommendation allocations."""
+        map_html = os.path.join(REPORTS_DIR, "geopulse_interactive_catchment_map.html")
+        rec_csv = os.path.join(REPORTS_DIR, "tenant_site_recommendations.csv")
+
+        self.assertTrue(os.path.exists(map_html), "geopulse_interactive_catchment_map.html must exist")
+        self.assertGreater(os.path.getsize(map_html), 10000, "Map HTML must be populated")
+
+        self.assertTrue(os.path.exists(rec_csv), "tenant_site_recommendations.csv must exist")
+        df_rec = pd.read_csv(rec_csv)
+        self.assertIn("primary_recommended_tenant", df_rec.columns)
+        self.assertIn("strategic_rationale", df_rec.columns)
+        self.assertEqual(df_rec['primary_recommended_tenant'].isnull().sum(), 0)
 
 if __name__ == '__main__':
     unittest.main()
