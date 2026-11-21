@@ -1,0 +1,48 @@
+{
+    "analysis_name": "GeoPulse Pedestrian Catchment Isochrones & Gravity Model",
+    "total_catchments_evaluated": 58,
+    "isochrone_parameters": {
+        "primary_radius_m": 300.0,
+        "secondary_radius_m": 600.0,
+        "tertiary_radius_m": 1000.0,
+        "gravity_decay_beta": 1.5
+    },
+    "mean_effective_capture_potential": 4132.49,
+    "top_5_catchment_hubs": [
+        {
+            "catchment_rank": 1,
+            "sensor_name": "Australia on Collins",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "effective_capture_potential": 8834.4,
+            "store_viability_index": 65.43
+        },
+        {
+            "catchment_rank": 1,
+            "sensor_name": "Collins St (North)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "effective_capture_potential": 8834.4,
+            "store_viability_index": 69.14
+        },
+        {
+            "catchment_rank": 2,
+            "sensor_name": "Little Collins St-Swanston St (East)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "effective_capture_potential": 8411.2,
+            "store_viability_index": 74.9
+        },
+        {
+            "catchment_rank": 3,
+            "sensor_name": "Town Hall (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "effective_capture_potential": 8367.5,
+            "store_viability_index": 79.07
+        },
+        {
+            "catchment_rank": 4,
+            "sensor_name": "Flinders La-Swanston St (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "effective_capture_potential": 8222.9,
+            "store_viability_index": 83.72
+        }
+    ]
+}
