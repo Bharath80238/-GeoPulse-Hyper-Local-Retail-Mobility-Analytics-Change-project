@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoPulse | Melbourne Retail Catchment & SVI Map</title>
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { display: flex; height: 100vh; background: #0f172a; color: #f8fafc; overflow: hidden; }
+        
+        #sidebar {
+            width: 380px;
+            background: #1e293b;
+            border-right: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            box-shadow: 4px 0 24px rgba(0,0,0,0.4);
+        }
+        
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid #334155;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+        }
+        .brand-title { font-size: 1.25rem; font-weight: 700; color: #38bdf8; display: flex; align-items: center; gap: 8px; }
+        .brand-subtitle { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; }
+        .role-tag { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 2px 8px; background: #0369a1; color: #e0f2fe; border-radius: 12px; margin-top: 6px; }
+        
+        .kpi-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px 20px; border-bottom: 1px solid #334155; background: #0f172a; }
+        .kpi-card { background: #1e293b; padding: 10px; border-radius: 8px; border: 1px solid #334155; text-align: center; }
+        .kpi-val { font-size: 1.3rem; font-weight: 700; color: #38bdf8; }
+        .kpi-label { font-size: 0.7rem; color: #94a3b8; text-transform: uppercase; margin-top: 2px; }
+
+        .controls-pane { padding: 15px 20px; flex: 1; overflow-y: auto; }
+        .control-group { margin-bottom: 18px; }
+        .control-title { font-size: 0.85rem; font-weight: 600; color: #cbd5e1; margin-bottom: 8px; display: flex; justify-content: space-between; }
+        
+        select, input[type="text"] {
+            width: 100%; padding: 8px 12px; background: #0f172a; border: 1px solid #334155; color: #f8fafc; border-radius: 6px; font-size: 0.85rem;
+        }
+        select:focus, input:focus { outline: none; border-color: #38bdf8; }
+
+        .checkbox-label { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: #cbd5e1; cursor: pointer; margin-bottom: 6px; }
+        .checkbox-label input { accent-color: #38bdf8; cursor: pointer; }
+
+        .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; margin-bottom: 6px; color: #94a3b8; }
+        .legend-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+
+        #map { flex: 1; height: 100%; position: relative; }
+
+        .leaflet-popup-content-wrapper {
+            background: #1e293b !important;
+            color: #f8fafc !important;
+            border-radius: 8px !important;
+            border: 1px solid #475569 !important;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
+        }
+        .leaflet-popup-tip { background: #1e293b !important; }
+        .popup-header { border-bottom: 1px solid #334155; padding-bottom: 8px; margin-bottom: 8px; }
+        .popup-title { font-size: 0.95rem; font-weight: 700; color: #38bdf8; }
+        .popup-precinct { font-size: 0.75rem; color: #94a3b8; }
+        .popup-metric { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px; }
+        .popup-metric-val { font-weight: 600; color: #f1f5f9; }
+        .tier-badge { display: inline-block; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: 700; margin-top: 6px; }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <div class="sidebar-header">
+            <div class="brand-title">📍 GeoPulse Analytics</div>
+            <div class="brand-subtitle">Melbourne Retail Mobility & Catchment Intelligence</div>
+            <div class="role-tag">Member 3: Spatial Mobility & Retail Catchment Analyst</div>
+        </div>
+
+        <div class="kpi-container">
+            <div class="kpi-card">
+                <div class="kpi-val" id="stat-sensors">58</div>
+                <div class="kpi-label">Active Sensors</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-val" id="stat-avg-svi">56.5</div>
+                <div class="kpi-label">Avg SVI Score</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-val">10</div>
+                <div class="kpi-label">Cannibal Pairs</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-val">1928</div>
+                <div class="kpi-label">Peak Mean / Hr</div>
+            </div>
+        </div>
+
+        <div class="controls-pane">
+            <div class="control-group">
+                <div class="control-title">Filter by Precinct</div>
+                <select id="precinct-filter" onchange="filterMap()">
+                    <option value="ALL">All Retail Precincts (Citywide)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <div class="control-title">Filter by Viability Tier</div>
+                <select id="tier-filter" onchange="filterMap()">
+                    <option value="ALL">All Viability Tiers</option>
+                    <option value="Tier 1 - Flagship Catchment">Tier 1 - Flagship Catchment</option>
+                    <option value="Tier 2 - High-Yield Commercial Hub">Tier 2 - High-Yield Commercial Hub</option>
+                    <option value="Tier 3 - Moderate Local Catchment">Tier 3 - Moderate Local Catchment</option>
+                    <option value="Tier 4 - Peripheral / Low-Footfall">Tier 4 - Peripheral / Low-Footfall</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <div class="control-title">Spatial Overlays</div>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="toggle-isochrones" checked onchange="toggleIsochrones()">
+                    Show 300m Primary Isochrone Buffers
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="toggle-cannibal" checked onchange="toggleCannibalization()">
+                    Highlight Critical Cannibalization Arcs (CRI &ge; 50)
+                </label>
+            </div>
+
+            <div class="control-group">
+                <div class="control-title">Viability Tier Legend</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#eab308;"></span> Tier 1 - Flagship Catchment (SVI &ge; 80)</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#10b981;"></span> Tier 2 - High-Yield Hub (SVI 65-79.9)</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#0284c7;"></span> Tier 3 - Moderate Local (SVI 50-64.9)</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#64748b;"></span> Tier 4 - Peripheral / Low-Flow (SVI &lt; 50)</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script>
+        const nodes = [{"rank": 1, "sensor_id": 41, "sensor_name": "Flinders La-Swanston St (West)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 83.72, "viability_tier": "Tier 1 - Flagship Catchment", "score_volume": 100.0, "score_stability": 94.93, "score_weekend_surge": 24.92, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 1928.4717948717948, "peak_single_hour": 5422, "weekend_surge_ratio": 0.85, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.81668633, "longitude": 144.96689733}, {"rank": 2, "sensor_id": 22, "sensor_name": "Flinders St-Elizabeth St (East)", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 79.69, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 98.03, "score_stability": 97.78, "score_weekend_surge": 22.46, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 1804.268493150685, "peak_single_hour": 5384, "weekend_surge_ratio": 0.77, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81786445, "longitude": 144.96506823}, {"rank": 3, "sensor_id": 4, "sensor_name": "Town Hall (West)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 79.07, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 91.65, "score_stability": 85.81, "score_weekend_surge": 27.69, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 1454.0617274230376, "peak_single_hour": 8052, "weekend_surge_ratio": 0.94, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.81487988, "longitude": 144.9660878}, {"rank": 4, "sensor_id": 3, "sensor_name": "Melbourne Central", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 76.65, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 83.01, "score_stability": 88.47, "score_weekend_surge": 27.38, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 1085.8828909759086, "peak_single_hour": 4558, "weekend_surge_ratio": 0.93, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.81101523, "longitude": 144.96429485}, {"rank": 5, "sensor_id": 47, "sensor_name": "Melbourne Central-Elizabeth St (East)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 75.73, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 80.7, "score_stability": 89.75, "score_weekend_surge": 25.23, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 1004.2606310013716, "peak_single_hour": 3196, "weekend_surge_ratio": 0.86, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.81160331, "longitude": 144.96220077}, {"rank": 6, "sensor_id": 35, "sensor_name": "Southbank", "precinct_name": "Southbank Promenade & Waterfront", "store_viability_index": 75.66, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 82.19, "score_stability": 94.09, "score_weekend_surge": 26.46, "score_precinct_synergy": 90.37, "avg_hourly_footfall": 1056.1006802721088, "peak_single_hour": 3021, "weekend_surge_ratio": 0.9, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.82017828, "longitude": 144.96508877}, {"rank": 7, "sensor_id": 28, "sensor_name": "The Arts Centre", "precinct_name": "Southbank Promenade & Waterfront", "store_viability_index": 75.23, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 82.39, "score_stability": 87.69, "score_weekend_surge": 32.0, "score_precinct_synergy": 90.37, "avg_hourly_footfall": 1063.5747282608695, "peak_single_hour": 4059, "weekend_surge_ratio": 1.08, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.82129924, "longitude": 144.96879309}, {"rank": 8, "sensor_id": 25, "sensor_name": "Melbourne Convention Exhibition Centre", "precinct_name": "Southbank Promenade & Waterfront", "store_viability_index": 74.96, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 82.47, "score_stability": 88.95, "score_weekend_surge": 28.92, "score_precinct_synergy": 90.37, "avg_hourly_footfall": 1066.1607142857142, "peak_single_hour": 3625, "weekend_surge_ratio": 0.98, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.82401776, "longitude": 144.95604426}, {"rank": 9, "sensor_id": 45, "sensor_name": "Little Collins St-Swanston St (East)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 74.9, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 78.36, "score_stability": 89.46, "score_weekend_surge": 25.54, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 927.8106995884774, "peak_single_hour": 3563, "weekend_surge_ratio": 0.87, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.81414074, "longitude": 144.9660938}, {"rank": 10, "sensor_id": 21, "sensor_name": "Bourke St-Russell St (West)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 74.56, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 67.9, "score_stability": 98.8, "score_weekend_surge": 30.46, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 651.3794520547946, "peak_single_hour": 1714, "weekend_surge_ratio": 1.03, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.81244703, "longitude": 144.96778757}, {"rank": 11, "sensor_id": 55, "sensor_name": "Elizabeth St-La Trobe St (East)", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 74.55, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 80.02, "score_stability": 100.0, "score_weekend_surge": 25.54, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 981.4046639231824, "peak_single_hour": 2484, "weekend_surge_ratio": 0.87, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.80988941, "longitude": 144.96134331}, {"rank": 12, "sensor_id": 30, "sensor_name": "Lonsdale St (South)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 73.29, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 62.21, "score_stability": 99.24, "score_weekend_surge": 33.54, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 537.3561643835617, "peak_single_hour": 1447, "weekend_surge_ratio": 1.13, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.81121849, "longitude": 144.96656807}, {"rank": 13, "sensor_id": 5, "sensor_name": "Princes Bridge", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 72.64, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 78.99, "score_stability": 90.33, "score_weekend_surge": 29.85, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 948.0712376159772, "peak_single_hour": 5534, "weekend_surge_ratio": 1.01, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.81874249, "longitude": 144.96787656}, {"rank": 14, "sensor_id": 24, "sensor_name": "Spencer St-Collins St (North)", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 71.53, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 91.55, "score_stability": 81.85, "score_weekend_surge": 12.92, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 1449.2191780821918, "peak_single_hour": 5627, "weekend_surge_ratio": 0.46, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81887962, "longitude": 144.95449198}, {"rank": 15, "sensor_id": 2, "sensor_name": "Bourke Street Mall (South)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 70.74, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 82.88, "score_stability": 66.76, "score_weekend_surge": 25.23, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 1081.307716535433, "peak_single_hour": 7035, "weekend_surge_ratio": 0.86, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.81380667, "longitude": 144.96516719}, {"rank": 16, "sensor_id": 6, "sensor_name": "Flinders Street Station Underpass", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 70.34, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 81.15, "score_stability": 86.72, "score_weekend_surge": 19.08, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 1019.9059842519684, "peak_single_hour": 6134, "weekend_surge_ratio": 0.66, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81911704, "longitude": 144.96558256}, {"rank": 17, "sensor_id": 19, "sensor_name": "Chinatown-Swanston St (North)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 70.21, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 65.96, "score_stability": 85.36, "score_weekend_surge": 28.92, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 610.0643835616438, "peak_single_hour": 2544, "weekend_surge_ratio": 0.98, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.81237202, "longitude": 144.96550671}, {"rank": 18, "sensor_id": 15, "sensor_name": "State Library", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 69.69, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 70.04, "score_stability": 82.02, "score_weekend_surge": 23.38, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 700.2797890760271, "peak_single_hour": 3671, "weekend_surge_ratio": 0.8, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81064378, "longitude": 144.96447132}, {"rank": 19, "sensor_id": 53, "sensor_name": "Collins St (North)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 69.14, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 72.72, "score_stability": 78.76, "score_weekend_surge": 20.0, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 766.8547945205479, "peak_single_hour": 3170, "weekend_surge_ratio": 0.69, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.8156419, "longitude": 144.965499}, {"rank": 20, "sensor_id": 1, "sensor_name": "Bourke Street Mall (North)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 68.73, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 77.35, "score_stability": 66.2, "score_weekend_surge": 25.54, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 896.7296062992126, "peak_single_hour": 5573, "weekend_surge_ratio": 0.87, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.8134944, "longitude": 144.96515324}, {"rank": 21, "sensor_id": 26, "sensor_name": "QV Market-Elizabeth St (West)", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 68.07, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 64.54, "score_stability": 90.32, "score_weekend_surge": 32.31, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 581.5383561643836, "peak_single_hour": 2096, "weekend_surge_ratio": 1.09, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.80869542, "longitude": 144.96049404}, {"rank": 22, "sensor_id": 52, "sensor_name": "Elizabeth St-Lonsdale St (South)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 67.48, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 57.12, "score_stability": 91.48, "score_weekend_surge": 23.08, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 452.36625514403295, "peak_single_hour": 1918, "weekend_surge_ratio": 0.79, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81252157, "longitude": 144.9619401}, {"rank": 23, "sensor_id": 58, "sensor_name": "Bourke St - Spencer St (North)", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 66.94, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 74.81, "score_stability": 84.97, "score_weekend_surge": 15.38, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 823.0685871056241, "peak_single_hour": 3261, "weekend_surge_ratio": 0.54, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81686074, "longitude": 144.95358075}, {"rank": 24, "sensor_id": 16, "sensor_name": "Australia on Collins", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 65.43, "viability_tier": "Tier 2 - High-Yield Commercial Hub", "score_volume": 69.67, "score_stability": 68.92, "score_weekend_surge": 19.08, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 691.5929824561404, "peak_single_hour": 4640, "weekend_surge_ratio": 0.66, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81573422, "longitude": 144.96521044}, {"rank": 25, "sensor_id": 56, "sensor_name": "Lonsdale St - Elizabeth St (North)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 63.85, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 49.64, "score_stability": 88.91, "score_weekend_surge": 21.23, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 351.13903743315507, "peak_single_hour": 1219, "weekend_surge_ratio": 0.73, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81234775, "longitude": 144.96153311}, {"rank": 26, "sensor_id": 61, "sensor_name": "Swanston St - RMIT Building 14", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 63.38, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 56.62, "score_stability": 92.99, "score_weekend_surge": 19.38, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 444.7750342935528, "peak_single_hour": 1240, "weekend_surge_ratio": 0.67, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.80767455, "longitude": 144.96309115}, {"rank": 27, "sensor_id": 14, "sensor_name": "Sandridge Bridge", "precinct_name": "Southbank Promenade & Waterfront", "store_viability_index": 62.37, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 47.47, "score_stability": 91.28, "score_weekend_surge": 24.31, "score_precinct_synergy": 90.37, "avg_hourly_footfall": 326.1792913385827, "peak_single_hour": 3928, "weekend_surge_ratio": 0.83, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.82011242, "longitude": 144.96291898}, {"rank": 28, "sensor_id": 36, "sensor_name": "Queen St (West)", "precinct_name": "Central Retail Core (Bourke St Mall)", "store_viability_index": 60.62, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 48.07, "score_stability": 83.13, "score_weekend_surge": 15.08, "score_precinct_synergy": 100.0, "avg_hourly_footfall": 332.9575923392613, "peak_single_hour": 1334, "weekend_surge_ratio": 0.53, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81652527, "longitude": 144.96121063}, {"rank": 29, "sensor_id": 48, "sensor_name": "QVM-Queen St (East)", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 57.76, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 43.19, "score_stability": 76.51, "score_weekend_surge": 35.38, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 282.2002743484225, "peak_single_hour": 1478, "weekend_surge_ratio": 1.19, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.80631581, "longitude": 144.95866698}, {"rank": 30, "sensor_id": 49, "sensor_name": "QVM-Therry St (South)", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 56.89, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 31.04, "score_stability": 88.06, "score_weekend_surge": 37.85, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 186.8353909465021, "peak_single_hour": 929, "weekend_surge_ratio": 1.27, "behavior_profile": "Weekend Destination / Leisure Hub", "latitude": -37.80730067, "longitude": 144.95956055}, {"rank": 31, "sensor_id": 20, "sensor_name": "Chinatown-Lt Bourke St (South)", "precinct_name": "Chinatown & East End Dining", "store_viability_index": 56.24, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 53.81, "score_stability": 88.83, "score_weekend_surge": 35.08, "score_precinct_synergy": 40.91, "avg_hourly_footfall": 404.33698630136985, "peak_single_hour": 1581, "weekend_surge_ratio": 1.18, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.81172913, "longitude": 144.9682466}, {"rank": 32, "sensor_id": 23, "sensor_name": "Spencer St-Collins St (South)", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 55.59, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 54.71, "score_stability": 72.64, "score_weekend_surge": 9.23, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 416.9054794520548, "peak_single_hour": 1805, "weekend_surge_ratio": 0.34, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81909256, "longitude": 144.95452749}, {"rank": 33, "sensor_id": 62, "sensor_name": "La Trobe St (North)", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 55.24, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 24.22, "score_stability": 98.9, "score_weekend_surge": 28.0, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 148.18792866941016, "peak_single_hour": 475, "weekend_surge_ratio": 0.95, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.80996494, "longitude": 144.96216521}, {"rank": 34, "sensor_id": 29, "sensor_name": "St Kilda Rd-Alexandra Gardens", "precinct_name": "Chinatown & East End Dining", "store_viability_index": 54.74, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 56.63, "score_stability": 80.35, "score_weekend_surge": 33.23, "score_precinct_synergy": 40.91, "avg_hourly_footfall": 444.9465020576132, "peak_single_hour": 3086, "weekend_surge_ratio": 1.12, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.81965808, "longitude": 144.96863453}, {"rank": 35, "sensor_id": 27, "sensor_name": "QV Market-Peel St", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 54.32, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 24.01, "score_stability": 88.84, "score_weekend_surge": 36.31, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 147.1392, "peak_single_hour": 534, "weekend_surge_ratio": 1.22, "behavior_profile": "Weekend Destination / Leisure Hub", "latitude": -37.80606888, "longitude": 144.95644693}, {"rank": 36, "sensor_id": 51, "sensor_name": "QVM-Franklin St (North)", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 53.27, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 20.51, "score_stability": 94.71, "score_weekend_surge": 29.85, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 130.62825788751715, "peak_single_hour": 381, "weekend_surge_ratio": 1.01, "behavior_profile": "Balanced Commercial Zone", "latitude": -37.80841814, "longitude": 144.95906317}, {"rank": 37, "sensor_id": 57, "sensor_name": "Bourke St Bridge", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 52.38, "viability_tier": "Tier 3 - Moderate Local Catchment", "score_volume": 73.98, "score_stability": 29.11, "score_weekend_surge": 13.85, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 800.3064516129032, "peak_single_hour": 15979, "weekend_surge_ratio": 0.49, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.8176735, "longitude": 144.95025595}, {"rank": 38, "sensor_id": 13, "sensor_name": "Flagstaff Station", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 49.49, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 70.67, "score_stability": 33.25, "score_weekend_surge": 0.0, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 715.357590441975, "peak_single_hour": 7510, "weekend_surge_ratio": 0.04, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81239679, "longitude": 144.95652653}, {"rank": 39, "sensor_id": 40, "sensor_name": "Lonsdale St-Spring St (West)", "precinct_name": "Chinatown & East End Dining", "store_viability_index": 46.22, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 44.81, "score_stability": 78.57, "score_weekend_surge": 13.54, "score_precinct_synergy": 40.91, "avg_hourly_footfall": 298.1111111111111, "peak_single_hour": 1424, "weekend_surge_ratio": 0.48, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.80999341, "longitude": 144.97227588}, {"rank": 40, "sensor_id": 17, "sensor_name": "Collins Place (South)", "precinct_name": "Chinatown & East End Dining", "store_viability_index": 45.83, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 57.43, "score_stability": 64.28, "score_weekend_surge": 7.38, "score_precinct_synergy": 40.91, "avg_hourly_footfall": 457.0796850393701, "peak_single_hour": 3370, "weekend_surge_ratio": 0.28, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81362542, "longitude": 144.97323592}, {"rank": 41, "sensor_id": 59, "sensor_name": "Swanston St - RMIT Building 80", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 45.39, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 20.96, "score_stability": 72.44, "score_weekend_surge": 17.54, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 132.67078189300412, "peak_single_hour": 640, "weekend_surge_ratio": 0.61, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.80825648, "longitude": 144.96304859}, {"rank": 42, "sensor_id": 50, "sensor_name": "Faraday St-Lygon St (West)", "precinct_name": "Northern University Corridor", "store_viability_index": 43.95, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 43.17, "score_stability": 86.32, "score_weekend_surge": 36.31, "score_precinct_synergy": 0.0, "avg_hourly_footfall": 282.01097393689986, "peak_single_hour": 1148, "weekend_surge_ratio": 1.22, "behavior_profile": "Weekend Destination / Leisure Hub", "latitude": -37.79808191, "longitude": 144.96721014}, {"rank": 43, "sensor_id": 31, "sensor_name": "Lygon St (West)", "precinct_name": "Northern University Corridor", "store_viability_index": 43.35, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 40.27, "score_stability": 82.8, "score_weekend_surge": 42.77, "score_precinct_synergy": 0.0, "avg_hourly_footfall": 255.5603799185889, "peak_single_hour": 1444, "weekend_surge_ratio": 1.43, "behavior_profile": "Weekend Destination / Leisure Hub", "latitude": -37.8016968, "longitude": 144.96658911}, {"rank": 44, "sensor_id": 9, "sensor_name": "Southern Cross Station", "precinct_name": "Flinders Transit Hub (Commuter Spine)", "store_viability_index": 43.22, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 48.35, "score_stability": 37.22, "score_weekend_surge": 2.77, "score_precinct_synergy": 82.2, "avg_hourly_footfall": 336.06566929133857, "peak_single_hour": 4753, "weekend_surge_ratio": 0.13, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81982992, "longitude": 144.95102556}, {"rank": 45, "sensor_id": 34, "sensor_name": "Flinders St-Spark La", "precinct_name": "Chinatown & East End Dining", "store_viability_index": 41.61, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 22.29, "score_stability": 88.24, "score_weekend_surge": 17.85, "score_precinct_synergy": 40.91, "avg_hourly_footfall": 138.76849315068492, "peak_single_hour": 494, "weekend_surge_ratio": 0.62, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81537985, "longitude": 144.9741505}, {"rank": 46, "sensor_id": 18, "sensor_name": "Collins Place (North)", "precinct_name": "Chinatown & East End Dining", "store_viability_index": 40.95, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 51.23, "score_stability": 55.67, "score_weekend_surge": 4.62, "score_precinct_synergy": 40.91, "avg_hourly_footfall": 370.52996298921175, "peak_single_hour": 3286, "weekend_surge_ratio": 0.19, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81344861, "longitude": 144.97305354}, {"rank": 47, "sensor_id": 8, "sensor_name": "Webb Bridge", "precinct_name": "Southbank Promenade & Waterfront", "store_viability_index": 40.74, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 8.99, "score_stability": 63.8, "score_weekend_surge": 17.85, "score_precinct_synergy": 90.37, "avg_hourly_footfall": 88.19813786344332, "peak_single_hour": 1043, "weekend_surge_ratio": 0.62, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.82293543, "longitude": 144.94717511}, {"rank": 48, "sensor_id": 37, "sensor_name": "Lygon St (East)", "precinct_name": "Northern University Corridor", "store_viability_index": 37.42, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 26.14, "score_stability": 84.02, "score_weekend_surge": 36.31, "score_precinct_synergy": 0.0, "avg_hourly_footfall": 158.21380243572395, "peak_single_hour": 814, "weekend_surge_ratio": 1.22, "behavior_profile": "Weekend Destination / Leisure Hub", "latitude": -37.80310271, "longitude": 144.96671452}, {"rank": 49, "sensor_id": 12, "sensor_name": "New Quay", "precinct_name": "Docklands Harbourside Precinct", "store_viability_index": 36.15, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 32.83, "score_stability": 50.65, "score_weekend_surge": 55.69, "score_precinct_synergy": 4.31, "avg_hourly_footfall": 198.5793488518402, "peak_single_hour": 10354, "weekend_surge_ratio": 1.85, "behavior_profile": "Weekend Destination / Leisure Hub", "latitude": -37.81457987, "longitude": 144.94292398}, {"rank": 50, "sensor_id": 7, "sensor_name": "Birrarung Marr", "precinct_name": "Chinatown & East End Dining", "store_viability_index": 34.68, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 41.09, "score_stability": 9.83, "score_weekend_surge": 48.31, "score_precinct_synergy": 40.91, "avg_hourly_footfall": 262.8094035594036, "peak_single_hour": 6691, "weekend_surge_ratio": 1.61, "behavior_profile": "Weekend Destination / Leisure Hub", "latitude": -37.81862929, "longitude": 144.97169395}, {"rank": 51, "sensor_id": 42, "sensor_name": "Grattan St-Swanston St (West)", "precinct_name": "Northern University Corridor", "store_viability_index": 34.28, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 36.36, "score_stability": 76.37, "score_weekend_surge": 12.31, "score_precinct_synergy": 0.0, "avg_hourly_footfall": 223.81893004115227, "peak_single_hour": 1640, "weekend_surge_ratio": 0.44, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.80008565, "longitude": 144.96386412}, {"rank": 52, "sensor_id": 54, "sensor_name": "Lincoln-Swanston(West)", "precinct_name": "Northern University Corridor", "store_viability_index": 32.93, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 20.22, "score_stability": 90.12, "score_weekend_surge": 16.62, "score_precinct_synergy": 0.0, "avg_hourly_footfall": 129.36488340192045, "peak_single_hour": 600, "weekend_surge_ratio": 0.58, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.804024, "longitude": 144.963084}, {"rank": 53, "sensor_id": 39, "sensor_name": "Alfred Place", "precinct_name": "Chinatown & East End Dining", "store_viability_index": 32.23, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 32.96, "score_stability": 45.86, "score_weekend_surge": 5.23, "score_precinct_synergy": 40.91, "avg_hourly_footfall": 199.47413793103448, "peak_single_hour": 1315, "weekend_surge_ratio": 0.21, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81379749, "longitude": 144.96995745}, {"rank": 54, "sensor_id": 10, "sensor_name": "Victoria Point", "precinct_name": "Docklands Harbourside Precinct", "store_viability_index": 29.77, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 35.26, "score_stability": 59.63, "score_weekend_surge": 8.31, "score_precinct_synergy": 4.31, "avg_hourly_footfall": 215.65821115506944, "peak_single_hour": 1505, "weekend_surge_ratio": 0.31, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.81876473, "longitude": 144.94710545}, {"rank": 55, "sensor_id": 11, "sensor_name": "Waterfront City", "precinct_name": "Docklands Harbourside Precinct", "store_viability_index": 26.97, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 17.45, "score_stability": 0.0, "score_weekend_surge": 100.0, "score_precinct_synergy": 4.31, "avg_hourly_footfall": 117.70853322847032, "peak_single_hour": 7314, "weekend_surge_ratio": 3.29, "behavior_profile": "Weekend Destination / Leisure Hub", "latitude": -37.81564989, "longitude": 144.93970695}, {"rank": 56, "sensor_id": 43, "sensor_name": "Monash Rd-Swanston St (West)", "precinct_name": "Northern University Corridor", "store_viability_index": 26.39, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 17.29, "score_stability": 72.25, "score_weekend_surge": 11.38, "score_precinct_synergy": 0.0, "avg_hourly_footfall": 117.08230452674896, "peak_single_hour": 572, "weekend_surge_ratio": 0.41, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.79844525, "longitude": 144.96411782}, {"rank": 57, "sensor_id": 46, "sensor_name": "Pelham St (S)", "precinct_name": "Northern University Corridor", "store_viability_index": 25.93, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 10.0, "score_stability": 78.89, "score_weekend_surge": 13.54, "score_precinct_synergy": 0.0, "avg_hourly_footfall": 91.29308005427409, "peak_single_hour": 486, "weekend_surge_ratio": 0.48, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.80240719, "longitude": 144.96156731}, {"rank": 58, "sensor_id": 44, "sensor_name": "Tin Alley-Swanston St (West)", "precinct_name": "Northern University Corridor", "store_viability_index": 23.27, "viability_tier": "Tier 4 - Peripheral / Low-Footfall", "score_volume": 0.0, "score_stability": 82.0, "score_weekend_surge": 13.85, "score_precinct_synergy": 0.0, "avg_hourly_footfall": 64.84087791495199, "peak_single_hour": 262, "weekend_surge_ratio": 0.49, "behavior_profile": "Weekday Commuter-Dominant Corridor", "latitude": -37.79690473, "longitude": 144.96440378}];
+        const cannibalPairs = [{"sensor_a_id": 53, "sensor_a_name": "Collins St (North)", "sensor_a_precinct": "Central Retail Core (Bourke St Mall)", "sensor_b_id": 16, "sensor_b_name": "Australia on Collins", "sensor_b_precinct": "Central Retail Core (Bourke St Mall)", "distance_meters": 27.3, "footfall_a": 766.9, "footfall_b": 691.6, "cannibalization_risk_index": 82.83, "risk_tier": "Critical Cannibalization Risk", "recommendation": "Enforce single-store exclusivity; avoid sister franchise deployment within 300m"}, {"sensor_a_id": 17, "sensor_a_name": "Collins Place (South)", "sensor_a_precinct": "Chinatown & East End Dining", "sensor_b_id": 18, "sensor_b_name": "Collins Place (North)", "sensor_b_precinct": "Chinatown & East End Dining", "distance_meters": 25.4, "footfall_a": 457.1, "footfall_b": 370.5, "cannibalization_risk_index": 79.31, "risk_tier": "Critical Cannibalization Risk", "recommendation": "Enforce single-store exclusivity; avoid sister franchise deployment within 300m"}, {"sensor_a_id": 2, "sensor_a_name": "Bourke Street Mall (South)", "sensor_a_precinct": "Central Retail Core (Bourke St Mall)", "sensor_b_id": 1, "sensor_b_name": "Bourke Street Mall (North)", "sensor_b_precinct": "Central Retail Core (Bourke St Mall)", "distance_meters": 34.7, "footfall_a": 1081.3, "footfall_b": 896.7, "cannibalization_risk_index": 76.54, "risk_tier": "Critical Cannibalization Risk", "recommendation": "Enforce single-store exclusivity; avoid sister franchise deployment within 300m"}, {"sensor_a_id": 52, "sensor_a_name": "Elizabeth St-Lonsdale St (South)", "sensor_a_precinct": "Central Retail Core (Bourke St Mall)", "sensor_b_id": 56, "sensor_b_name": "Lonsdale St - Elizabeth St (North)", "sensor_b_precinct": "Central Retail Core (Bourke St Mall)", "distance_meters": 40.6, "footfall_a": 452.4, "footfall_b": 351.1, "cannibalization_risk_index": 71.9, "risk_tier": "Critical Cannibalization Risk", "recommendation": "Enforce single-store exclusivity; avoid sister franchise deployment within 300m"}, {"sensor_a_id": 3, "sensor_a_name": "Melbourne Central", "sensor_a_precinct": "Central Retail Core (Bourke St Mall)", "sensor_b_id": 15, "sensor_b_name": "State Library", "sensor_b_precinct": "Central Retail Core (Bourke St Mall)", "distance_meters": 44.1, "footfall_a": 1085.9, "footfall_b": 700.3, "cannibalization_risk_index": 64.41, "risk_tier": "Critical Cannibalization Risk", "recommendation": "Enforce single-store exclusivity; avoid sister franchise deployment within 300m"}, {"sensor_a_id": 45, "sensor_a_name": "Little Collins St-Swanston St (East)", "sensor_a_precinct": "Central Retail Core (Bourke St Mall)", "sensor_b_id": 2, "sensor_b_name": "Bourke Street Mall (South)", "sensor_b_precinct": "Central Retail Core (Bourke St Mall)", "distance_meters": 89.5, "footfall_a": 927.8, "footfall_b": 1081.3, "cannibalization_risk_index": 59.22, "risk_tier": "Moderate Catchment Overlap", "recommendation": "Differentiate store formats (e.g., Flagship vs. Express Grab-and-Go)"}, {"sensor_a_id": 45, "sensor_a_name": "Little Collins St-Swanston St (East)", "sensor_a_precinct": "Central Retail Core (Bourke St Mall)", "sensor_b_id": 1, "sensor_b_name": "Bourke Street Mall (North)", "sensor_b_precinct": "Central Retail Core (Bourke St Mall)", "distance_meters": 109.5, "footfall_a": 927.8, "footfall_b": 896.7, "cannibalization_risk_index": 56.86, "risk_tier": "Moderate Catchment Overlap", "recommendation": "Differentiate store formats (e.g., Flagship vs. Express Grab-and-Go)"}, {"sensor_a_id": 4, "sensor_a_name": "Town Hall (West)", "sensor_a_precinct": "Central Retail Core (Bourke St Mall)", "sensor_b_id": 45, "sensor_b_name": "Little Collins St-Swanston St (East)", "sensor_b_precinct": "Central Retail Core (Bourke St Mall)", "distance_meters": 82.2, "footfall_a": 1454.1, "footfall_b": 927.8, "cannibalization_risk_index": 52.96, "risk_tier": "Moderate Catchment Overlap", "recommendation": "Differentiate store formats (e.g., Flagship vs. Express Grab-and-Go)"}, {"sensor_a_id": 35, "sensor_a_name": "Southbank", "sensor_a_precinct": "Southbank Promenade & Waterfront", "sensor_b_id": 6, "sensor_b_name": "Flinders Street Station Underpass", "sensor_b_precinct": "Flinders Transit Hub (Commuter Spine)", "distance_meters": 125.7, "footfall_a": 1056.1, "footfall_b": 1019.9, "cannibalization_risk_index": 52.41, "risk_tier": "Moderate Catchment Overlap", "recommendation": "Differentiate store formats (e.g., Flagship vs. Express Grab-and-Go)"}, {"sensor_a_id": 21, "sensor_a_name": "Bourke St-Russell St (West)", "sensor_a_precinct": "Central Retail Core (Bourke St Mall)", "sensor_b_id": 20, "sensor_b_name": "Chinatown-Lt Bourke St (South)", "sensor_b_precinct": "Chinatown & East End Dining", "distance_meters": 89.4, "footfall_a": 651.4, "footfall_b": 404.3, "cannibalization_risk_index": 50.38, "risk_tier": "Moderate Catchment Overlap", "recommendation": "Differentiate store formats (e.g., Flagship vs. Express Grab-and-Go)"}];
+        const tierColors = {"Tier 1 - Flagship Catchment": "#eab308", "Tier 2 - High-Yield Commercial Hub": "#10b981", "Tier 3 - Moderate Local Catchment": "#0284c7", "Tier 4 - Peripheral / Low-Footfall": "#64748b"};
+
+        // Initialize Map centered on Melbourne CBD
+        const map = L.map('map', {
+            center: [-37.8136, 144.9631],
+            zoom: 15,
+            zoomControl: true
+        });
+
+        // Dark Matter / CartoDB tiles
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+        const markersLayer = L.layerGroup().addTo(map);
+        const isochronesLayer = L.layerGroup().addTo(map);
+        const cannibalLayer = L.layerGroup().addTo(map);
+
+        // Populate Precinct Filter
+        const precincts = [...new Set(nodes.map(n => n.precinct_name))].sort();
+        const pSelect = document.getElementById('precinct-filter');
+        precincts.forEach(p => {
+            const opt = document.createElement('option');
+            opt.value = p;
+            opt.textContent = p;
+            pSelect.appendChild(opt);
+        });
+
+        function renderNodes(filtered) {
+            markersLayer.clearLayers();
+            isochronesLayer.clearLayers();
+
+            filtered.forEach(node => {
+                const color = tierColors[node.viability_tier] || '#64748b';
+                
+                // Sensor Marker
+                const marker = L.circleMarker([node.latitude, node.longitude], {
+                    radius: 7,
+                    fillColor: color,
+                    color: '#ffffff',
+                    weight: 1.5,
+                    opacity: 1,
+                    fillOpacity: 0.9
+                });
+
+                const popupHtml = `
+                    <div class="popup-header">
+                        <div class="popup-title">${node.sensor_name}</div>
+                        <div class="popup-precinct">${node.precinct_name} (ID: ${node.sensor_id})</div>
+                    </div>
+                    <div class="popup-metric"><span>Store Viability Index:</span><span class="popup-metric-val" style="color:${color}">${node.store_viability_index} / 100</span></div>
+                    <div class="popup-metric"><span>Avg Hourly Footfall:</span><span class="popup-metric-val">${node.avg_hourly_footfall} / hr</span></div>
+                    <div class="popup-metric"><span>Weekend Surge Ratio:</span><span class="popup-metric-val">${node.weekend_surge_ratio}x</span></div>
+                    <div class="popup-metric"><span>Mobility Pattern:</span><span class="popup-metric-val">${node.behavior_profile}</span></div>
+                    <div class="tier-badge" style="background:${color}22; color:${color}; border:1px solid ${color};">${node.viability_tier}</div>
+                `;
+
+                marker.bindPopup(popupHtml);
+                markersLayer.addLayer(marker);
+
+                // 300m Isochrone Buffer
+                const buffer = L.circle([node.latitude, node.longitude], {
+                    radius: 300,
+                    color: color,
+                    weight: 1,
+                    dashArray: '4, 4',
+                    fillColor: color,
+                    fillOpacity: 0.08
+                });
+                isochronesLayer.addLayer(buffer);
+            });
+
+            document.getElementById('stat-sensors').innerText = filtered.length;
+            if(filtered.length > 0) {
+                const avgSvi = filtered.reduce((acc, cur) => acc + cur.store_viability_index, 0) / filtered.length;
+                document.getElementById('stat-avg-svi').innerText = avgSvi.toFixed(1);
+            } else {
+                document.getElementById('stat-avg-svi').innerText = "0";
+            }
+        }
+
+        function renderCannibalization() {
+            cannibalLayer.clearLayers();
+            const nodeMap = {};
+            nodes.forEach(n => { nodeMap[n.sensor_id] = n; });
+
+            cannibalPairs.forEach(pair => {
+                const a = nodeMap[pair.sensor_a_id];
+                const b = nodeMap[pair.sensor_b_id];
+                if (a && b) {
+                    const line = L.polyline([[a.latitude, a.longitude], [b.latitude, b.longitude]], {
+                        color: '#ef4444',
+                        weight: 2.5,
+                        dashArray: '6, 6',
+                        opacity: 0.85
+                    });
+                    line.bindPopup(`
+                        <div class="popup-header">
+                            <div class="popup-title" style="color:#ef4444">⚠️ Cannibalization Overlap</div>
+                            <div class="popup-precinct">${pair.sensor_a_name} &harr; ${pair.sensor_b_name}</div>
+                        </div>
+                        <div class="popup-metric"><span>Separation Distance:</span><span class="popup-metric-val">${pair.distance_meters} m</span></div>
+                        <div class="popup-metric"><span>Cannibalization Risk (CRI):</span><span class="popup-metric-val" style="color:#ef4444">${pair.cannibalization_risk_index}</span></div>
+                        <div style="font-size:0.75rem; color:#cbd5e1; margin-top:6px; font-style:italic;">${pair.recommendation}</div>
+                    `);
+                    cannibalLayer.addLayer(line);
+                }
+            });
+        }
+
+        function filterMap() {
+            const pVal = document.getElementById('precinct-filter').value;
+            const tVal = document.getElementById('tier-filter').value;
+
+            let filtered = nodes;
+            if (pVal !== 'ALL') {
+                filtered = filtered.filter(n => n.precinct_name === pVal);
+            }
+            if (tVal !== 'ALL') {
+                filtered = filtered.filter(n => n.viability_tier === tVal);
+            }
+            renderNodes(filtered);
+        }
+
+        function toggleIsochrones() {
+            const checked = document.getElementById('toggle-isochrones').checked;
+            if (checked) { map.addLayer(isochronesLayer); } else { map.removeLayer(isochronesLayer); }
+        }
+
+        function toggleCannibalization() {
+            const checked = document.getElementById('toggle-cannibal').checked;
+            if (checked) { map.addLayer(cannibalLayer); } else { map.removeLayer(cannibalLayer); }
+        }
+
+        // Initial Render
+        renderNodes(nodes);
+        renderCannibalization();
+    </script>
+</body>
+</html>
