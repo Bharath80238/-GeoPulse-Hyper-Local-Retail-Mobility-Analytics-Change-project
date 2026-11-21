@@ -1,0 +1,47 @@
+{
+    "analysis_name": "GeoPulse Spatial Cannibalization & Co-Location Risk Engine",
+    "overlap_threshold_meters": 350.0,
+    "total_overlapping_pairs_identified": 148,
+    "risk_tier_distribution": {
+        "critical_cannibalization_risk": 5,
+        "moderate_catchment_overlap": 26,
+        "low_synergistic_co_location": 117
+    },
+    "top_5_critical_cannibalization_pairs": [
+        {
+            "sensor_a_name": "Collins St (North)",
+            "sensor_b_name": "Australia on Collins",
+            "distance_meters": 27.3,
+            "cannibalization_risk_index": 82.83,
+            "risk_tier": "Critical Cannibalization Risk"
+        },
+        {
+            "sensor_a_name": "Collins Place (South)",
+            "sensor_b_name": "Collins Place (North)",
+            "distance_meters": 25.4,
+            "cannibalization_risk_index": 79.31,
+            "risk_tier": "Critical Cannibalization Risk"
+        },
+        {
+            "sensor_a_name": "Bourke Street Mall (South)",
+            "sensor_b_name": "Bourke Street Mall (North)",
+            "distance_meters": 34.7,
+            "cannibalization_risk_index": 76.54,
+            "risk_tier": "Critical Cannibalization Risk"
+        },
+        {
+            "sensor_a_name": "Elizabeth St-Lonsdale St (South)",
+            "sensor_b_name": "Lonsdale St - Elizabeth St (North)",
+            "distance_meters": 40.6,
+            "cannibalization_risk_index": 71.9,
+            "risk_tier": "Critical Cannibalization Risk"
+        },
+        {
+            "sensor_a_name": "Melbourne Central",
+            "sensor_b_name": "State Library",
+            "distance_meters": 44.1,
+            "cannibalization_risk_index": 64.41,
+            "risk_tier": "Critical Cannibalization Risk"
+        }
+    ]
+}
