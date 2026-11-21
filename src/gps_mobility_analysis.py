@@ -11,7 +11,7 @@ from pathlib import Path
 input_file = Path("data/cleaned_gps_pings.csv")
 
 report_folder = Path("reports/week2")
-visualization_folder = Path("visualizations")
+visualization_folder = Path("reports/week2/charts")
 
 report_folder.mkdir(parents=True, exist_ok=True)
 visualization_folder.mkdir(parents=True, exist_ok=True)
