@@ -1,0 +1,49 @@
+{
+    "analysis_name": "GeoPulse Catchment Commercial Monetization & Revenue Potential",
+    "total_locations_modeled": 58,
+    "total_estimated_network_annual_turnover_aud": 228083392.66,
+    "mean_annual_turnover_per_site_aud": 3932472.29,
+    "mean_sustainable_rent_per_sqm_aud": 6389.41,
+    "top_5_revenue_generating_catchments": [
+        {
+            "sensor_name": "Flinders La-Swanston St (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "recommended_tenant": "Luxury / Flagship Brand",
+            "store_viability_index": 83.72,
+            "estimated_annual_turnover_aud": 34395491.39,
+            "sustainable_annual_rent_aud": 5159323.71
+        },
+        {
+            "sensor_name": "Town Hall (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "recommended_tenant": "Luxury / Flagship Brand",
+            "store_viability_index": 79.07,
+            "estimated_annual_turnover_aud": 25605548.39,
+            "sustainable_annual_rent_aud": 3840832.26
+        },
+        {
+            "sensor_name": "Melbourne Central",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "recommended_tenant": "Luxury / Flagship Brand",
+            "store_viability_index": 76.65,
+            "estimated_annual_turnover_aud": 18994350.12,
+            "sustainable_annual_rent_aud": 2849152.52
+        },
+        {
+            "sensor_name": "Melbourne Central-Elizabeth St (East)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "recommended_tenant": "Luxury / Flagship Brand",
+            "store_viability_index": 75.73,
+            "estimated_annual_turnover_aud": 17521712.52,
+            "sustainable_annual_rent_aud": 2628256.88
+        },
+        {
+            "sensor_name": "Flinders St-Elizabeth St (East)",
+            "precinct_name": "Flinders Transit Hub (Commuter Spine)",
+            "recommended_tenant": "QSR / Grab-and-Go",
+            "store_viability_index": 79.69,
+            "estimated_annual_turnover_aud": 8515854.46,
+            "sustainable_annual_rent_aud": 1021902.54
+        }
+    ]
+}
