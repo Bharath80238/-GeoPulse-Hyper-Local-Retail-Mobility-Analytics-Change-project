@@ -1,0 +1,12 @@
+Check,Count
+Total GPS Records,50000
+Duplicate Records,0
+Invalid Latitude,0
+Invalid Longitude,0
+Invalid Timestamps,0
+Missing Values - DeviceID,0
+Missing Values - Latitude,0
+Missing Values - Longitude,0
+Missing Values - Timestamp,0
+Missing Values - Accuracy_Meters,0
+Missing Values - Data_Type,0

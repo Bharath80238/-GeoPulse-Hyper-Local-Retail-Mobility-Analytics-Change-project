@@ -46,6 +46,7 @@ if missing_columns:
 
 gps["Timestamp"] = pd.to_datetime(
     gps["Timestamp"],
+    format="%d-%m-%Y %H:%M:%S %z",
     errors="coerce",
     utc=True
 )
@@ -162,6 +163,47 @@ gps["Speed_KMH"] = np.where(
     gps["Distance_KM"] / gps["Elapsed_Hours"],
     np.nan
 )
+# ==========================================
+# 6. MOVEMENT SPEED CALCULATION
+# ==========================================
+
+gps["Elapsed_Hours"] = (
+    gps["Timestamp"] - gps["Previous_Timestamp"]
+).dt.total_seconds() / 3600
+
+# Calculate original speed
+gps["Raw_Speed_KMH"] = np.where(
+    gps["Elapsed_Hours"] > 0,
+    gps["Distance_KM"] / gps["Elapsed_Hours"],
+    np.nan
+)
+
+# Set maximum reasonable urban mobility speed
+MAX_REASONABLE_SPEED_KMH = 120
+
+# Flag unrealistic GPS movement
+gps["Is_Speed_Anomaly"] = (
+    gps["Raw_Speed_KMH"] > MAX_REASONABLE_SPEED_KMH
+)
+
+# Keep only reasonable speeds for mobility analysis
+gps["Speed_KMH"] = gps["Raw_Speed_KMH"].where(
+    ~gps["Is_Speed_Anomaly"],
+    np.nan
+)
+
+# Exclude anomalous jumps from valid movement distance
+gps["Movement_Distance_KM"] = gps["Distance_KM"].where(
+    ~gps["Is_Speed_Anomaly"],
+    0
+)
+
+print("\n========== GPS SPEED ANOMALY REPORT ==========")
+print("Total GPS Records:", len(gps))
+print("Speed Anomalies:", int(gps["Is_Speed_Anomaly"].sum()))
+print("Valid Movement Records:", int((~gps["Is_Speed_Anomaly"]).sum()))
+print("Maximum Reasonable Speed:", MAX_REASONABLE_SPEED_KMH, "km/h")
+
 
 # ==========================================
 # 7. DEVICE-WISE MOBILITY ANALYSIS
@@ -189,25 +231,34 @@ device_mobility.to_csv(
 # 8. OVERALL MOBILITY SUMMARY
 # ==========================================
 
+
 summary = pd.DataFrame({
     "Metric": [
         "Total GPS Records",
         "Total Unique Devices",
-        "Total Distance KM",
+        "Total Original Distance KM",
+        "Total Valid Movement Distance KM",
         "Average Estimated Speed KMH",
         "Maximum Estimated Speed KMH",
+        "GPS Speed Anomalies",
+        "Valid Movement Records",
         "Hourly Activity Records",
-        "Missing Values"
+        "Missing Source Values"
     ],
 
     "Value": [
         len(gps),
         gps["DeviceID"].nunique(),
         round(gps["Distance_KM"].sum(), 3),
+        round(gps["Movement_Distance_KM"].sum(), 3),
         round(gps["Speed_KMH"].mean(), 3),
         round(gps["Speed_KMH"].max(), 3),
+        int(gps["Is_Speed_Anomaly"].sum()),
+        int((~gps["Is_Speed_Anomaly"]).sum()),
         len(hourly_mobility),
-        int(gps.isnull().sum().sum())
+        int(gps[
+            ["DeviceID", "Latitude", "Longitude", "Timestamp"]
+        ].isnull().sum().sum())
     ]
 })
 
