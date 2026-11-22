@@ -132,5 +132,48 @@ class TestGeoPulseMobilityAnalytics(unittest.TestCase):
         self.assertIn("strategic_rationale", df_rec.columns)
         self.assertEqual(df_rec['primary_recommended_tenant'].isnull().sum(), 0)
 
+    def test_08_catchment_monetization_metrics(self):
+        """Verify turnover revenue estimates and sustainable rent metrics."""
+        mon_csv = os.path.join(REPORTS_DIR, "catchment_monetization_estimates.csv")
+        mon_json = os.path.join(REPORTS_DIR, "monetization_summary.json")
+
+        self.assertTrue(os.path.exists(mon_csv), "catchment_monetization_estimates.csv must exist")
+        self.assertTrue(os.path.exists(mon_json), "monetization_summary.json must exist")
+
+        df_mon = pd.read_csv(mon_csv)
+        self.assertIn("estimated_annual_turnover_aud", df_mon.columns)
+        self.assertIn("sustainable_annual_rent_aud", df_mon.columns)
+        self.assertIn("rent_per_sqm_annual_aud", df_mon.columns)
+        self.assertTrue((df_mon['estimated_annual_turnover_aud'] > 0).all())
+
+    def test_09_scenario_simulation_integrity(self):
+        """Verify urban stress test scenarios and catchment resilience scores."""
+        sim_csv = os.path.join(REPORTS_DIR, "catchment_scenario_simulation.csv")
+        sim_json = os.path.join(REPORTS_DIR, "scenario_stress_test_summary.json")
+
+        self.assertTrue(os.path.exists(sim_csv), "catchment_scenario_simulation.csv must exist")
+        self.assertTrue(os.path.exists(sim_json), "scenario_stress_test_summary.json must exist")
+
+        df_sim = pd.read_csv(sim_csv)
+        self.assertIn("catchment_resilience_score", df_sim.columns)
+        self.assertIn("resilience_tier", df_sim.columns)
+        self.assertTrue((df_sim['catchment_resilience_score'] >= 0).all())
+        self.assertTrue((df_sim['catchment_resilience_score'] <= 100).all())
+
+    def test_10_executive_report_manifest(self):
+        """Verify executive markdown report and json manifest file."""
+        report_md = os.path.join(REPORTS_DIR, "MEMBER3_EXECUTIVE_CATCHMENT_REPORT.md")
+        manifest_json = os.path.join(REPORTS_DIR, "executive_metrics_manifest.json")
+
+        self.assertTrue(os.path.exists(report_md), "Executive markdown report must exist")
+        self.assertTrue(os.path.exists(manifest_json), "Executive manifest JSON must exist")
+        self.assertGreater(os.path.getsize(report_md), 1000, "Executive report must contain substantial content")
+
+        with open(manifest_json, "r", encoding="utf-8") as f:
+            manifest = json.load(f)
+        self.assertIn("total_sensors", manifest)
+        self.assertIn("total_network_turnover_aud", manifest)
+        self.assertIn("pipeline_artifacts", manifest)
+
 if __name__ == '__main__':
     unittest.main()

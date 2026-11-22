@@ -1,0 +1,23 @@
+{
+    "report_title": "GeoPulse Member 3 Executive Catchment Dossier",
+    "author": "Amit Prajapati",
+    "role": "Member 3 - Spatial Mobility & Retail Catchment Analyst",
+    "generated_timestamp": "2026-11-22T13:54:38.873137",
+    "total_sensors": 58,
+    "mean_svi": 56.49,
+    "total_network_turnover_aud": 228083392.66,
+    "critical_cannibalization_pairs_count": 5,
+    "all_weather_resilient_sites_count": 25,
+    "pipeline_artifacts": [
+        "data/processed/geopulse.db",
+        "reports/sensor_spatial_profile.csv",
+        "reports/hourly_diurnal_curves.csv",
+        "reports/store_viability_rankings.csv",
+        "reports/pedestrian_catchment_radii.csv",
+        "reports/store_cannibalization_risk.csv",
+        "reports/geopulse_interactive_catchment_map.html",
+        "reports/tenant_site_recommendations.csv",
+        "reports/catchment_monetization_estimates.csv",
+        "reports/catchment_scenario_simulation.csv"
+    ]
+}

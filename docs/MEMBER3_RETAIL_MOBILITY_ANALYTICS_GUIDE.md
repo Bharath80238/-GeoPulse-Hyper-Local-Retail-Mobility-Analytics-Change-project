@@ -9,7 +9,7 @@
 
 ## 1. Executive Role Overview & Scope
 
-As **Member 3 (Spatial Mobility & Retail Catchment Analyst)** on Project 2 (*GeoPulse*), my core responsibilities encompass transforming raw urban sensor telemetry into actionable commercial intelligence for commercial real estate, retail site selection, footfall predictability, cannibalization prevention, and tenant format allocation.
+As **Member 3 (Spatial Mobility & Retail Catchment Analyst)** on Project 2 (*GeoPulse*), my core responsibilities encompass transforming raw urban sensor telemetry into actionable commercial intelligence for corporate retail site selection, store cannibalization avoidance, pedestrian trade area modeling, commercial rent benchmarking, and urban stress scenario testing.
 
 ### Core Objectives:
 1. **Spatial Precinct Clustering**: Geo-reference 91 Melbourne CBD pedestrian sensors, calculate proximity metrics to the commercial core, and cluster sensors into distinct commercial retail precincts.
@@ -19,6 +19,9 @@ As **Member 3 (Spatial Mobility & Retail Catchment Analyst)** on Project 2 (*Geo
 5. **Store Cannibalization & Co-Location Risk Engine**: Formulate the Cannibalization Risk Index (CRI) between proximate sensors ($d \le 350\text{m}$) to prevent revenue dilution among sister franchises.
 6. **Interactive Geospatial Dashboard**: Provide an interactive Leaflet/CartoDB web map (`geopulse_interactive_catchment_map.html`) with precinct overlays, SVI tier coloring, isochrone buffers, and cannibalization conflict lines.
 7. **Retail Tenant Allocation Matrix**: Match site micro-profiles with 5 retail tenant archetypes (*Luxury Flagship, QSR Express, Experiential Dining, Convenience/Pharmacy, Boutique Pop-Up*).
+8. **Catchment Monetization & Turnover Mechanics**: Estimate annual gross merchandise value (GMV) and maximum sustainable rent per square meter based on footfall conversion funnels.
+9. **Multi-Scenario Sensitivity & Shock Resilience Modeling**: Stress test all catchments against adverse weather, holiday retail surges, and transit disruptions to evaluate asset defensibility.
+10. **Automated Executive Dossier Compilation**: Systematically generate high-level executive reports and pipeline manifests.
 
 ---
 
@@ -49,7 +52,13 @@ GeoPulse/
 │   ├── cannibalization_summary.json          # High-risk cannibalization corridors
 │   ├── geopulse_interactive_catchment_map.html # Interactive Leaflet geospatial map
 │   ├── tenant_site_recommendations.csv       # Recommended tenant format per sensor
-│   └── tenant_allocation_matrix.json         # Category allocation breakdown
+│   ├── tenant_allocation_matrix.json         # Category allocation breakdown
+│   ├── catchment_monetization_estimates.csv  # GMV and sustainable rent benchmarks
+│   ├── monetization_summary.json             # Commercial turnover summaries
+│   ├── catchment_scenario_simulation.csv     # Weather, holiday & transit stress test
+│   ├── scenario_stress_test_summary.json     # Catchment resilience score (RSI) breakdown
+│   ├── MEMBER3_EXECUTIVE_CATCHMENT_REPORT.md # Executive Markdown dossier
+│   └── executive_metrics_manifest.json       # Pipeline artifacts manifest
 ├── src/
 │   ├── ingest_mobility_data.py               # Chunked ingestion pipeline (418 MB CSV -> SQLite)
 │   ├── spatial_clustering.py                 # Haversine distance & precinct clustering
@@ -58,9 +67,12 @@ GeoPulse/
 │   ├── catchment_isochrone.py                # Pedestrian isochrones & spatial gravity model
 │   ├── cannibalization_risk.py               # Pairwise cannibalization risk engine (CRI)
 │   ├── generate_interactive_map.py           # Standalone interactive Leaflet web map
-│   └── tenant_site_recommender.py            # Retail tenant archetype matching engine
+│   ├── tenant_site_recommender.py            # Retail tenant archetype matching engine
+│   ├── catchment_monetization.py             # Sales turnover & sustainable rent model
+│   ├── scenario_simulator.py                 # Multi-scenario stress test & resilience engine
+│   └── generate_executive_report.py          # Executive dossier & manifest compiler
 └── tests/
-    └── test_mobility_analytics.py            # Automated unit test suite (7/7 tests pass)
+    └── test_mobility_analytics.py            # Automated unit test suite (10/10 tests pass)
 ```
 
 ---
@@ -80,34 +92,28 @@ $$E_w = \frac{\bar{V}_{\text{weekend}}}{\bar{V}_{\text{weekday}}}$$
 $$\text{SVI} = 0.35 \cdot S_{\text{vol}} + 0.25 \cdot S_{\text{stab}} + 0.20 \cdot S_{\text{surge}} + 0.20 \cdot S_{\text{precinct}}$$
 
 ### 3.4 Spatial Gravity & Catchment Accessibility Index
-Pedestrian gravity pull from neighboring nodes:
 $$A_i = \sum_{j \neq i} \frac{V_j}{d_{ij}^\beta} \quad (\beta = 1.5)$$
 
 ### 3.5 Cannibalization Risk Index (CRI)
-Quantifies revenue dilution between proximate sister stores within $350\text{m}$:
 $$\text{CRI}_{ij} = 100 \times \left( \frac{\min(V_i, V_j)}{\max(V_i, V_j)} \right)^{0.5} \times \exp\left(-\frac{d_{ij}}{200}\right)$$
+
+### 3.6 Commercial Turnover & Sustainable Rent Benchmarking
+$$\text{GMV}_{\text{month}} = (\bar{V}_{\text{daily}} \times 30.4) \times \alpha \times \text{ATV} \times \left(0.85 + 0.30 \cdot \frac{\text{SVI}}{100}\right)$$
+$$\text{Rent}_{\text{annual}}^{\max} = (\text{GMV}_{\text{month}} \times 12) \times \text{OCR}$$
+$$\text{Rent / m}^2 = \frac{\text{Rent}_{\text{annual}}^{\max}}{\text{Area}_{\text{sqm}}}$$
 
 ---
 
 ## 4. Key Empirical Findings & Commercial Insights
 
 ### 4.1 Top Commercial Retail Catchments
-1. **Flinders La-Swanston St (West)** — SVI: **83.72** (Tier 1 Flagship Catchment)
-2. **Flinders St-Elizabeth St (East)** — SVI: **79.69** (Tier 2 High-Yield Hub)
-3. **Town Hall (West)** — SVI: **79.07** (Tier 2 High-Yield Hub)
+1. **Flinders La-Swanston St (West)** — SVI: **83.72** (Tier 1 Flagship Catchment) | Est. Annual GMV: **$34.40M AUD**
+2. **Flinders St-Elizabeth St (East)** — SVI: **79.69** (Tier 2 High-Yield Hub) | Est. Annual GMV: **$15.82M AUD**
+3. **Town Hall (West)** — SVI: **79.07** (Tier 2 High-Yield Hub) | Est. Annual GMV: **$25.61M AUD**
 
-### 4.2 High-Risk Cannibalization Hotspots
-* **Collins St (North) <--> Australia on Collins**: Separation 27.3m, CRI = 82.83.
-* **Collins Place (South) <--> Collins Place (North)**: Separation 25.4m, CRI = 79.31.
-* **Bourke Street Mall (South) <--> Bourke Street Mall (North)**: Separation 34.7m, CRI = 76.54.
-* *Strategic Rule*: Sister franchises should avoid identical concepts within 300m unless using differentiated formats (Flagship vs. Express Grab-and-Go).
-
-### 4.3 Tenant Format Allocations
-* **QSR / Grab-and-Go (29.3%)**: Concentrated along Elizabeth St & Flinders commuter spines.
-* **Everyday Convenience / Pharmacy (29.3%)**: Stationed in high-stability, low-variance corridors.
-* **Artisan Boutique / Specialty Retail (31.0%)**: Best suited for peripheral laneways and heritage arcades.
-* **Luxury & International Flagship (6.9%)**: Clustered exclusively in Bourke St Mall & Collins St high-gravity zones.
-* **Experiential Dining / Nightlife (3.4%)**: Dominates Southbank Promenade and Chinatown.
+### 4.2 Shock Resilience Under Urban Stress
+* **Most Resilient Assets**: Enclosed retail concourses (e.g. Melbourne Central: RSI 83.50) benefit from weather refuge (+25% rain surge) and diversified commuter/leisure footfall.
+* **Most Vulnerable Assets**: Open-bridge and transit-exclusive platforms (e.g. Bourke St Bridge: RSI 47.15) suffer during transit strikes (-65%) and torrential rain (-38%).
 
 ---
 
@@ -117,4 +123,4 @@ To execute all tests and ensure 100% pass rate:
 ```powershell
 python -m unittest discover tests
 ```
-*Result: 7/7 tests passed cleanly (0.045s).*
+*Result: 10/10 tests passed cleanly in 0.145s.*
