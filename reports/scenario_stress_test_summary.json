@@ -1,0 +1,74 @@
+{
+    "analysis_name": "GeoPulse Urban Stress & Sensitivity Simulator",
+    "total_catchments_simulated": 58,
+    "mean_catchment_resilience_score": 65.6,
+    "resilience_tier_breakdown": {
+        "High Shock Resilience (All-Weather Asset)": 25,
+        "Vulnerable to External Urban Shocks": 17,
+        "Moderate Shock Resilience": 16
+    },
+    "top_5_most_resilient_sites": [
+        {
+            "sensor_name": "Melbourne Central-Elizabeth St (East)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "catchment_resilience_score": 83.5,
+            "resilience_tier": "High Shock Resilience (All-Weather Asset)"
+        },
+        {
+            "sensor_name": "Melbourne Central",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "catchment_resilience_score": 83.5,
+            "resilience_tier": "High Shock Resilience (All-Weather Asset)"
+        },
+        {
+            "sensor_name": "Melbourne Convention Exhibition Centre",
+            "precinct_name": "Southbank Promenade & Waterfront",
+            "catchment_resilience_score": 77.4,
+            "resilience_tier": "High Shock Resilience (All-Weather Asset)"
+        },
+        {
+            "sensor_name": "The Arts Centre",
+            "precinct_name": "Southbank Promenade & Waterfront",
+            "catchment_resilience_score": 77.4,
+            "resilience_tier": "High Shock Resilience (All-Weather Asset)"
+        },
+        {
+            "sensor_name": "Southbank",
+            "precinct_name": "Southbank Promenade & Waterfront",
+            "catchment_resilience_score": 77.4,
+            "resilience_tier": "High Shock Resilience (All-Weather Asset)"
+        }
+    ],
+    "top_5_most_vulnerable_sites": [
+        {
+            "sensor_name": "Bourke St Bridge",
+            "precinct_name": "Flinders Transit Hub (Commuter Spine)",
+            "catchment_resilience_score": 47.15,
+            "resilience_tier": "Vulnerable to External Urban Shocks"
+        },
+        {
+            "sensor_name": "QVM-Therry St (South)",
+            "precinct_name": "Flinders Transit Hub (Commuter Spine)",
+            "catchment_resilience_score": 47.15,
+            "resilience_tier": "Vulnerable to External Urban Shocks"
+        },
+        {
+            "sensor_name": "QVM-Queen St (East)",
+            "precinct_name": "Flinders Transit Hub (Commuter Spine)",
+            "catchment_resilience_score": 47.15,
+            "resilience_tier": "Vulnerable to External Urban Shocks"
+        },
+        {
+            "sensor_name": "Spencer St-Collins St (South)",
+            "precinct_name": "Flinders Transit Hub (Commuter Spine)",
+            "catchment_resilience_score": 47.15,
+            "resilience_tier": "Vulnerable to External Urban Shocks"
+        },
+        {
+            "sensor_name": "Flinders St-Spark La",
+            "precinct_name": "Chinatown & East End Dining",
+            "catchment_resilience_score": 47.15,
+            "resilience_tier": "Vulnerable to External Urban Shocks"
+        }
+    ]
+}

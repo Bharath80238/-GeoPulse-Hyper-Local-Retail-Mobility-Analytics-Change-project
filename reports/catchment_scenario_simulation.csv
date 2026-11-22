@@ -1,0 +1,59 @@
+sensor_id,sensor_name,precinct_name,baseline_hourly_footfall,baseline_monthly_turnover_aud,weather_shock_footfall,weather_shock_delta_pct,weather_shock_turnover_aud,holiday_surge_footfall,holiday_surge_delta_pct,holiday_surge_turnover_aud,transit_strike_footfall,transit_strike_delta_pct,transit_strike_turnover_aud,catchment_resilience_score,resilience_tier
+47,Melbourne Central-Elizabeth St (East),Central Retail Core (Bourke St Mall),1004.3,1460142.71,1255.3,25.0,1825178.39,1857.9,85.0,2701264.01,703.0,-30.0,1022099.9,83.5,High Shock Resilience (All-Weather Asset)
+3,Melbourne Central,Central Retail Core (Bourke St Mall),1085.9,1582862.51,1357.4,25.0,1978578.14,2008.9,85.0,2928295.64,760.1,-30.0,1108003.76,83.5,High Shock Resilience (All-Weather Asset)
+25,Melbourne Convention Exhibition Centre,Southbank Promenade & Waterfront,1066.2,429207.15,661.0,-38.0,266108.43,1599.2,50.0,643810.73,959.5,-10.0,386286.44,77.4,High Shock Resilience (All-Weather Asset)
+28,The Arts Centre,Southbank Promenade & Waterfront,1063.6,428488.76,659.4,-38.0,265663.03,1595.4,50.0,642733.14,957.2,-10.0,385639.88,77.4,High Shock Resilience (All-Weather Asset)
+35,Southbank,Southbank Promenade & Waterfront,1056.1,425987.89,654.8,-38.0,264112.49,1584.2,50.0,638981.83,950.5,-10.0,383389.1,77.4,High Shock Resilience (All-Weather Asset)
+50,Faraday St-Lygon St (West),Northern University Corridor,282.0,103703.98,174.8,-38.0,64296.47,366.6,30.0,134815.17,253.8,-10.0,93333.58,77.4,High Shock Resilience (All-Weather Asset)
+10,Victoria Point,Docklands Harbourside Precinct,215.7,88677.01,133.7,-38.0,54979.75,280.4,30.0,115280.11,194.1,-10.0,79809.31,77.4,High Shock Resilience (All-Weather Asset)
+39,Alfred Place,Chinatown & East End Dining,199.5,82666.67,123.7,-38.0,51253.34,299.2,50.0,124000.01,179.5,-10.0,74400.0,77.4,High Shock Resilience (All-Weather Asset)
+44,Tin Alley-Swanston St (West),Northern University Corridor,64.8,26108.57,40.2,-38.0,16187.31,84.3,30.0,33941.14,58.4,-10.0,23497.71,77.4,High Shock Resilience (All-Weather Asset)
+46,Pelham St (S),Northern University Corridor,91.3,37078.63,56.6,-38.0,22988.75,118.7,30.0,48202.22,82.2,-10.0,33370.77,77.4,High Shock Resilience (All-Weather Asset)
+31,Lygon St (West),Northern University Corridor,255.6,93805.01,158.4,-38.0,58159.11,332.2,30.0,121946.51,230.0,-10.0,84424.51,77.4,High Shock Resilience (All-Weather Asset)
+18,Collins Place (North),Chinatown & East End Dining,370.5,135006.14,229.7,-38.0,83703.81,555.8,50.0,202509.21,333.5,-10.0,121505.53,77.4,High Shock Resilience (All-Weather Asset)
+37,Lygon St (East),Northern University Corridor,158.2,66645.81,98.1,-38.0,41320.4,205.7,30.0,86639.55,142.4,-10.0,59981.23,77.4,High Shock Resilience (All-Weather Asset)
+8,Webb Bridge,Southbank Promenade & Waterfront,88.2,37537.04,54.7,-38.0,23272.96,132.3,50.0,56305.56,79.4,-10.0,33783.34,77.4,High Shock Resilience (All-Weather Asset)
+12,New Quay,Docklands Harbourside Precinct,198.6,83318.15,123.1,-38.0,51657.25,258.2,30.0,108313.6,178.7,-10.0,74986.33,77.4,High Shock Resilience (All-Weather Asset)
+7,Birrarung Marr,Chinatown & East End Dining,262.8,207324.19,162.9,-38.0,128541.0,394.2,50.0,310986.29,236.5,-10.0,186591.77,77.4,High Shock Resilience (All-Weather Asset)
+54,Lincoln-Swanston(West),Northern University Corridor,129.4,53730.71,80.2,-38.0,33313.04,168.2,30.0,69849.92,116.4,-10.0,48357.64,77.4,High Shock Resilience (All-Weather Asset)
+42,Grattan St-Swanston St (West),Northern University Corridor,223.8,93358.29,138.8,-38.0,57882.14,291.0,30.0,121365.78,201.4,-10.0,84022.46,77.4,High Shock Resilience (All-Weather Asset)
+11,Waterfront City,Docklands Harbourside Precinct,117.7,47968.01,73.0,-38.0,29740.17,153.0,30.0,62358.41,105.9,-10.0,43171.21,77.4,High Shock Resilience (All-Weather Asset)
+43,Monash Rd-Swanston St (West),Northern University Corridor,117.1,47623.63,72.6,-38.0,29526.65,152.2,30.0,61910.72,105.4,-10.0,42861.27,77.4,High Shock Resilience (All-Weather Asset)
+40,Lonsdale St-Spring St (West),Chinatown & East End Dining,298.1,110384.84,184.8,-38.0,68438.6,447.2,50.0,165577.26,268.3,-10.0,99346.36,77.4,High Shock Resilience (All-Weather Asset)
+14,Sandridge Bridge,Southbank Promenade & Waterfront,326.2,126696.76,202.2,-38.0,78551.99,489.3,50.0,190045.14,293.6,-10.0,114027.08,77.4,High Shock Resilience (All-Weather Asset)
+17,Collins Place (South),Chinatown & East End Dining,457.1,163010.15,283.4,-38.0,101066.29,685.6,50.0,244515.22,411.4,-10.0,146709.14,77.4,High Shock Resilience (All-Weather Asset)
+29,St Kilda Rd-Alexandra Gardens,Chinatown & East End Dining,444.9,169014.61,275.9,-38.0,104789.06,667.4,50.0,253521.91,400.5,-10.0,152113.15,77.4,High Shock Resilience (All-Weather Asset)
+20,Chinatown-Lt Bourke St (South),Chinatown & East End Dining,404.3,340596.98,250.7,-38.0,211170.13,606.5,50.0,510895.47,363.9,-10.0,306537.28,77.4,High Shock Resilience (All-Weather Asset)
+4,Town Hall (West),Central Retail Core (Bourke St Mall),1454.1,2133795.7,901.5,-38.0,1322953.33,2690.0,85.0,3947522.05,1017.8,-30.0,1493656.99,66.4,Moderate Shock Resilience
+30,Lonsdale St (South),Central Retail Core (Bourke St Mall),537.4,215316.61,333.2,-38.0,133496.3,994.1,85.0,398335.73,376.1,-30.0,150721.63,66.4,Moderate Shock Resilience
+15,State Library,Central Retail Core (Bourke St Mall),700.3,267846.69,434.2,-38.0,166064.95,1295.5,85.0,495516.38,490.2,-30.0,187492.68,66.4,Moderate Shock Resilience
+21,Bourke St-Russell St (West),Central Retail Core (Bourke St Mall),651.4,261934.8,403.9,-38.0,162399.58,1205.1,85.0,484579.38,456.0,-30.0,183354.36,66.4,Moderate Shock Resilience
+45,Little Collins St-Swanston St (East),Central Retail Core (Bourke St Mall),927.8,360111.22,575.2,-38.0,223268.96,1716.4,85.0,666205.76,649.5,-30.0,252077.85,66.4,Moderate Shock Resilience
+36,Queen St (West),Central Retail Core (Bourke St Mall),333.0,128674.94,206.4,-38.0,79778.46,616.0,85.0,238048.64,233.1,-30.0,90072.46,66.4,Moderate Shock Resilience
+19,Chinatown-Swanston St (North),Central Retail Core (Bourke St Mall),610.1,242339.31,378.2,-38.0,150250.37,1128.6,85.0,448327.72,427.0,-30.0,169637.52,66.4,Moderate Shock Resilience
+52,Elizabeth St-Lonsdale St (South),Central Retail Core (Bourke St Mall),452.4,171940.26,280.5,-38.0,106602.96,836.9,85.0,318089.48,316.7,-30.0,120358.18,66.4,Moderate Shock Resilience
+56,Lonsdale St - Elizabeth St (North),Central Retail Core (Bourke St Mall),351.1,136975.7,217.7,-38.0,84924.93,649.6,85.0,253405.05,245.8,-30.0,95882.99,66.4,Moderate Shock Resilience
+2,Bourke Street Mall (South),Central Retail Core (Bourke St Mall),1081.3,414814.38,670.4,-38.0,257184.92,2000.4,85.0,767406.6,756.9,-30.0,290370.07,66.4,Moderate Shock Resilience
+1,Bourke Street Mall (North),Central Retail Core (Bourke St Mall),896.7,342053.14,556.0,-38.0,212072.95,1658.9,85.0,632798.31,627.7,-30.0,239437.2,66.4,Moderate Shock Resilience
+53,Collins St (North),Central Retail Core (Bourke St Mall),766.9,292853.68,475.4,-38.0,181569.28,1418.7,85.0,541779.31,536.8,-30.0,204997.58,66.4,Moderate Shock Resilience
+16,Australia on Collins,Central Retail Core (Bourke St Mall),691.6,261332.05,428.8,-38.0,162025.87,1279.4,85.0,483464.29,484.1,-30.0,182932.43,66.4,Moderate Shock Resilience
+6,Flinders Street Station Underpass,Flinders Transit Hub (Commuter Spine),1019.9,390817.26,1274.9,25.0,488521.58,1325.9,30.0,508062.44,357.0,-65.0,136786.04,64.25,Moderate Shock Resilience
+13,Flagstaff Station,Flinders Transit Hub (Commuter Spine),715.4,257957.54,894.2,25.0,322446.92,930.0,30.0,335344.8,250.4,-65.0,90285.14,64.25,Moderate Shock Resilience
+9,Southern Cross Station,Flinders Transit Hub (Commuter Spine),336.1,144123.77,420.1,25.0,180154.71,436.9,30.0,187360.9,117.6,-65.0,50443.32,64.25,Moderate Shock Resilience
+41,Flinders La-Swanston St (West),Central Retail Core (Bourke St Mall),1928.5,2866290.95,1195.7,-38.0,1777100.39,3567.7,85.0,5302638.26,675.0,-65.0,1003201.83,47.15,Vulnerable to External Urban Shocks
+61,Swanston St - RMIT Building 14,Flinders Transit Hub (Commuter Spine),444.8,167079.14,275.8,-38.0,103589.07,578.2,30.0,217202.88,155.7,-65.0,58477.7,47.15,Vulnerable to External Urban Shocks
+58,Bourke St - Spencer St (North),Flinders Transit Hub (Commuter Spine),823.1,312359.26,510.3,-38.0,193662.74,1070.0,30.0,406067.04,288.1,-65.0,109325.74,47.15,Vulnerable to External Urban Shocks
+26,QV Market-Elizabeth St (West),Flinders Transit Hub (Commuter Spine),581.5,229609.47,360.6,-38.0,142357.87,756.0,30.0,298492.31,203.5,-65.0,80363.31,47.15,Vulnerable to External Urban Shocks
+5,Princes Bridge,Flinders Transit Hub (Commuter Spine),948.1,379196.21,587.8,-38.0,235101.65,1232.5,30.0,492955.07,331.8,-65.0,132718.67,47.15,Vulnerable to External Urban Shocks
+55,Elizabeth St-La Trobe St (East),Flinders Transit Hub (Commuter Spine),981.4,380540.49,608.5,-38.0,235935.1,1275.8,30.0,494702.64,343.5,-65.0,133189.17,47.15,Vulnerable to External Urban Shocks
+24,Spencer St-Collins St (North),Flinders Transit Hub (Commuter Spine),1449.2,557194.06,898.5,-38.0,345460.32,1884.0,30.0,724352.28,507.2,-65.0,195017.92,47.15,Vulnerable to External Urban Shocks
+22,Flinders St-Elizabeth St (East),Flinders Transit Hub (Commuter Spine),1804.3,709654.54,1118.6,-38.0,439985.81,2345.5,30.0,922550.9,631.5,-65.0,248379.09,47.15,Vulnerable to External Urban Shocks
+62,La Trobe St (North),Flinders Transit Hub (Commuter Spine),148.2,65890.52,91.9,-38.0,40852.12,192.6,30.0,85657.68,51.9,-65.0,23061.68,47.15,Vulnerable to External Urban Shocks
+59,Swanston St - RMIT Building 80,Flinders Transit Hub (Commuter Spine),132.7,57274.74,82.3,-38.0,35510.34,172.5,30.0,74457.16,46.4,-65.0,20046.16,47.15,Vulnerable to External Urban Shocks
+27,QV Market-Peel St,Flinders Transit Hub (Commuter Spine),147.1,65246.43,91.2,-38.0,40452.79,191.3,30.0,84820.36,51.5,-65.0,22836.25,47.15,Vulnerable to External Urban Shocks
+51,QVM-Franklin St (North),Flinders Transit Hub (Commuter Spine),130.6,57744.8,81.0,-38.0,35801.78,169.8,30.0,75068.24,45.7,-65.0,20210.68,47.15,Vulnerable to External Urban Shocks
+57,Bourke St Bridge,Flinders Transit Hub (Commuter Spine),800.3,291095.97,496.2,-38.0,180479.5,1040.4,30.0,378424.76,280.1,-65.0,101883.59,47.15,Vulnerable to External Urban Shocks
+49,QVM-Therry St (South),Flinders Transit Hub (Commuter Spine),186.8,83479.64,115.8,-38.0,51757.38,242.9,30.0,108523.53,65.4,-65.0,29217.87,47.15,Vulnerable to External Urban Shocks
+48,QVM-Queen St (East),Flinders Transit Hub (Commuter Spine),282.2,108152.41,175.0,-38.0,67054.49,366.9,30.0,140598.13,98.8,-65.0,37853.34,47.15,Vulnerable to External Urban Shocks
+23,Spencer St-Collins St (South),Flinders Transit Hub (Commuter Spine),416.9,153091.24,258.5,-38.0,94916.57,542.0,30.0,199018.61,145.9,-65.0,53581.93,47.15,Vulnerable to External Urban Shocks
+34,Flinders St-Spark La,Chinatown & East End Dining,138.8,59218.29,86.0,-38.0,36715.34,208.2,50.0,88827.43,48.6,-65.0,20726.4,47.15,Vulnerable to External Urban Shocks
