@@ -1,0 +1,77 @@
+{
+    "analysis_name": "GeoPulse Dynamic Footfall Anomaly & Surge Mining",
+    "total_sensor_days_evaluated": 10392,
+    "total_anomalies_flagged": 897,
+    "positive_surges_count": 343,
+    "negative_deficits_count": 554,
+    "mean_volatility_index_pct": 30.71,
+    "top_5_extreme_surges": [
+        {
+            "obs_date": "2010-03-14",
+            "sensor_name": "Waterfront City",
+            "day_of_week": "Sunday",
+            "daily_volume": 36308,
+            "z_score": 11.112761672136518,
+            "anomaly_type": "Extreme Positive Surge (Event / Festival / Game Day)"
+        },
+        {
+            "obs_date": "2010-03-14",
+            "sensor_name": "New Quay",
+            "day_of_week": "Sunday",
+            "daily_volume": 31107,
+            "z_score": 9.520002775046978,
+            "anomaly_type": "Extreme Positive Surge (Event / Festival / Game Day)"
+        },
+        {
+            "obs_date": "2009-05-22",
+            "sensor_name": "Sandridge Bridge",
+            "day_of_week": "Friday",
+            "daily_volume": 20226,
+            "z_score": 6.30358860729582,
+            "anomaly_type": "Extreme Positive Surge (Event / Festival / Game Day)"
+        },
+        {
+            "obs_date": "2019-11-29",
+            "sensor_name": "Webb Bridge",
+            "day_of_week": "Friday",
+            "daily_volume": 8525,
+            "z_score": 6.252604315821869,
+            "anomaly_type": "Extreme Positive Surge (Event / Festival / Game Day)"
+        },
+        {
+            "obs_date": "2009-10-03",
+            "sensor_name": "Birrarung Marr",
+            "day_of_week": "Saturday",
+            "daily_volume": 38680,
+            "z_score": 5.936762922646305,
+            "anomaly_type": "Extreme Positive Surge (Event / Festival / Game Day)"
+        }
+    ],
+    "top_5_most_predictable_sensors": [
+        {
+            "sensor_name": "Elizabeth St-La Trobe St (East)",
+            "volatility_index_pct": 9.44,
+            "predictability_tier": "Low Volatility (Highly Predictable Revenue Base)"
+        },
+        {
+            "sensor_name": "La Trobe St (North)",
+            "volatility_index_pct": 11.05,
+            "predictability_tier": "Low Volatility (Highly Predictable Revenue Base)"
+        },
+        {
+            "sensor_name": "QVM-Franklin St (North)",
+            "volatility_index_pct": 11.2,
+            "predictability_tier": "Low Volatility (Highly Predictable Revenue Base)"
+        },
+        {
+            "sensor_name": "Bourke St-Russell St (West)",
+            "volatility_index_pct": 12.31,
+            "predictability_tier": "Low Volatility (Highly Predictable Revenue Base)"
+        },
+        {
+            "sensor_name": "Flinders La-Swanston St (West)",
+            "volatility_index_pct": 12.52,
+            "predictability_tier": "Low Volatility (Highly Predictable Revenue Base)"
+        }
+    ]
+}
