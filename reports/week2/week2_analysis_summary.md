@@ -84,3 +84,37 @@ Spatial analysis was performed to understand the geographical distribution of GP
 Week 2 successfully completed GPS mobility analysis and spatial analysis. The analysis provided insights into device activity, estimated movement patterns, GPS geographical distribution, and pedestrian activity across sensor locations.
 
 The generated CSV reports and visualizations provide a foundation for further mobility and retail location analysis in the upcoming project phases.
+
+## 6. Week 2 Day 2 – Detailed Analysis and Validation
+
+The second day focused on improving GPS mobility analysis,
+spatial density analysis, and sensor activity visualization.
+
+### Mobility Analysis Improvements
+
+- Generated device-level mobility information.
+- Analyzed hourly activity distribution.
+- Organized mobility summary reports.
+- Created visualizations for active devices.
+
+### Spatial Analysis Improvements
+
+- Generated GPS spatial density grids.
+- Analyzed sensor-level pedestrian activity.
+- Identified the top 10 active spatial sensors.
+- Created a GPS spatial heatmap.
+- Generated a sensor location map.
+
+### Output Validation
+
+All generated CSV reports and visualization files
+were organized under the reports/week2 directory.
+
+These outputs will support further retail mobility
+analysis and help identify high-activity geographical areas.
+
+### Next Steps
+
+- Explore retail hotspot identification.
+- Analyze geographical movement patterns.
+- Prepare insights for the next project phase.
