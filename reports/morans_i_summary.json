@@ -1,0 +1,49 @@
+{
+    "analysis_name": "GeoPulse Spatial Autocorrelation & LISA Cluster Analysis",
+    "spatial_parameters": {
+        "bandwidth_meters": 600.0,
+        "weighting_method": "Row-standardized inverse distance",
+        "variable_tested": "log1p(avg_hourly_footfall)"
+    },
+    "global_morans_i": 0.4661,
+    "expected_morans_i": -0.0175,
+    "overall_spatial_pattern": "Positive Spatial Clustering (Commercial Agglomeration)",
+    "lisa_cluster_distribution": {
+        "High-High (Prime Retail Hotspot)": 26,
+        "Low-Low (Peripheral Coldspot)": 19,
+        "Low-High (Underperforming Corridor Island)": 9,
+        "High-Low (Isolated Retail Island)": 4
+    },
+    "sample_hotspots": [
+        {
+            "sensor_name": "Flinders La-Swanston St (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 83.72,
+            "avg_hourly_footfall": 1928.4717948717948
+        },
+        {
+            "sensor_name": "Flinders St-Elizabeth St (East)",
+            "precinct_name": "Flinders Transit Hub (Commuter Spine)",
+            "store_viability_index": 79.69,
+            "avg_hourly_footfall": 1804.268493150685
+        },
+        {
+            "sensor_name": "Town Hall (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 79.07,
+            "avg_hourly_footfall": 1454.0617274230376
+        },
+        {
+            "sensor_name": "Melbourne Central",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 76.65,
+            "avg_hourly_footfall": 1085.8828909759086
+        },
+        {
+            "sensor_name": "Melbourne Central-Elizabeth St (East)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 75.73,
+            "avg_hourly_footfall": 1004.2606310013716
+        }
+    ]
+}
