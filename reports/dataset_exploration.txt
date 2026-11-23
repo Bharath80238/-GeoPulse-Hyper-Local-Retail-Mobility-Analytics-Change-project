@@ -1,0 +1,125 @@
+GeoPulse – Hyper-Local Retail Mobility Analytics
+Dataset Exploration Report
+==========================================================
+
+Dataset descriptions
+1. Pedestrian counting: monthly pedestrian counts recorded per hour.
+2. Sensor locations: sensor identifiers, descriptive/location attributes, and coordinates where provided.
+
+1. Pedestrian counting dataset
+File: data/raw/Pedestrian_Counting_System_-_Monthly__counts_per_hour_.csv
+File size: 417,994,222 bytes
+Dimensions: 4,511,349 rows × 10 columns
+Inspection sample: first 100,000 rows, read as one 100,000-row Pandas chunk.
+Columns and sample dtypes:
+  - ID: int64
+  - Date_Time: object
+  - Year: int64
+  - Month: object
+  - Mdate: int64
+  - Day: object
+  - Time: int64
+  - Sensor_ID: int64
+  - Sensor_Name: object
+  - Hourly_Counts: int64
+
+First five records:
+     ID                     Date_Time  Year    Month  Mdate    Day  Time  Sensor_ID                  Sensor_Name  Hourly_Counts
+2887628 November 01, 2019 05:00:00 PM  2019 November      1 Friday    17         34         Flinders St-Spark La            300
+2887629 November 01, 2019 05:00:00 PM  2019 November      1 Friday    17         39                 Alfred Place            604
+2887630 November 01, 2019 05:00:00 PM  2019 November      1 Friday    17         37              Lygon St (East)            216
+2887631 November 01, 2019 05:00:00 PM  2019 November      1 Friday    17         40 Lonsdale St-Spring St (West)            627
+2887632 November 01, 2019 05:00:00 PM  2019 November      1 Friday    17         36              Queen St (West)            774
+
+Missing values in inspected sample:
+  - ID: 0
+  - Date_Time: 0
+  - Year: 0
+  - Month: 0
+  - Mdate: 0
+  - Day: 0
+  - Time: 0
+  - Sensor_ID: 0
+  - Sensor_Name: 0
+  - Hourly_Counts: 0
+Full-row duplicates in inspected sample: 0
+Full-dataset duplicate check: skipped to keep this initial inspection bounded.
+
+Numeric descriptive statistics for inspected sample:
+                 ID           Year          Mdate           Time      Sensor_ID  Hourly_Counts
+count  1.000000e+05  100000.000000  100000.000000  100000.000000  100000.000000  100000.000000
+mean   1.144641e+06    2012.871940      15.762130      11.487330      18.001330     609.200260
+std    1.402527e+06       4.873364       8.714845       6.938151      16.002131     832.348053
+min    1.000000e+00    2009.000000       1.000000       0.000000       1.000000       0.000000
+25%    2.500075e+04    2009.000000       8.000000       5.000000       6.000000      52.000000
+50%    5.000050e+04    2009.000000      16.000000      11.000000      13.000000     232.000000
+75%    2.901260e+06    2019.000000      23.000000      18.000000      22.000000     860.000000
+max    4.428438e+06    2022.000000      31.000000      23.000000      62.000000   15979.000000
+
+Pedestrian/count columns detected in the sample:
+  - Hourly_Counts: sample total=60,920,026
+Date/time fields in the inspected sample: Date_Time (2009-05-01 00:00:00 to 2022-08-08 00:00:00)
+Sensor identification in sample: Sensor_ID; 58 distinct non-missing IDs.
+
+2. Sensor location dataset
+File: data/raw/Pedestrian_Counting_System_-_Sensor_Locations.csv
+File size: 11,102 bytes
+Dimensions: 91 rows × 11 columns
+Columns and dtypes:
+  - sensor_id: int64
+  - sensor_description: object
+  - sensor_name: object
+  - installation_date: object
+  - status: object
+  - note: object
+  - direction_1: object
+  - direction_2: object
+  - latitude: float64
+  - longitude: float64
+  - location: object
+
+First five records:
+ sensor_id             sensor_description sensor_name installation_date status                                     note direction_1 direction_2   latitude  longitude                     location
+        16           Australia on Collins    Col270_T        2009/03/30      R Device moved to location ID 53 (22/09...         NaN         NaN -37.815734 144.965210 (-37.81573422, 144.96521044)
+        50     Faraday St-Lygon St (West)    Lyg309_T        2017/11/30      A                                      NaN       South       North -37.798082 144.967210 (-37.79808191, 144.96721014)
+        73 Bourke St - Spencer St (South)    Bou655_T        2020/10/02      I                                      NaN        East        West -37.816957 144.954154 (-37.81695684, 144.95415373)
+        66            State Library - New       QVN_T        2020/04/06      A                                      NaN       South       North -37.810578 144.964443 (-37.81057845, 144.96444294)
+        59               Building 80 RMIT      RMIT_T        2019/02/13      A                                      NaN       South       North -37.808256 144.963049 (-37.80825648, 144.96304859)
+Missing values (full location dataset):
+  - sensor_id: 0
+  - sensor_description: 0
+  - sensor_name: 0
+  - installation_date: 0
+  - status: 0
+  - note: 81
+  - direction_1: 13
+  - direction_2: 13
+  - latitude: 0
+  - longitude: 0
+  - location: 0
+Full-row duplicate records: 0
+
+Descriptive statistics (full location dataset):
+        sensor_id    sensor_description sensor_name installation_date status                                         note direction_1 direction_2   latitude   longitude                      location
+count   91.000000                    91          91                91     91                                           10          78          78  91.000000   91.000000                            91
+unique        NaN                    91          91                68      3                                           10           2           2        NaN         NaN                            91
+top           NaN  Australia on Collins    Col270_T        2009/03/30      A  Device moved to location ID 53 (22/09/2015)       South       North        NaN         NaN  (-37.81573422, 144.96521044)
+freq          NaN                     1           1                 4     74                                            1          41          41        NaN         NaN                             1
+mean    46.197802                   NaN         NaN               NaN    NaN                                          NaN         NaN         NaN -37.812852  144.961087                           NaN
+std     26.691330                   NaN         NaN               NaN    NaN                                          NaN         NaN         NaN   0.006932    0.009289                           NaN
+min      1.000000                   NaN         NaN               NaN    NaN                                          NaN         NaN         NaN -37.825791  144.929734                           NaN
+25%     23.500000                   NaN         NaN               NaN    NaN                                          NaN         NaN         NaN -37.817249  144.958295                           NaN
+50%     46.000000                   NaN         NaN               NaN    NaN                                          NaN         NaN         NaN -37.814141  144.964295                           NaN
+75%     68.500000                   NaN         NaN               NaN    NaN                                          NaN         NaN         NaN -37.809292  144.966735                           NaN
+max     92.000000                   NaN         NaN               NaN    NaN                                          NaN         NaN         NaN -37.794324  144.974677                           NaN
+Sensor identification: sensor_id; 91 distinct IDs; 0 repeated ID values.
+Geographical columns: latitude, longitude
+
+3. Potential relationship
+Sensor-ID columns: pedestrian Sensor_ID; locations sensor_id.
+Distinct sensor IDs shared by the inspected pedestrian sample and location dataset: 58.
+These common identifiers can link sample hourly counts to sensor metadata and coordinates.
+
+Limitations
+Pedestrian missing-value counts, duplicate counts, numeric statistics, and sensor-ID coverage describe only the first 100,000 rows. Full pedestrian duplicate analysis was intentionally skipped. The total row count is counted with bounded-memory file streaming.
+Source CSV files were read only and were not modified.

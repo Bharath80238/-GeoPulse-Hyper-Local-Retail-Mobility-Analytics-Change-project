@@ -1,7 +1,19 @@
 __pycache__/
-*.pyc
+*.py[cod]
 .ipynb_checkpoints/
 .venv/
 venv/
+env/
 .env
 .DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local source datasets and archives
+/data/raw/*.csv
+*.zip
+
+# Temporary and generated files
+*.tmp
+*.part
+*.log
