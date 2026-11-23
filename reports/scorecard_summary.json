@@ -1,0 +1,44 @@
+{
+    "analysis_name": "GeoPulse Master Retail Site Selection Scorecard",
+    "total_sites_scored": 58,
+    "mean_svi": 56.49,
+    "total_estimated_turnover_aud": 228083392.66,
+    "executive_decision_distribution": {
+        "Non-Prime / Peripheral (Selective Concession Only)": 19,
+        "Conditional Viability (Perform Secondary Traffic Audit)": 13,
+        "Strategic Core Investment (Differentiate Store Concept)": 12,
+        "Viable Growth Location (Standard Retail Lease)": 8,
+        "Tier 1 Priority Anchor (Immediate Lease Acquisition)": 4,
+        "High Cannibalization Hazard (Enforce Territory Buffer)": 2
+    },
+    "priority_sites": [
+        {
+            "rank": 3,
+            "sensor_name": "Town Hall (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 79.07,
+            "estimated_annual_turnover_aud": 25605548.39
+        },
+        {
+            "rank": 5,
+            "sensor_name": "Melbourne Central-Elizabeth St (East)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 75.73,
+            "estimated_annual_turnover_aud": 17521712.52
+        },
+        {
+            "rank": 6,
+            "sensor_name": "Southbank",
+            "precinct_name": "Southbank Promenade & Waterfront",
+            "store_viability_index": 75.66,
+            "estimated_annual_turnover_aud": 5111854.67
+        },
+        {
+            "rank": 7,
+            "sensor_name": "The Arts Centre",
+            "precinct_name": "Southbank Promenade & Waterfront",
+            "store_viability_index": 75.23,
+            "estimated_annual_turnover_aud": 5141865.1
+        }
+    ]
+}

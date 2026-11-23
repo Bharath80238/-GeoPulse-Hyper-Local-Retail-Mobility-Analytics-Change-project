@@ -175,5 +175,50 @@ class TestGeoPulseMobilityAnalytics(unittest.TestCase):
         self.assertIn("total_network_turnover_aud", manifest)
         self.assertIn("pipeline_artifacts", manifest)
 
+    def test_11_spatial_autocorrelation_lisa(self):
+        """Verify Moran's I and LISA spatial cluster distribution."""
+        lisa_csv = os.path.join(REPORTS_DIR, "spatial_autocorrelation_lisa.csv")
+        moran_json = os.path.join(REPORTS_DIR, "morans_i_summary.json")
+
+        self.assertTrue(os.path.exists(lisa_csv), "spatial_autocorrelation_lisa.csv must exist")
+        self.assertTrue(os.path.exists(moran_json), "morans_i_summary.json must exist")
+
+        df_lisa = pd.read_csv(lisa_csv)
+        self.assertIn("local_morans_i", df_lisa.columns)
+        self.assertIn("lisa_cluster", df_lisa.columns)
+        self.assertEqual(df_lisa['lisa_cluster'].isnull().sum(), 0)
+
+        with open(moran_json, "r", encoding="utf-8") as f:
+            summary = json.load(f)
+        self.assertIn("global_morans_i", summary)
+        self.assertGreater(summary['global_morans_i'], 0.0, "Global Moran's I should indicate positive spatial clustering")
+
+    def test_12_anomaly_detection_metrics(self):
+        """Verify footfall anomaly mining and z-score calculations."""
+        anom_csv = os.path.join(REPORTS_DIR, "footfall_anomalies_detected.csv")
+        anom_json = os.path.join(REPORTS_DIR, "anomaly_detection_summary.json")
+
+        self.assertTrue(os.path.exists(anom_csv), "footfall_anomalies_detected.csv must exist")
+        self.assertTrue(os.path.exists(anom_json), "anomaly_detection_summary.json must exist")
+
+        df_anom = pd.read_csv(anom_csv)
+        self.assertIn("z_score", df_anom.columns)
+        self.assertIn("anomaly_type", df_anom.columns)
+        self.assertGreaterEqual(len(df_anom), 50, "Should detect substantial anomalies across historical series")
+
+    def test_13_master_retail_site_scorecard(self):
+        """Verify unified master retail site selection scorecard."""
+        scorecard_csv = os.path.join(REPORTS_DIR, "master_retail_site_scorecard.csv")
+        scorecard_json = os.path.join(REPORTS_DIR, "scorecard_summary.json")
+
+        self.assertTrue(os.path.exists(scorecard_csv), "master_retail_site_scorecard.csv must exist")
+        self.assertTrue(os.path.exists(scorecard_json), "scorecard_summary.json must exist")
+
+        df_sc = pd.read_csv(scorecard_csv)
+        self.assertIn("executive_decision", df_sc.columns)
+        self.assertIn("max_cannibalization_risk", df_sc.columns)
+        self.assertIn("estimated_annual_turnover_aud", df_sc.columns)
+        self.assertEqual(df_sc['executive_decision'].isnull().sum(), 0)
+
 if __name__ == '__main__':
     unittest.main()

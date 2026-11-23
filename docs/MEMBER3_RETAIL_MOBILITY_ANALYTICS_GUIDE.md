@@ -9,7 +9,7 @@
 
 ## 1. Executive Role Overview & Scope
 
-As **Member 3 (Spatial Mobility & Retail Catchment Analyst)** on Project 2 (*GeoPulse*), my core responsibilities encompass transforming raw urban sensor telemetry into actionable commercial intelligence for corporate retail site selection, store cannibalization avoidance, pedestrian trade area modeling, commercial rent benchmarking, and urban stress scenario testing.
+As **Member 3 (Spatial Mobility & Retail Catchment Analyst)** on Project 2 (*GeoPulse*), my core responsibilities encompass transforming raw urban sensor telemetry into actionable commercial intelligence for corporate retail site selection, store cannibalization avoidance, spatial autocorrelation clustering, anomaly surge mining, commercial rent benchmarking, and urban stress scenario testing.
 
 ### Core Objectives:
 1. **Spatial Precinct Clustering**: Geo-reference 91 Melbourne CBD pedestrian sensors, calculate proximity metrics to the commercial core, and cluster sensors into distinct commercial retail precincts.
@@ -21,7 +21,9 @@ As **Member 3 (Spatial Mobility & Retail Catchment Analyst)** on Project 2 (*Geo
 7. **Retail Tenant Allocation Matrix**: Match site micro-profiles with 5 retail tenant archetypes (*Luxury Flagship, QSR Express, Experiential Dining, Convenience/Pharmacy, Boutique Pop-Up*).
 8. **Catchment Monetization & Turnover Mechanics**: Estimate annual gross merchandise value (GMV) and maximum sustainable rent per square meter based on footfall conversion funnels.
 9. **Multi-Scenario Sensitivity & Shock Resilience Modeling**: Stress test all catchments against adverse weather, holiday retail surges, and transit disruptions to evaluate asset defensibility.
-10. **Automated Executive Dossier Compilation**: Systematically generate high-level executive reports and pipeline manifests.
+10. **Spatial Autocorrelation & Local Moran's I (LISA)**: Detect spatial agglomeration, high-high hotspots, and spatial outliers across the Melbourne CBD pedestrian grid.
+11. **Dynamic Footfall Anomaly & Surge Mining**: Identify event-driven traffic spikes (festivals, game days) and severe operational deficits via standardized Z-scores.
+12. **Master Retail Site Selection Scorecard**: Deliver a corporate real estate scorecard linking SVI, LISA, CRI, GMV, and shock resilience into executive site investment decisions.
 
 ---
 
@@ -57,6 +59,12 @@ GeoPulse/
 │   ├── monetization_summary.json             # Commercial turnover summaries
 │   ├── catchment_scenario_simulation.csv     # Weather, holiday & transit stress test
 │   ├── scenario_stress_test_summary.json     # Catchment resilience score (RSI) breakdown
+│   ├── spatial_autocorrelation_lisa.csv      # Local Moran's I and LISA cluster tiers
+│   ├── morans_i_summary.json                 # Global Moran's I spatial dependency summary
+│   ├── footfall_anomalies_detected.csv       # Z-score event surges and deficits
+│   ├── anomaly_detection_summary.json        # Historical event anomaly summary
+│   ├── master_retail_site_scorecard.csv      # Executive site scorecard & investment matrix
+│   ├── scorecard_summary.json                # Final site recommendation distribution
 │   ├── MEMBER3_EXECUTIVE_CATCHMENT_REPORT.md # Executive Markdown dossier
 │   └── executive_metrics_manifest.json       # Pipeline artifacts manifest
 ├── src/
@@ -70,57 +78,40 @@ GeoPulse/
 │   ├── tenant_site_recommender.py            # Retail tenant archetype matching engine
 │   ├── catchment_monetization.py             # Sales turnover & sustainable rent model
 │   ├── scenario_simulator.py                 # Multi-scenario stress test & resilience engine
+│   ├── spatial_autocorrelation.py            # Global & Local Moran's I spatial dependency
+│   ├── anomaly_detection.py                  # Z-score temporal surge & deficit miner
+│   ├── retail_site_scorecard.py              # Master corporate site selection scorecard
 │   └── generate_executive_report.py          # Executive dossier & manifest compiler
 └── tests/
-    └── test_mobility_analytics.py            # Automated unit test suite (10/10 tests pass)
+    └── test_mobility_analytics.py            # Automated unit test suite (13/13 tests pass)
 ```
 
 ---
 
-## 3. Mathematical Models & Equations
+## 3. Advanced Mathematical Models
 
-### 3.1 Proximity Calculation (Haversine Formula)
-Distance $d$ in meters between sensor $(\phi_1, \lambda_1)$ and Melbourne CBD centroid $(\phi_0, \lambda_0) = (-37.8136, 144.9631)$:
-$$a = \sin^2\left(\frac{\Delta\phi}{2}\right) + \cos(\phi_1)\cos(\phi_0)\sin^2\left(\frac{\Delta\lambda}{2}\right)$$
-$$d = 2 R \cdot \arcsin\left(\sqrt{a}\right) \quad \text{where } R = 6,371,000 \text{ m}$$
+### 3.1 Global Moran's I Spatial Autocorrelation
+$$I = \frac{N}{S_0} \frac{\sum_{i=1}^N \sum_{j=1}^N w_{ij} (y_i - \bar{y})(y_j - \bar{y})}{\sum_{i=1}^N (y_i - \bar{y})^2}$$
+* **Result**: $I = 0.4661$ ($E[I] = -0.0175$), confirming positive spatial agglomeration in CBD.
 
-### 3.2 Weekend Surge Elasticity Ratio ($E_w$)
-Measures whether a catchment is commuter-dominated ($E_w < 0.75$), balanced ($0.75 \le E_w \le 1.25$), or leisure-driven ($E_w > 1.25$):
-$$E_w = \frac{\bar{V}_{\text{weekend}}}{\bar{V}_{\text{weekday}}}$$
+### 3.2 Local Indicators of Spatial Association (LISA)
+$$I_i = \frac{y_i - \bar{y}}{s^2} \sum_{j=1}^N w_{ij} (y_j - \bar{y})$$
+* **High-High (44.8%)**: Prime Retail Hotspots (Bourke St Mall & Swanston St).
+* **Low-Low (32.8%)**: Peripheral Coldspots (Residential & park fringes).
+* **Low-High (15.5%)**: Underperforming Corridor Islands (High traffic spillover arbitrage).
+* **High-Low (6.9%)**: Isolated Destination Anchors.
 
-### 3.3 Store Viability Index (SVI)
-$$\text{SVI} = 0.35 \cdot S_{\text{vol}} + 0.25 \cdot S_{\text{stab}} + 0.20 \cdot S_{\text{surge}} + 0.20 \cdot S_{\text{precinct}}$$
-
-### 3.4 Spatial Gravity & Catchment Accessibility Index
-$$A_i = \sum_{j \neq i} \frac{V_j}{d_{ij}^\beta} \quad (\beta = 1.5)$$
-
-### 3.5 Cannibalization Risk Index (CRI)
-$$\text{CRI}_{ij} = 100 \times \left( \frac{\min(V_i, V_j)}{\max(V_i, V_j)} \right)^{0.5} \times \exp\left(-\frac{d_{ij}}{200}\right)$$
-
-### 3.6 Commercial Turnover & Sustainable Rent Benchmarking
-$$\text{GMV}_{\text{month}} = (\bar{V}_{\text{daily}} \times 30.4) \times \alpha \times \text{ATV} \times \left(0.85 + 0.30 \cdot \frac{\text{SVI}}{100}\right)$$
-$$\text{Rent}_{\text{annual}}^{\max} = (\text{GMV}_{\text{month}} \times 12) \times \text{OCR}$$
-$$\text{Rent / m}^2 = \frac{\text{Rent}_{\text{annual}}^{\max}}{\text{Area}_{\text{sqm}}}$$
+### 3.3 Dynamic Z-Score Outlier Detection
+$$Z_{t} = \frac{V_t - \mu_{\text{sensor}}}{\sigma_{\text{sensor}}}$$
+* Extreme positive surge ($Z \ge +2.5$): Major festivals and game-day spikes.
+* Extreme negative deficit ($Z \le -2.0$): Adverse weather and transit shutdown impacts.
 
 ---
 
-## 4. Key Empirical Findings & Commercial Insights
+## 4. Verification & Testing
 
-### 4.1 Top Commercial Retail Catchments
-1. **Flinders La-Swanston St (West)** — SVI: **83.72** (Tier 1 Flagship Catchment) | Est. Annual GMV: **$34.40M AUD**
-2. **Flinders St-Elizabeth St (East)** — SVI: **79.69** (Tier 2 High-Yield Hub) | Est. Annual GMV: **$15.82M AUD**
-3. **Town Hall (West)** — SVI: **79.07** (Tier 2 High-Yield Hub) | Est. Annual GMV: **$25.61M AUD**
-
-### 4.2 Shock Resilience Under Urban Stress
-* **Most Resilient Assets**: Enclosed retail concourses (e.g. Melbourne Central: RSI 83.50) benefit from weather refuge (+25% rain surge) and diversified commuter/leisure footfall.
-* **Most Vulnerable Assets**: Open-bridge and transit-exclusive platforms (e.g. Bourke St Bridge: RSI 47.15) suffer during transit strikes (-65%) and torrential rain (-38%).
-
----
-
-## 5. Verification & Testing
-
-To execute all tests and ensure 100% pass rate:
+To execute all unit test suites and verify 100% test pass rate:
 ```powershell
 python -m unittest discover tests
 ```
-*Result: 10/10 tests passed cleanly in 0.145s.*
+*Result: 13/13 tests passed cleanly in 0.165s.*
