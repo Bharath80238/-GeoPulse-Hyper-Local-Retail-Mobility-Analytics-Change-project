@@ -1,0 +1,102 @@
+GeoPulse - Hyper-Local Retail Mobility Analytics
+Day 3 Data Cleaning and Quality Validation Report
+==========================================================
+Execution time: 2026-11-24T22:28:45+05:30
+
+1. Original dataset information
+Pedestrian CSV: data/raw/Pedestrian_Counting_System_-_Monthly__counts_per_hour_.csv
+  - File size: 417,994,222 bytes
+  - Original rows: 4,511,349 (as counted in the Day 2 exploration report)
+  - Rows processed this run: 50,000 (limit 50,000; chunk size 10,000)
+Sensor locations CSV: data/raw/Pedestrian_Counting_System_-_Sensor_Locations.csv
+  - File size: 11,102 bytes
+  - Original rows: 91
+
+2. Cleaning operations performed
+  - Standardized column names to lowercase snake_case.
+  - Trimmed text values; standardized month/day/direction and status labels.
+  - Converted pedestrian numeric fields and parsed date_time values.
+  - Converted sensor installation dates, IDs, and coordinates.
+  - Validated pedestrian counts, timestamps, sensor IDs, and coordinate ranges.
+  - Left missing values unfilled; retained incomplete rows unless a value was required to establish a clearly invalid record.
+  - Removed confirmed duplicate pedestrian records within the processed preview and exact duplicate sensor-location rows.
+
+3. Missing values
+Pedestrian dataset (processed rows only):
+  - id: 0
+  - date_time: 0
+  - year: 0
+  - month: 0
+  - mdate: 0
+  - day: 0
+  - time: 0
+  - sensor_id: 0
+  - sensor_name: 0
+  - hourly_counts: 0
+Sensor location dataset (after exact duplicate removal):
+  - sensor_id: 0
+  - sensor_description: 0
+  - sensor_name: 0
+  - installation_date: 0
+  - status: 0
+  - note: 81
+  - direction_1: 13
+  - direction_2: 13
+  - latitude: 0
+  - longitude: 0
+  - location: 0
+
+4. Invalid values identified
+Pedestrian non-numeric values coerced to missing by column: {'id': 0, 'mdate': 0, 'time': 0, 'hourly_counts': 0, 'sensor_id': 0, 'year': 0}
+  - Negative pedestrian counts: 0
+  - Unparseable non-missing date_time values: 0
+  - Invalid non-missing sensor IDs (non-numeric, non-positive, or non-integer): 0
+  - Time values outside 0-23: 0
+  - Valid positive sensor IDs not listed in location metadata (rows): 0
+Sensor-location invalid sensor IDs: 0
+  - Unparseable installation dates: 0
+  - latitude_malformed: 0
+  - latitude_out_of_range: 0
+  - longitude_malformed: 0
+  - longitude_out_of_range: 0
+  - coordinate_pairs_incomplete: 0
+
+5. Duplicate handling
+Pedestrian records were compared by all standardized fields except the row ID; matching records with valid sensor_id/date_time were removed after their first occurrence.
+  - Confirmed pedestrian duplicate rows removed: 0
+  - Repeated sensor/date_time keys with differing row values retained as conflicts: 0
+Sensor-location exact duplicate rows were removed; repeated sensor IDs with differing details were retained.
+  - Exact sensor-location duplicates removed: 0
+  - Repeated sensor-ID rows remaining: 0
+
+6. Rows processed, retained, and removed
+Pedestrian: 50,000 processed; 50,000 retained; 0 removed.
+  - Removed for invalid count: 0
+  - Removed for unparseable non-missing date_time: 0
+  - Removed for invalid non-missing sensor_id: 0
+  - Removed as confirmed duplicates: 0
+Sensor locations: 91 original; 91 retained; 0 removed.
+
+7. Final output information
+Pedestrian preview: data\processed\pedestrian_counts_cleaned_preview.csv
+  - Rows: 50,000; columns: 10; size: 4,202,337 bytes
+Sensor locations: data\processed\sensor_locations_cleaned.csv
+  - Rows: 91; columns: 11; size: 11,194 bytes
+Parsed pedestrian date range in processed rows: 2009-05-01 00:00:00 to 2022-08-06 12:00:00
+
+8. Remaining data quality issues
+  - Missing pedestrian date_time values retained: 0.
+  - Missing pedestrian sensor_id values retained: 0.
+  - Missing pedestrian hourly_counts values retained: 0.
+  - Sensor IDs not found in the location file retained and flagged: 0 distinct IDs [].
+  - Sensor-location optional fields remain missing: note (81), direction_1 (13), direction_2 (13).
+  - No invalid, missing, or out-of-range sensor coordinates were found in this run. If encountered, invalid coordinates are nulled while preserving the source row.
+  - Pedestrian quality statistics apply only to the processed preview; no full-dataset duplicate scan was run.
+Raw CSV files were read-only and were not modified.
+
+9. Verification status and limitations
+  - The cleaner completed one default run (50,000 pedestrian rows, 10,000 rows per chunk).
+  - Both generated CSVs were reopened successfully; the pedestrian preview contains 50,000 rows and the sensor file contains 91 rows.
+  - The report and both output files were present and non-empty; raw file sizes and modification timestamps were unchanged.
+  - A separate synthetic malformed-value/duplicate test was not completed. The observed quality results apply only to the processed preview and the 91-row sensor file; the remaining pedestrian source rows were not processed.
+  - Full-dataset duplicate analysis was intentionally not performed.
