@@ -1,0 +1,92 @@
+{
+    "analysis_name": "GeoPulse Pedestrian Corridor Velocity & Dwell Potential",
+    "total_sensors_analyzed": 58,
+    "major_corridors_profiled": [
+        {
+            "primary_corridor": "Bourke Street Spine",
+            "sensor_count": 6,
+            "mean_hourly_footfall": 776.19,
+            "mean_dwell_index": 57.48
+        },
+        {
+            "primary_corridor": "Collins Street Luxury Strip",
+            "sensor_count": 6,
+            "mean_hourly_footfall": 692.03,
+            "mean_dwell_index": 49.98
+        },
+        {
+            "primary_corridor": "Connecting Grid Laneway / Secondary Street",
+            "sensor_count": 27,
+            "mean_hourly_footfall": 425.53,
+            "mean_dwell_index": 57.01
+        },
+        {
+            "primary_corridor": "Elizabeth Street Corridor",
+            "sensor_count": 5,
+            "mean_hourly_footfall": 674.14,
+            "mean_dwell_index": 60.62
+        },
+        {
+            "primary_corridor": "Flinders Street Transit Strip",
+            "sensor_count": 3,
+            "mean_hourly_footfall": 987.65,
+            "mean_dwell_index": 51.89
+        },
+        {
+            "primary_corridor": "Lonsdale / Chinatown",
+            "sensor_count": 2,
+            "mean_hourly_footfall": 417.73,
+            "mean_dwell_index": 59.73
+        },
+        {
+            "primary_corridor": "Southbank Waterfront",
+            "sensor_count": 2,
+            "mean_hourly_footfall": 691.14,
+            "mean_dwell_index": 52.88
+        },
+        {
+            "primary_corridor": "Swanston Street Promenade",
+            "sensor_count": 7,
+            "mean_hourly_footfall": 571.64,
+            "mean_dwell_index": 58.44
+        }
+    ],
+    "velocity_classification_distribution": {
+        "Low-Velocity Neighborhood Stroll (Boutique / Niche Services)": 22,
+        "High-Dwell Retail Promenade (Experiential / Luxury / Dining)": 16,
+        "Balanced Commercial Arterial (General Retail)": 16,
+        "High-Velocity Transit Conduit (QSR / Express Grab-and-Go)": 4
+    },
+    "top_dwell_promenades": [
+        {
+            "sensor_name": "WatCit_T",
+            "primary_corridor": "Connecting Grid Laneway / Secondary Street",
+            "dwell_potential_index": 70.26,
+            "corridor_velocity_classification": "Low-Velocity Neighborhood Stroll (Boutique / Niche Services)"
+        },
+        {
+            "sensor_name": "Eli501_T",
+            "primary_corridor": "Connecting Grid Laneway / Secondary Street",
+            "dwell_potential_index": 68.83,
+            "corridor_velocity_classification": "Low-Velocity Neighborhood Stroll (Boutique / Niche Services)"
+        },
+        {
+            "sensor_name": "LtB210_T",
+            "primary_corridor": "Swanston Street Promenade",
+            "dwell_potential_index": 68.43,
+            "corridor_velocity_classification": "High-Dwell Retail Promenade (Experiential / Luxury / Dining)"
+        },
+        {
+            "sensor_name": "LtB170_T",
+            "primary_corridor": "Bourke Street Spine",
+            "dwell_potential_index": 68.36,
+            "corridor_velocity_classification": "High-Dwell Retail Promenade (Experiential / Luxury / Dining)"
+        },
+        {
+            "sensor_name": "Bou283_T",
+            "primary_corridor": "Bourke Street Spine",
+            "dwell_potential_index": 67.71,
+            "corridor_velocity_classification": "High-Dwell Retail Promenade (Experiential / Luxury / Dining)"
+        }
+    ]
+}
