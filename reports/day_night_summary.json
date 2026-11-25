@@ -1,0 +1,45 @@
+{
+    "analysis_name": "GeoPulse Day-to-Night Mobility Transition & 24/7 Activation",
+    "total_sensors_profiled": 58,
+    "mean_day_volume_share_pct": 72.0,
+    "mean_night_volume_share_pct": 28.0,
+    "mean_late_night_vitality_index": 42.5,
+    "activation_archetype_distribution": {
+        "Balanced Commercial Urban Spine": 28,
+        "Daytime Office / Commuter Focused": 23,
+        "Vibrant 24/7 Mixed-Use Hub": 5,
+        "Nightlife & Evening Dining Corridor": 2
+    },
+    "top_5_late_night_vitality_corridors": [
+        {
+            "sensor_name": "Lonsdale St (South)",
+            "late_night_vitality_index": 87.2,
+            "day_to_night_ratio": 1.13,
+            "activation_archetype": "Vibrant 24/7 Mixed-Use Hub"
+        },
+        {
+            "sensor_name": "Lygon St (West)",
+            "late_night_vitality_index": 85.5,
+            "day_to_night_ratio": 1.05,
+            "activation_archetype": "Vibrant 24/7 Mixed-Use Hub"
+        },
+        {
+            "sensor_name": "Chinatown-Lt Bourke St (South)",
+            "late_night_vitality_index": 78.9,
+            "day_to_night_ratio": 1.18,
+            "activation_archetype": "Vibrant 24/7 Mixed-Use Hub"
+        },
+        {
+            "sensor_name": "Chinatown-Swanston St (North)",
+            "late_night_vitality_index": 78.8,
+            "day_to_night_ratio": 1.08,
+            "activation_archetype": "Vibrant 24/7 Mixed-Use Hub"
+        },
+        {
+            "sensor_name": "Bourke St-Russell St (West)",
+            "late_night_vitality_index": 77.8,
+            "day_to_night_ratio": 1.28,
+            "activation_archetype": "Vibrant 24/7 Mixed-Use Hub"
+        }
+    ]
+}

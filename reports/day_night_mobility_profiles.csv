@@ -1,0 +1,59 @@
+sensor_id,sensor_name,total_24h_daily_equivalent,day_volume_share_pct,night_volume_share_pct,late_night_share_pct,day_to_night_ratio,late_night_vitality_index,activation_archetype,recommended_trading_window,precinct_name,store_viability_index
+41,Flinders La-Swanston St (West),46791.0,71.0,29.0,10.7,2.45,42.7,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Central Retail Core (Bourke St Mall),83.72
+22,Flinders St-Elizabeth St (East),43653.6,68.4,31.6,12.4,2.16,49.6,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Flinders Transit Hub (Commuter Spine),79.69
+4,Town Hall (West),35470.7,72.3,27.7,11.7,2.62,46.8,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Central Retail Core (Bourke St Mall),79.07
+24,Spencer St-Collins St (North),34968.1,77.4,22.6,7.4,3.42,29.6,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Flinders Transit Hub (Commuter Spine),71.53
+3,Melbourne Central,26508.8,63.5,36.5,14.7,1.74,58.7,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Central Retail Core (Bourke St Mall),76.65
+2,Bourke Street Mall (South),26494.8,84.2,15.8,5.7,5.31,22.9,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Central Retail Core (Bourke St Mall),70.74
+28,The Arts Centre,25808.9,73.2,26.8,9.9,2.73,39.7,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Southbank Promenade & Waterfront,75.23
+25,Melbourne Convention Exhibition Centre,25587.9,73.4,26.6,9.2,2.77,36.9,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Southbank Promenade & Waterfront,74.96
+35,Southbank,25580.2,67.6,32.4,11.8,2.09,47.1,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Southbank Promenade & Waterfront,75.66
+6,Flinders Street Station Underpass,24870.1,72.7,27.3,11.6,2.67,46.3,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Flinders Transit Hub (Commuter Spine),70.34
+47,Melbourne Central-Elizabeth St (East),24331.0,71.4,28.6,9.4,2.5,37.5,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Central Retail Core (Bourke St Mall),75.73
+55,Elizabeth St-La Trobe St (East),23757.3,62.3,37.7,15.3,1.65,61.1,Nightlife & Evening Dining Corridor,Late Trade (11:00 AM - 02:00 AM),Flinders Transit Hub (Commuter Spine),74.55
+5,Princes Bridge,23225.3,69.7,30.3,13.1,2.3,52.2,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Flinders Transit Hub (Commuter Spine),72.64
+45,Little Collins St-Swanston St (East),22483.7,68.1,31.9,11.8,2.13,47.3,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Central Retail Core (Bourke St Mall),74.9
+1,Bourke Street Mall (North),21987.2,81.9,18.1,6.2,4.51,24.9,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Central Retail Core (Bourke St Mall),68.73
+58,Bourke St - Spencer St (North),19889.9,76.6,23.4,8.3,3.28,33.2,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Flinders Transit Hub (Commuter Spine),66.94
+57,Bourke St Bridge,19317.7,81.6,18.4,6.9,4.43,27.4,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Flinders Transit Hub (Commuter Spine),52.38
+53,Collins St (North),18577.5,82.0,18.0,5.6,4.57,22.3,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Central Retail Core (Bourke St Mall),69.14
+13,Flagstaff Station,17509.5,86.7,13.3,3.8,6.52,15.1,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Flinders Transit Hub (Commuter Spine),49.49
+15,State Library,17113.4,70.3,29.7,11.1,2.37,44.4,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Central Retail Core (Bourke St Mall),69.69
+16,Australia on Collins,16926.8,85.6,14.4,6.0,5.94,23.8,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Central Retail Core (Bourke St Mall),65.43
+21,Bourke St-Russell St (West),15775.5,56.2,43.8,19.5,1.28,77.8,Vibrant 24/7 Mixed-Use Hub,24-Hour Operation / Extended Nighttime License,Central Retail Core (Bourke St Mall),74.56
+19,Chinatown-Swanston St (North),14809.1,52.0,48.0,19.7,1.08,78.8,Vibrant 24/7 Mixed-Use Hub,24-Hour Operation / Extended Nighttime License,Central Retail Core (Bourke St Mall),70.21
+26,QV Market-Elizabeth St (West),14076.2,72.9,27.1,10.9,2.69,43.5,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Flinders Transit Hub (Commuter Spine),68.07
+30,Lonsdale St (South),13006.7,53.0,47.0,21.8,1.13,87.2,Vibrant 24/7 Mixed-Use Hub,24-Hour Operation / Extended Nighttime License,Central Retail Core (Bourke St Mall),73.29
+17,Collins Place (South),11163.8,82.9,17.1,6.5,4.86,25.9,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Chinatown & East End Dining,45.83
+52,Elizabeth St-Lonsdale St (South),10950.3,67.1,32.9,13.2,2.04,53.0,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Central Retail Core (Bourke St Mall),67.48
+29,St Kilda Rd-Alexandra Gardens,10778.7,70.9,29.1,9.9,2.44,39.6,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Chinatown & East End Dining,54.74
+61,Swanston St - RMIT Building 14,10773.3,69.7,30.3,10.4,2.3,41.8,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Flinders Transit Hub (Commuter Spine),63.38
+23,Spencer St-Collins St (South),10054.2,81.4,18.6,6.2,4.38,25.0,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Flinders Transit Hub (Commuter Spine),55.59
+20,Chinatown-Lt Bourke St (South),9805.6,54.1,45.9,19.7,1.18,78.9,Vibrant 24/7 Mixed-Use Hub,24-Hour Operation / Extended Nighttime License,Chinatown & East End Dining,56.24
+18,Collins Place (North),9062.4,84.0,16.0,5.5,5.25,21.8,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Chinatown & East End Dining,40.95
+56,Lonsdale St - Elizabeth St (North),8533.7,70.6,29.4,10.2,2.4,40.8,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Central Retail Core (Bourke St Mall),63.85
+9,Southern Cross Station,8201.1,85.9,14.1,4.5,6.07,18.2,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Flinders Transit Hub (Commuter Spine),43.22
+36,Queen St (West),8059.9,71.0,29.0,13.5,2.45,54.1,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Central Retail Core (Bourke St Mall),60.62
+14,Sandridge Bridge,7940.2,67.4,32.6,15.0,2.06,59.9,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Southbank Promenade & Waterfront,62.37
+40,Lonsdale St-Spring St (West),7212.3,78.7,21.3,8.1,3.7,32.4,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Chinatown & East End Dining,46.22
+50,Faraday St-Lygon St (West),6841.9,62.9,37.1,12.1,1.7,48.3,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Northern University Corridor,43.95
+48,QVM-Queen St (East),6837.9,75.7,24.3,8.0,3.11,32.1,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Flinders Transit Hub (Commuter Spine),57.76
+7,Birrarung Marr,6316.7,64.7,35.3,12.4,1.83,49.7,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Chinatown & East End Dining,34.68
+31,Lygon St (West),6216.7,51.2,48.8,21.4,1.05,85.5,Vibrant 24/7 Mixed-Use Hub,24-Hour Operation / Extended Nighttime License,Northern University Corridor,43.35
+42,Grattan St-Swanston St (West),5415.1,74.6,25.4,10.2,2.94,40.8,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Northern University Corridor,34.28
+10,Victoria Point,5254.0,77.9,22.1,8.0,3.53,32.1,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Docklands Harbourside Precinct,29.77
+12,New Quay,4901.8,64.4,35.6,13.8,1.81,55.1,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Docklands Harbourside Precinct,36.15
+39,Alfred Place,4729.9,83.1,16.9,5.8,4.91,23.1,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Chinatown & East End Dining,32.23
+49,QVM-Therry St (South),4518.8,70.0,30.0,14.4,2.33,57.7,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Flinders Transit Hub (Commuter Spine),56.89
+37,Lygon St (East),3850.1,60.4,39.6,14.2,1.53,56.9,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Northern University Corridor,37.42
+62,La Trobe St (North),3588.4,61.5,38.5,16.4,1.6,65.6,Nightlife & Evening Dining Corridor,Late Trade (11:00 AM - 02:00 AM),Flinders Transit Hub (Commuter Spine),55.24
+27,QV Market-Peel St,3536.3,73.9,26.1,9.5,2.84,38.1,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Flinders Transit Hub (Commuter Spine),54.32
+34,Flinders St-Spark La,3354.6,72.9,27.1,9.8,2.7,39.4,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Chinatown & East End Dining,41.61
+59,Swanston St - RMIT Building 80,3213.9,82.2,17.8,0.7,4.61,5.0,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Flinders Transit Hub (Commuter Spine),45.39
+51,QVM-Franklin St (North),3162.9,71.0,29.0,11.4,2.45,45.7,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Flinders Transit Hub (Commuter Spine),53.27
+54,Lincoln-Swanston(West),3131.6,69.4,30.6,11.8,2.27,47.3,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Northern University Corridor,32.93
+11,Waterfront City,2908.9,70.2,29.8,11.1,2.35,44.4,Balanced Commercial Urban Spine,Extended Retail Hours (08:00 AM - 09:00 PM),Docklands Harbourside Precinct,26.97
+43,Monash Rd-Swanston St (West),2835.2,80.8,19.2,5.7,4.21,22.7,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Northern University Corridor,26.39
+46,Pelham St (S),2212.7,77.6,22.4,7.3,3.47,29.2,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Northern University Corridor,25.93
+8,Webb Bridge,2155.4,78.9,21.1,7.1,3.74,28.5,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Southbank Promenade & Waterfront,40.74
+44,Tin Alley-Swanston St (West),1570.0,75.1,24.9,7.9,3.01,31.6,Daytime Office / Commuter Focused,Standard Business Hours (06:30 AM - 06:30 PM),Northern University Corridor,23.27
