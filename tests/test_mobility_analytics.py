@@ -220,5 +220,60 @@ class TestGeoPulseMobilityAnalytics(unittest.TestCase):
         self.assertIn("estimated_annual_turnover_aud", df_sc.columns)
         self.assertEqual(df_sc['executive_decision'].isnull().sum(), 0)
 
+    def test_14_huff_gravity_model(self):
+        """Verify Huff gravity market share probabilities."""
+        huff_csv = os.path.join(REPORTS_DIR, "huff_market_share_probabilities.csv")
+        huff_json = os.path.join(REPORTS_DIR, "huff_model_summary.json")
+
+        self.assertTrue(os.path.exists(huff_csv), "huff_market_share_probabilities.csv must exist")
+        self.assertTrue(os.path.exists(huff_json), "huff_model_summary.json must exist")
+
+        df_huff = pd.read_csv(huff_csv)
+        self.assertIn("dominant_capture_probability", df_huff.columns)
+        self.assertTrue((df_huff['dominant_capture_probability'] >= 0.0).all())
+        self.assertTrue((df_huff['dominant_capture_probability'] <= 1.0).all())
+
+    def test_15_day_night_activation_profiler(self):
+        """Verify 24/7 activation archetypes and day-to-night ratios."""
+        day_night_csv = os.path.join(REPORTS_DIR, "day_night_mobility_profiles.csv")
+        day_night_json = os.path.join(REPORTS_DIR, "day_night_summary.json")
+
+        self.assertTrue(os.path.exists(day_night_csv), "day_night_mobility_profiles.csv must exist")
+        self.assertTrue(os.path.exists(day_night_json), "day_night_summary.json must exist")
+
+        df_dn = pd.read_csv(day_night_csv)
+        self.assertIn("day_to_night_ratio", df_dn.columns)
+        self.assertIn("late_night_vitality_index", df_dn.columns)
+        self.assertIn("activation_archetype", df_dn.columns)
+        self.assertTrue((df_dn['day_to_night_ratio'] > 0).all())
+
+    def test_16_corridor_velocity_analysis(self):
+        """Verify corridor velocity classification and dwell potential indices."""
+        corridor_csv = os.path.join(REPORTS_DIR, "corridor_pedestrian_velocity.csv")
+        corridor_json = os.path.join(REPORTS_DIR, "corridor_flow_summary.json")
+
+        self.assertTrue(os.path.exists(corridor_csv), "corridor_pedestrian_velocity.csv must exist")
+        self.assertTrue(os.path.exists(corridor_json), "corridor_flow_summary.json must exist")
+
+        df_corr = pd.read_csv(corridor_csv)
+        self.assertIn("primary_corridor", df_corr.columns)
+        self.assertIn("dwell_potential_index", df_corr.columns)
+        self.assertIn("corridor_velocity_classification", df_corr.columns)
+        self.assertTrue((df_corr['dwell_potential_index'] >= 0.0).all())
+
+    def test_17_store_expansion_optimizer(self):
+        """Verify greedy store expansion portfolio solver with spatial exclusion."""
+        expansion_csv = os.path.join(REPORTS_DIR, "store_expansion_portfolios.csv")
+        expansion_json = os.path.join(REPORTS_DIR, "expansion_optimizer_summary.json")
+
+        self.assertTrue(os.path.exists(expansion_csv), "store_expansion_portfolios.csv must exist")
+        self.assertTrue(os.path.exists(expansion_json), "expansion_optimizer_summary.json must exist")
+
+        df_exp = pd.read_csv(expansion_csv)
+        self.assertIn("portfolio_plan", df_exp.columns)
+        self.assertIn("sensor_name", df_exp.columns)
+        self.assertIn("store_sequence_rank", df_exp.columns)
+        self.assertEqual(len(df_exp['portfolio_plan'].unique()), 3, "Must solve 3 distinct portfolio rollout plans")
+
 if __name__ == '__main__':
     unittest.main()

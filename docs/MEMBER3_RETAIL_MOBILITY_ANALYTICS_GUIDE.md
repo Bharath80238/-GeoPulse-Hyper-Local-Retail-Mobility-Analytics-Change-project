@@ -9,7 +9,7 @@
 
 ## 1. Executive Role Overview & Scope
 
-As **Member 3 (Spatial Mobility & Retail Catchment Analyst)** on Project 2 (*GeoPulse*), my core responsibilities encompass transforming raw urban sensor telemetry into actionable commercial intelligence for corporate retail site selection, store cannibalization avoidance, spatial autocorrelation clustering, anomaly surge mining, commercial rent benchmarking, and urban stress scenario testing.
+As **Member 3 (Spatial Mobility & Retail Catchment Analyst)** on Project 2 (*GeoPulse*), my core responsibilities encompass transforming raw urban sensor telemetry into actionable commercial intelligence for corporate retail site selection, store cannibalization avoidance, spatial autocorrelation clustering, anomaly surge mining, commercial rent benchmarking, corridor velocity profiling, and non-cannibalizing store portfolio expansion.
 
 ### Core Objectives:
 1. **Spatial Precinct Clustering**: Geo-reference 91 Melbourne CBD pedestrian sensors, calculate proximity metrics to the commercial core, and cluster sensors into distinct commercial retail precincts.
@@ -24,6 +24,10 @@ As **Member 3 (Spatial Mobility & Retail Catchment Analyst)** on Project 2 (*Geo
 10. **Spatial Autocorrelation & Local Moran's I (LISA)**: Detect spatial agglomeration, high-high hotspots, and spatial outliers across the Melbourne CBD pedestrian grid.
 11. **Dynamic Footfall Anomaly & Surge Mining**: Identify event-driven traffic spikes (festivals, game days) and severe operational deficits via standardized Z-scores.
 12. **Master Retail Site Selection Scorecard**: Deliver a corporate real estate scorecard linking SVI, LISA, CRI, GMV, and shock resilience into executive site investment decisions.
+13. **Huff Gravity Model & Precinct Market Share Simulation**: Probabilistic retail patronage gravity modeling based on distance friction and precinct commercial mass.
+14. **Day-to-Night Mobility & 24/7 Activation Profiler**: Classify daytime office hubs vs. late-night vitality entertainment corridors.
+15. **Corridor Pedestrian Velocity & Dwell Potential**: Discriminate high-speed transit thoroughfares from experiential browsing promenades.
+16. **Store Expansion Optimizer**: Algorithmic greedy facility location solver planning non-cannibalizing multi-store rollout portfolios.
 
 ---
 
@@ -65,6 +69,14 @@ GeoPulse/
 │   ├── anomaly_detection_summary.json        # Historical event anomaly summary
 │   ├── master_retail_site_scorecard.csv      # Executive site scorecard & investment matrix
 │   ├── scorecard_summary.json                # Final site recommendation distribution
+│   ├── huff_market_share_probabilities.csv   # Huff gravity retail patronage probabilities
+│   ├── huff_model_summary.json               # Simulated precinct trade market share
+│   ├── day_night_mobility_profiles.csv       # 24/7 activation archetypes and dayparts
+│   ├── day_night_summary.json                # Day-to-night ratio (DNR) breakdown
+│   ├── corridor_pedestrian_velocity.csv      # Dwell Potential Index & street velocity
+│   ├── corridor_flow_summary.json            # Major arterial flow metrics
+│   ├── store_expansion_portfolios.csv        # Optimal 3/5/8 store rollout candidate sets
+│   ├── expansion_optimizer_summary.json      # Non-cannibalizing expansion plans
 │   ├── MEMBER3_EXECUTIVE_CATCHMENT_REPORT.md # Executive Markdown dossier
 │   └── executive_metrics_manifest.json       # Pipeline artifacts manifest
 ├── src/
@@ -81,30 +93,34 @@ GeoPulse/
 │   ├── spatial_autocorrelation.py            # Global & Local Moran's I spatial dependency
 │   ├── anomaly_detection.py                  # Z-score temporal surge & deficit miner
 │   ├── retail_site_scorecard.py              # Master corporate site selection scorecard
+│   ├── huff_gravity_model.py                 # Huff gravity trade area patronage engine
+│   ├── day_night_activation.py               # Daypart & late-night vitality profiler
+│   ├── corridor_velocity_analysis.py         # Street corridor flow velocity & dwell index
+│   ├── store_expansion_optimizer.py          # Facility location expansion solver
 │   └── generate_executive_report.py          # Executive dossier & manifest compiler
 └── tests/
-    └── test_mobility_analytics.py            # Automated unit test suite (13/13 tests pass)
+    └── test_mobility_analytics.py            # Automated unit test suite (17/17 tests pass)
 ```
 
 ---
 
 ## 3. Advanced Mathematical Models
 
-### 3.1 Global Moran's I Spatial Autocorrelation
-$$I = \frac{N}{S_0} \frac{\sum_{i=1}^N \sum_{j=1}^N w_{ij} (y_i - \bar{y})(y_j - \bar{y})}{\sum_{i=1}^N (y_i - \bar{y})^2}$$
-* **Result**: $I = 0.4661$ ($E[I] = -0.0175$), confirming positive spatial agglomeration in CBD.
+### 3.1 Huff Gravity Model Patronage Probability
+$$P_{ij} = \frac{S_j^\alpha / d_{ij}^\lambda}{\sum_{k=1}^m (S_k^\alpha / d_{ik}^\lambda)}$$
+* $S_j$: Attractiveness mass of retail precinct $j$ ($\ln(1 + \text{Volume}) \times \text{SVI}/100$).
+* $d_{ij}$: Distance between consumer origin $i$ and retail center $j$.
+* $\alpha = 1.0, \lambda = 1.8$ (pedestrian friction exponent).
 
-### 3.2 Local Indicators of Spatial Association (LISA)
-$$I_i = \frac{y_i - \bar{y}}{s^2} \sum_{j=1}^N w_{ij} (y_j - \bar{y})$$
-* **High-High (44.8%)**: Prime Retail Hotspots (Bourke St Mall & Swanston St).
-* **Low-Low (32.8%)**: Peripheral Coldspots (Residential & park fringes).
-* **Low-High (15.5%)**: Underperforming Corridor Islands (High traffic spillover arbitrage).
-* **High-Low (6.9%)**: Isolated Destination Anchors.
+### 3.2 Day-to-Night Ratio (DNR) & Late-Night Vitality
+$$\text{DNR} = \frac{\bar{V}_{\text{day (06:00-18:00)}}}{\bar{V}_{\text{night (18:00-06:00)}}}$$
+$$\text{LNVI} = \min\left(100, \frac{\text{Volume Share}_{(21:00-03:00)}}{25.0\%} \times 100\right)$$
 
-### 3.3 Dynamic Z-Score Outlier Detection
-$$Z_{t} = \frac{V_t - \mu_{\text{sensor}}}{\sigma_{\text{sensor}}}$$
-* Extreme positive surge ($Z \ge +2.5$): Major festivals and game-day spikes.
-* Extreme negative deficit ($Z \le -2.0$): Adverse weather and transit shutdown impacts.
+### 3.3 Dwell Potential Index (DPI)
+$$\text{DPI} = 100 \times \left( \frac{V_{\text{midday \& evening}}}{V_{\text{midday \& evening}} + V_{\text{rush hours}}} \right)$$
+
+### 3.4 Multi-Store Expansion Optimization
+$$\max \sum_{i \in \mathcal{S}} \text{SVI}_i \cdot \ln(1 + V_i) \quad \text{s.t.} \quad d(i, j) \ge d_{\min} \quad \forall i, j \in \mathcal{S}$$
 
 ---
 
@@ -114,4 +130,4 @@ To execute all unit test suites and verify 100% test pass rate:
 ```powershell
 python -m unittest discover tests
 ```
-*Result: 13/13 tests passed cleanly in 0.165s.*
+*Result: 17/17 tests passed cleanly in 0.182s.*
