@@ -1,0 +1,78 @@
+{
+    "analysis_name": "GeoPulse Huff Gravity Retail Market Share Simulation",
+    "parameters": {
+        "attractiveness_alpha": 1.0,
+        "distance_friction_lambda": 1.8
+    },
+    "precinct_attractiveness_centers": [
+        {
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "sensor_count": 16,
+            "attractiveness_mass": 6.797434943045772
+        },
+        {
+            "precinct_name": "Chinatown & East End Dining",
+            "sensor_count": 8,
+            "attractiveness_mass": 3.4608463441672304
+        },
+        {
+            "precinct_name": "Docklands Harbourside Precinct",
+            "sensor_count": 3,
+            "attractiveness_mass": 1.9440081995670742
+        },
+        {
+            "precinct_name": "Flinders Transit Hub (Commuter Spine)",
+            "sensor_count": 18,
+            "attractiveness_mass": 5.65761095767598
+        },
+        {
+            "precinct_name": "Northern University Corridor",
+            "sensor_count": 8,
+            "attractiveness_mass": 2.403599371494101
+        },
+        {
+            "precinct_name": "Southbank Promenade & Waterfront",
+            "sensor_count": 5,
+            "attractiveness_mass": 5.387724094755129
+        }
+    ],
+    "simulated_citywide_market_shares_pct": {
+        "Central Retail Core (Bourke St Mall)": 35.59,
+        "Chinatown & East End Dining": 0.0,
+        "Docklands Harbourside Precinct": 0.0,
+        "Flinders Transit Hub (Commuter Spine)": 20.34,
+        "Southbank Promenade & Waterfront": 13.35
+    },
+    "sample_capture_probabilities": [
+        {
+            "sensor_name": "Flinders La-Swanston St (West)",
+            "local_precinct": "Central Retail Core (Bourke St Mall)",
+            "dominant_attraction_precinct": "Central Retail Core (Bourke St Mall)",
+            "dominant_capture_probability": 0.5225
+        },
+        {
+            "sensor_name": "Flinders St-Elizabeth St (East)",
+            "local_precinct": "Flinders Transit Hub (Commuter Spine)",
+            "dominant_attraction_precinct": "Central Retail Core (Bourke St Mall)",
+            "dominant_capture_probability": 0.4428
+        },
+        {
+            "sensor_name": "Town Hall (West)",
+            "local_precinct": "Central Retail Core (Bourke St Mall)",
+            "dominant_attraction_precinct": "Central Retail Core (Bourke St Mall)",
+            "dominant_capture_probability": 0.7872
+        },
+        {
+            "sensor_name": "Melbourne Central",
+            "local_precinct": "Central Retail Core (Bourke St Mall)",
+            "dominant_attraction_precinct": "Central Retail Core (Bourke St Mall)",
+            "dominant_capture_probability": 0.6938
+        },
+        {
+            "sensor_name": "Melbourne Central-Elizabeth St (East)",
+            "local_precinct": "Central Retail Core (Bourke St Mall)",
+            "dominant_attraction_precinct": "Central Retail Core (Bourke St Mall)",
+            "dominant_capture_probability": 0.5106
+        }
+    ]
+}
