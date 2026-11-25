@@ -1,0 +1,17 @@
+portfolio_plan,store_sequence_rank,sensor_id,sensor_name,precinct_name,store_viability_index,avg_hourly_footfall,estimated_annual_turnover_aud,latitude,longitude
+Portfolio A: 3-Store Flagship Rollout,1,41,Flinders La-Swanston St (West),Central Retail Core (Bourke St Mall),83.72,1928.4717948717948,34395491.39,-37.81668633,144.96689733
+Portfolio A: 3-Store Flagship Rollout,2,28,The Arts Centre,Southbank Promenade & Waterfront,75.23,1063.5747282608695,5141865.1,-37.82129924,144.96879309
+Portfolio A: 3-Store Flagship Rollout,3,24,Spencer St-Collins St (North),Flinders Transit Hub (Commuter Spine),71.53,1449.2191780821918,6686328.74,-37.81887962,144.95449198
+Portfolio B: 5-Store Fast Casual Network,1,41,Flinders La-Swanston St (West),Central Retail Core (Bourke St Mall),83.72,1928.4717948717948,34395491.39,-37.81668633,144.96689733
+Portfolio B: 5-Store Fast Casual Network,2,3,Melbourne Central,Central Retail Core (Bourke St Mall),76.65,1085.8828909759086,18994350.12,-37.81101523,144.96429485
+Portfolio B: 5-Store Fast Casual Network,3,35,Southbank,Southbank Promenade & Waterfront,75.66,1056.1006802721088,5111854.67,-37.82017828,144.96508877
+Portfolio B: 5-Store Fast Casual Network,4,25,Melbourne Convention Exhibition Centre,Southbank Promenade & Waterfront,74.96,1066.1607142857142,5150485.81,-37.82401776,144.95604426
+Portfolio B: 5-Store Fast Casual Network,5,24,Spencer St-Collins St (North),Flinders Transit Hub (Commuter Spine),71.53,1449.2191780821918,6686328.74,-37.81887962,144.95449198
+Portfolio C: 8-Store Convenience Footprint,1,41,Flinders La-Swanston St (West),Central Retail Core (Bourke St Mall),83.72,1928.4717948717948,34395491.39,-37.81668633,144.96689733
+Portfolio C: 8-Store Convenience Footprint,2,3,Melbourne Central,Central Retail Core (Bourke St Mall),76.65,1085.8828909759086,18994350.12,-37.81101523,144.96429485
+Portfolio C: 8-Store Convenience Footprint,3,35,Southbank,Southbank Promenade & Waterfront,75.66,1056.1006802721088,5111854.67,-37.82017828,144.96508877
+Portfolio C: 8-Store Convenience Footprint,4,28,The Arts Centre,Southbank Promenade & Waterfront,75.23,1063.5747282608695,5141865.1,-37.82129924,144.96879309
+Portfolio C: 8-Store Convenience Footprint,5,25,Melbourne Convention Exhibition Centre,Southbank Promenade & Waterfront,74.96,1066.1607142857142,5150485.81,-37.82401776,144.95604426
+Portfolio C: 8-Store Convenience Footprint,6,24,Spencer St-Collins St (North),Flinders Transit Hub (Commuter Spine),71.53,1449.2191780821918,6686328.74,-37.81887962,144.95449198
+Portfolio C: 8-Store Convenience Footprint,7,2,Bourke Street Mall (South),Central Retail Core (Bourke St Mall),70.74,1081.307716535433,4977772.53,-37.81380667,144.96516719
+Portfolio C: 8-Store Convenience Footprint,8,26,QV Market-Elizabeth St (West),Flinders Transit Hub (Commuter Spine),68.07,581.5383561643836,2755313.59,-37.80869542,144.96049404

@@ -1,0 +1,55 @@
+{
+    "analysis_name": "GeoPulse Strategic Store Expansion Optimization",
+    "portfolio_a_flagship_3store": {
+        "store_count": 3,
+        "mean_svi": 76.83,
+        "total_network_annual_gmv_aud": 46223685.23,
+        "precincts_covered": [
+            "Central Retail Core (Bourke St Mall)",
+            "Flinders Transit Hub (Commuter Spine)",
+            "Southbank Promenade & Waterfront"
+        ],
+        "stores": [
+            "Flinders La-Swanston St (West) (Central Retail Core (Bourke St Mall))",
+            "The Arts Centre (Southbank Promenade & Waterfront)",
+            "Spencer St-Collins St (North) (Flinders Transit Hub (Commuter Spine))"
+        ]
+    },
+    "portfolio_b_fast_casual_5store": {
+        "store_count": 5,
+        "mean_svi": 76.5,
+        "total_network_annual_gmv_aud": 70338510.73,
+        "precincts_covered": [
+            "Central Retail Core (Bourke St Mall)",
+            "Flinders Transit Hub (Commuter Spine)",
+            "Southbank Promenade & Waterfront"
+        ],
+        "stores": [
+            "Flinders La-Swanston St (West) (Central Retail Core (Bourke St Mall))",
+            "Melbourne Central (Central Retail Core (Bourke St Mall))",
+            "Southbank (Southbank Promenade & Waterfront)",
+            "Melbourne Convention Exhibition Centre (Southbank Promenade & Waterfront)",
+            "Spencer St-Collins St (North) (Flinders Transit Hub (Commuter Spine))"
+        ]
+    },
+    "portfolio_c_convenience_8store": {
+        "store_count": 8,
+        "mean_svi": 74.57,
+        "total_network_annual_gmv_aud": 83213461.95,
+        "precincts_covered": [
+            "Central Retail Core (Bourke St Mall)",
+            "Flinders Transit Hub (Commuter Spine)",
+            "Southbank Promenade & Waterfront"
+        ],
+        "stores": [
+            "Flinders La-Swanston St (West) (Central Retail Core (Bourke St Mall))",
+            "Melbourne Central (Central Retail Core (Bourke St Mall))",
+            "Southbank (Southbank Promenade & Waterfront)",
+            "The Arts Centre (Southbank Promenade & Waterfront)",
+            "Melbourne Convention Exhibition Centre (Southbank Promenade & Waterfront)",
+            "Spencer St-Collins St (North) (Flinders Transit Hub (Commuter Spine))",
+            "Bourke Street Mall (South) (Central Retail Core (Bourke St Mall))",
+            "QV Market-Elizabeth St (West) (Flinders Transit Hub (Commuter Spine))"
+        ]
+    }
+}
