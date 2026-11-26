@@ -9,7 +9,7 @@
 
 ## 1. Executive Role Overview & Scope
 
-As **Member 3 (Spatial Mobility & Retail Catchment Analyst)** on Project 2 (*GeoPulse*), my core responsibilities encompass transforming raw urban sensor telemetry into actionable commercial intelligence for corporate retail site selection, store cannibalization avoidance, spatial autocorrelation clustering, anomaly surge mining, commercial rent benchmarking, corridor velocity profiling, and non-cannibalizing store portfolio expansion.
+As **Member 3 (Spatial Mobility & Retail Catchment Analyst)** on Project 2 (*GeoPulse*), my core responsibilities encompass transforming raw urban sensor telemetry into actionable commercial intelligence for corporate retail site selection, store cannibalization avoidance, spatial autocorrelation clustering, anomaly surge mining, commercial rent benchmarking, corridor velocity profiling, non-cannibalizing store portfolio expansion, and precinct pricing power benchmarking.
 
 ### Core Objectives:
 1. **Spatial Precinct Clustering**: Geo-reference 91 Melbourne CBD pedestrian sensors, calculate proximity metrics to the commercial core, and cluster sensors into distinct commercial retail precincts.
@@ -28,6 +28,8 @@ As **Member 3 (Spatial Mobility & Retail Catchment Analyst)** on Project 2 (*Geo
 14. **Day-to-Night Mobility & 24/7 Activation Profiler**: Classify daytime office hubs vs. late-night vitality entertainment corridors.
 15. **Corridor Pedestrian Velocity & Dwell Potential**: Discriminate high-speed transit thoroughfares from experiential browsing promenades.
 16. **Store Expansion Optimizer**: Algorithmic greedy facility location solver planning non-cannibalizing multi-store rollout portfolios.
+17. **Dynamic Retail Rent Sensitivity & Break-Even Footfall**: Model Occupancy Cost Ratios (OCR) under footfall stress ($\pm 30\%$) and recommend fixed vs. hybrid percentage lease structures.
+18. **Precinct Comparative Benchmarking & Landlord Pricing Power Index (PPI)**: Multi-criteria cross-precinct benchmarking ranking landlord leverage and tenant negotiation strength.
 
 ---
 
@@ -77,6 +79,10 @@ GeoPulse/
 │   ├── corridor_flow_summary.json            # Major arterial flow metrics
 │   ├── store_expansion_portfolios.csv        # Optimal 3/5/8 store rollout candidate sets
 │   ├── expansion_optimizer_summary.json      # Non-cannibalizing expansion plans
+│   ├── rent_sensitivity_simulation.csv       # Break-even footfall & OCR stress ratios
+│   ├── rent_elasticity_summary.json          # Fixed vs hybrid percentage lease breakdown
+│   ├── precinct_comparative_benchmark.csv    # Cross-precinct ranking & PPI scores
+│   ├── precinct_benchmark_summary.json       # Macro commercial market tiers
 │   ├── MEMBER3_EXECUTIVE_CATCHMENT_REPORT.md # Executive Markdown dossier
 │   └── executive_metrics_manifest.json       # Pipeline artifacts manifest
 ├── src/
@@ -97,30 +103,25 @@ GeoPulse/
 │   ├── day_night_activation.py               # Daypart & late-night vitality profiler
 │   ├── corridor_velocity_analysis.py         # Street corridor flow velocity & dwell index
 │   ├── store_expansion_optimizer.py          # Facility location expansion solver
+│   ├── rent_sensitivity_model.py             # Occupancy cost ratio & rent elasticity
+│   ├── precinct_benchmark_engine.py          # Cross-precinct comparative benchmarking
 │   └── generate_executive_report.py          # Executive dossier & manifest compiler
 └── tests/
-    └── test_mobility_analytics.py            # Automated unit test suite (17/17 tests pass)
+    └── test_mobility_analytics.py            # Automated unit test suite (19/19 tests pass)
 ```
 
 ---
 
-## 3. Advanced Mathematical Models
+## 3. Mathematical Models & Pricing Power
 
-### 3.1 Huff Gravity Model Patronage Probability
-$$P_{ij} = \frac{S_j^\alpha / d_{ij}^\lambda}{\sum_{k=1}^m (S_k^\alpha / d_{ik}^\lambda)}$$
-* $S_j$: Attractiveness mass of retail precinct $j$ ($\ln(1 + \text{Volume}) \times \text{SVI}/100$).
-* $d_{ij}$: Distance between consumer origin $i$ and retail center $j$.
-* $\alpha = 1.0, \lambda = 1.8$ (pedestrian friction exponent).
+### 3.1 Landlord Pricing Power Index (PPI)
+$$\text{PPI} = 0.40 \cdot \overline{\text{SVI}} + 0.35 \cdot \min\left(100, \frac{\overline{\text{Rent}}_{/m^2}}{2500} \cdot 100\right) + 0.25 \cdot \overline{\text{RSI}}$$
+* **Premium Landlord Markets (PPI $\ge 75$)**: Southbank Waterfront (80.67) and Central Retail Core (80.43).
+* **Balanced Commercial Markets (PPI 60–74.9)**: Flinders Transit Hub (71.74) and Chinatown Dining (71.03).
+* **Tenant-Favorable Markets (PPI $< 60$)**: Docklands Harbourside (51.75) and Northern University Corridor (48.99).
 
-### 3.2 Day-to-Night Ratio (DNR) & Late-Night Vitality
-$$\text{DNR} = \frac{\bar{V}_{\text{day (06:00-18:00)}}}{\bar{V}_{\text{night (18:00-06:00)}}}$$
-$$\text{LNVI} = \min\left(100, \frac{\text{Volume Share}_{(21:00-03:00)}}{25.0\%} \times 100\right)$$
-
-### 3.3 Dwell Potential Index (DPI)
-$$\text{DPI} = 100 \times \left( \frac{V_{\text{midday \& evening}}}{V_{\text{midday \& evening}} + V_{\text{rush hours}}} \right)$$
-
-### 3.4 Multi-Store Expansion Optimization
-$$\max \sum_{i \in \mathcal{S}} \text{SVI}_i \cdot \ln(1 + V_i) \quad \text{s.t.} \quad d(i, j) \ge d_{\min} \quad \forall i, j \in \mathcal{S}$$
+### 3.2 Break-Even Footfall & Critical Lease Stress
+$$\text{GMV}_{\min} = \frac{\text{Base Rent}}{0.18} \implies V_{\text{break-even}} = \bar{V} \cdot \left(\frac{\text{GMV}_{\min}}{\text{GMV}_{\text{base}}}\right)$$
 
 ---
 
@@ -130,4 +131,4 @@ To execute all unit test suites and verify 100% test pass rate:
 ```powershell
 python -m unittest discover tests
 ```
-*Result: 17/17 tests passed cleanly in 0.182s.*
+*Result: 19/19 tests passed cleanly in 0.320s.*

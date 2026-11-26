@@ -1,0 +1,7 @@
+precinct_name,active_sensor_count,mean_store_viability_index,peak_sensor_svi,mean_hourly_footfall,total_precinct_annual_gmv_aud,mean_site_annual_gmv_aud,mean_rent_per_sqm_aud,mean_weekend_surge_ratio,mean_resilience_score,landlord_pricing_power_index,pricing_power_tier,commercial_role
+Southbank Promenade & Waterfront,5,65.79,75.66,720.0,17375011.16,3475002.23,4377.54,0.88,77.4,80.67,Premium Landlord Market (High pricing leverage / premium leases),Omni-Channel 7-Day Retail Core
+Central Retail Core (Bourke St Mall),16,71.49,83.72,842.0,133671415.83,8354463.49,14609.08,0.84,67.33,80.43,Premium Landlord Market (High pricing leverage / premium leases),Weekday Commuter Spine & Office Conduit
+Flinders Transit Hub (Commuter Spine),18,60.59,79.69,630.5,52926089.69,2940338.32,4330.49,0.74,50.0,71.74,Balanced Commercial Market (Standard market terms / steady yield),Weekday Commuter Spine & Office Conduit
+Chinatown & East End Dining,8,44.06,56.24,322.0,15206662.34,1900832.79,2927.92,0.71,73.62,71.03,Balanced Commercial Market (Standard market terms / steady yield),Weekday Commuter Spine & Office Conduit
+Docklands Harbourside Precinct,3,30.96,36.15,177.3,2639558.01,879852.67,1429.76,1.82,77.4,51.75,Tenant-Favorable Market (Concessions & flexible rent structures),Weekend Leisure & Dining Destination
+Northern University Corridor,8,33.44,43.95,165.3,6264655.63,783081.95,1161.41,0.78,77.4,48.99,Tenant-Favorable Market (Concessions & flexible rent structures),Weekday Commuter Spine & Office Conduit

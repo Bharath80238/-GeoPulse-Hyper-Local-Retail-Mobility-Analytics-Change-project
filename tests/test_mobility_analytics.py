@@ -275,5 +275,35 @@ class TestGeoPulseMobilityAnalytics(unittest.TestCase):
         self.assertIn("store_sequence_rank", df_exp.columns)
         self.assertEqual(len(df_exp['portfolio_plan'].unique()), 3, "Must solve 3 distinct portfolio rollout plans")
 
+    def test_18_rent_sensitivity_model(self):
+        """Verify rent sensitivity simulation, OCR stress ratios, and break-even footfall."""
+        rent_csv = os.path.join(REPORTS_DIR, "rent_sensitivity_simulation.csv")
+        rent_json = os.path.join(REPORTS_DIR, "rent_elasticity_summary.json")
+
+        self.assertTrue(os.path.exists(rent_csv), "rent_sensitivity_simulation.csv must exist")
+        self.assertTrue(os.path.exists(rent_json), "rent_elasticity_summary.json must exist")
+
+        df_rent = pd.read_csv(rent_csv)
+        self.assertIn("break_even_hourly_footfall", df_rent.columns)
+        self.assertIn("ocr_at_minus_30pct_footfall", df_rent.columns)
+        self.assertIn("recommended_lease_structure", df_rent.columns)
+        self.assertTrue((df_rent['break_even_hourly_footfall'] >= 0.0).all())
+
+    def test_19_precinct_benchmark_engine(self):
+        """Verify cross-precinct comparative benchmarks and landlord pricing power index."""
+        bench_csv = os.path.join(REPORTS_DIR, "precinct_comparative_benchmark.csv")
+        bench_json = os.path.join(REPORTS_DIR, "precinct_benchmark_summary.json")
+
+        self.assertTrue(os.path.exists(bench_csv), "precinct_comparative_benchmark.csv must exist")
+        self.assertTrue(os.path.exists(bench_json), "precinct_benchmark_summary.json must exist")
+
+        df_bench = pd.read_csv(bench_csv)
+        self.assertIn("landlord_pricing_power_index", df_bench.columns)
+        self.assertIn("pricing_power_tier", df_bench.columns)
+        self.assertIn("commercial_role", df_bench.columns)
+        self.assertEqual(len(df_bench), 6, "Must benchmark all 6 commercial precincts")
+        self.assertTrue((df_bench['landlord_pricing_power_index'] >= 0.0).all())
+        self.assertTrue((df_bench['landlord_pricing_power_index'] <= 100.0).all())
+
 if __name__ == '__main__':
     unittest.main()

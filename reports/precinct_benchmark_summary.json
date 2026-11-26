@@ -1,0 +1,57 @@
+{
+    "analysis_name": "GeoPulse Precinct Comparative Benchmarking Engine",
+    "precincts_benchmarked_count": 6,
+    "total_cbd_turnover_modeled_aud": 228083392.66,
+    "highest_pricing_power_precinct": "Southbank Promenade & Waterfront",
+    "highest_pricing_power_score": 80.67,
+    "precinct_rankings": [
+        {
+            "precinct_name": "Southbank Promenade & Waterfront",
+            "active_sensor_count": 5,
+            "mean_store_viability_index": 65.79,
+            "mean_rent_per_sqm_aud": 4377.54,
+            "landlord_pricing_power_index": 80.67,
+            "pricing_power_tier": "Premium Landlord Market (High pricing leverage / premium leases)"
+        },
+        {
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "active_sensor_count": 16,
+            "mean_store_viability_index": 71.49,
+            "mean_rent_per_sqm_aud": 14609.08,
+            "landlord_pricing_power_index": 80.43,
+            "pricing_power_tier": "Premium Landlord Market (High pricing leverage / premium leases)"
+        },
+        {
+            "precinct_name": "Flinders Transit Hub (Commuter Spine)",
+            "active_sensor_count": 18,
+            "mean_store_viability_index": 60.59,
+            "mean_rent_per_sqm_aud": 4330.49,
+            "landlord_pricing_power_index": 71.74,
+            "pricing_power_tier": "Balanced Commercial Market (Standard market terms / steady yield)"
+        },
+        {
+            "precinct_name": "Chinatown & East End Dining",
+            "active_sensor_count": 8,
+            "mean_store_viability_index": 44.06,
+            "mean_rent_per_sqm_aud": 2927.92,
+            "landlord_pricing_power_index": 71.03,
+            "pricing_power_tier": "Balanced Commercial Market (Standard market terms / steady yield)"
+        },
+        {
+            "precinct_name": "Docklands Harbourside Precinct",
+            "active_sensor_count": 3,
+            "mean_store_viability_index": 30.96,
+            "mean_rent_per_sqm_aud": 1429.76,
+            "landlord_pricing_power_index": 51.75,
+            "pricing_power_tier": "Tenant-Favorable Market (Concessions & flexible rent structures)"
+        },
+        {
+            "precinct_name": "Northern University Corridor",
+            "active_sensor_count": 8,
+            "mean_store_viability_index": 33.44,
+            "mean_rent_per_sqm_aud": 1161.41,
+            "landlord_pricing_power_index": 48.99,
+            "pricing_power_tier": "Tenant-Favorable Market (Concessions & flexible rent structures)"
+        }
+    ]
+}
