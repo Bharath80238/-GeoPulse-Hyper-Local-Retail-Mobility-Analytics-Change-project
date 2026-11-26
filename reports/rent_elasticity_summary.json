@@ -1,0 +1,54 @@
+{
+    "analysis_name": "GeoPulse Retail Rent Sensitivity & Turnover Elasticity",
+    "total_locations_simulated": 58,
+    "mean_break_even_hourly_footfall": 379.2,
+    "mean_ocr_at_minus_30pct": 17.14,
+    "mean_ocr_at_plus_30pct": 9.23,
+    "recommended_lease_distribution": {
+        "Turnover-Linked Concession (High volatility mitigation for tenant)": 30,
+        "Hybrid Base + Turnover Rent (Shared upside, protected floor)": 21,
+        "Fixed Base Lease (High landlord pricing power & strong tenant demand)": 7
+    },
+    "sample_flagship_lease_simulations": [
+        {
+            "sensor_name": "Flinders La-Swanston St (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 83.72,
+            "recommended_lease_structure": "Fixed Base Lease (High landlord pricing power & strong tenant demand)",
+            "baseline_annual_rent_aud": 5159323.71,
+            "break_even_hourly_footfall": 1607.1
+        },
+        {
+            "sensor_name": "Flinders St-Elizabeth St (East)",
+            "precinct_name": "Flinders Transit Hub (Commuter Spine)",
+            "store_viability_index": 79.69,
+            "recommended_lease_structure": "Fixed Base Lease (High landlord pricing power & strong tenant demand)",
+            "baseline_annual_rent_aud": 1021902.54,
+            "break_even_hourly_footfall": 1202.8
+        },
+        {
+            "sensor_name": "Town Hall (West)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 79.07,
+            "recommended_lease_structure": "Fixed Base Lease (High landlord pricing power & strong tenant demand)",
+            "baseline_annual_rent_aud": 3840832.26,
+            "break_even_hourly_footfall": 1211.7
+        },
+        {
+            "sensor_name": "Melbourne Central",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 76.65,
+            "recommended_lease_structure": "Fixed Base Lease (High landlord pricing power & strong tenant demand)",
+            "baseline_annual_rent_aud": 2849152.52,
+            "break_even_hourly_footfall": 904.9
+        },
+        {
+            "sensor_name": "Melbourne Central-Elizabeth St (East)",
+            "precinct_name": "Central Retail Core (Bourke St Mall)",
+            "store_viability_index": 75.73,
+            "recommended_lease_structure": "Fixed Base Lease (High landlord pricing power & strong tenant demand)",
+            "baseline_annual_rent_aud": 2628256.88,
+            "break_even_hourly_footfall": 836.9
+        }
+    ]
+}
