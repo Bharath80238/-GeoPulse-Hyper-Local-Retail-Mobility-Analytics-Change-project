@@ -105,9 +105,10 @@ GeoPulse/
 │   ├── store_expansion_optimizer.py          # Facility location expansion solver
 │   ├── rent_sensitivity_model.py             # Occupancy cost ratio & rent elasticity
 │   ├── precinct_benchmark_engine.py          # Cross-precinct comparative benchmarking
+│   ├── cross_shopping_affinity.py            # Retail category affinity & multi-stop trip chaining
 │   └── generate_executive_report.py          # Executive dossier & manifest compiler
 └── tests/
-    └── test_mobility_analytics.py            # Automated unit test suite (19/19 tests pass)
+    └── test_mobility_analytics.py            # Automated unit test suite (20/20 tests pass)
 ```
 
 ---
@@ -123,6 +124,12 @@ $$\text{PPI} = 0.40 \cdot \overline{\text{SVI}} + 0.35 \cdot \min\left(100, \fra
 ### 3.2 Break-Even Footfall & Critical Lease Stress
 $$\text{GMV}_{\min} = \frac{\text{Base Rent}}{0.18} \implies V_{\text{break-even}} = \bar{V} \cdot \left(\frac{\text{GMV}_{\min}}{\text{GMV}_{\text{base}}}\right)$$
 
+### 3.3 Retail Category Cross-Shopping & Chaining Lift
+$$\text{Synergy}(A, B) = \frac{P(A \to B) + P(B \to A)}{2} \times 100$$
+$$\text{Lift}_{\text{chaining}} = 1.0 + \left(\frac{\text{Synergy}(A, B)}{100}\right) \times 0.85$$
+* **Highest Synergy Pair**: `Luxury / Flagship Brand` $\leftrightarrow$ `Specialty Dining & Cafe` (Score: 68.0, Lift: 1.578x).
+* **Precinct Diversity**: Quantified via normalized Shannon entropy ($H \in [0, 1]$), driving multi-stop dwell retention rates up to $+35\%$.
+
 ---
 
 ## 4. Verification & Testing
@@ -131,4 +138,4 @@ To execute all unit test suites and verify 100% test pass rate:
 ```powershell
 python -m unittest discover tests
 ```
-*Result: 19/19 tests passed cleanly in 0.320s.*
+*Result: 20/20 tests passed cleanly.*

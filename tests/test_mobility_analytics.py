@@ -305,5 +305,27 @@ class TestGeoPulseMobilityAnalytics(unittest.TestCase):
         self.assertTrue((df_bench['landlord_pricing_power_index'] >= 0.0).all())
         self.assertTrue((df_bench['landlord_pricing_power_index'] <= 100.0).all())
 
+    def test_20_cross_shopping_affinity(self):
+        """Verify retail category cross-shopping matrix and tenant diversity entropy."""
+        affinity_csv = os.path.join(REPORTS_DIR, "cross_shopping_affinity_matrix.csv")
+        synergy_json = os.path.join(REPORTS_DIR, "tenant_synergy_summary.json")
+
+        self.assertTrue(os.path.exists(affinity_csv), "cross_shopping_affinity_matrix.csv must exist")
+        self.assertTrue(os.path.exists(synergy_json), "tenant_synergy_summary.json must exist")
+
+        df_aff = pd.read_csv(affinity_csv)
+        self.assertIn("origin_category", df_aff.columns)
+        self.assertIn("destination_category", df_aff.columns)
+        self.assertIn("bidirectional_synergy_score", df_aff.columns)
+        self.assertIn("chaining_lift_factor", df_aff.columns)
+        self.assertEqual(len(df_aff), 25, "Must compute 5x5 pairwise retail category matrix")
+        self.assertTrue((df_aff['bidirectional_synergy_score'] >= 0.0).all())
+        self.assertTrue((df_aff['chaining_lift_factor'] >= 1.0).all())
+
+        with open(synergy_json, 'r') as f:
+            data = json.load(f)
+        self.assertIn("highest_synergy_pair", data)
+        self.assertIn("precinct_tenant_diversity_profiles", data)
+
 if __name__ == '__main__':
     unittest.main()

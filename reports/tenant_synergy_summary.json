@@ -1,0 +1,82 @@
+{
+  "module": "cross_shopping_affinity",
+  "author": "Amit Prajapati (Member 3)",
+  "analyzed_categories_count": 5,
+  "total_category_pairings": 25,
+  "highest_synergy_pair": {
+    "pair": "Luxury / Flagship Brand <-> Specialty Dining & Cafe",
+    "synergy_score": 68.0,
+    "strategic_implication": "Co-locating experiential dining with luxury flagships maximizes dwell time and cross-basket spend."
+  },
+  "precinct_tenant_diversity_profiles": {
+    "Central Retail Core (Bourke St Mall)": {
+      "tenant_node_count": 16,
+      "category_distribution": {
+        "QSR / Grab-and-Go": 7,
+        "Convenience Retail / Essential Services": 5,
+        "Luxury / Flagship Brand": 4
+      },
+      "tenant_diversity_entropy": 0.6659,
+      "avg_store_viability_index": 71.49,
+      "total_precinct_hourly_footfall": 13472,
+      "estimated_multi_stop_dwell_retention": 0.683
+    },
+    "Chinatown & East End Dining": {
+      "tenant_node_count": 8,
+      "category_distribution": {
+        "Convenience Retail / Essential Services": 3,
+        "Experiential Dining / Nightlife": 2,
+        "Artisan Boutique / Specialty Retail": 2,
+        "QSR / Grab-and-Go": 1
+      },
+      "tenant_diversity_entropy": 0.8207,
+      "avg_store_viability_index": 44.06,
+      "total_precinct_hourly_footfall": 2576,
+      "estimated_multi_stop_dwell_retention": 0.737
+    },
+    "Docklands Harbourside Precinct": {
+      "tenant_node_count": 3,
+      "category_distribution": {
+        "Artisan Boutique / Specialty Retail": 3
+      },
+      "tenant_diversity_entropy": 0.0,
+      "avg_store_viability_index": 30.96,
+      "total_precinct_hourly_footfall": 531,
+      "estimated_multi_stop_dwell_retention": 0.45
+    },
+    "Flinders Transit Hub (Commuter Spine)": {
+      "tenant_node_count": 18,
+      "category_distribution": {
+        "QSR / Grab-and-Go": 9,
+        "Artisan Boutique / Specialty Retail": 6,
+        "Convenience Retail / Essential Services": 3
+      },
+      "tenant_diversity_entropy": 0.6284,
+      "avg_store_viability_index": 60.59,
+      "total_precinct_hourly_footfall": 11348,
+      "estimated_multi_stop_dwell_retention": 0.67
+    },
+    "Northern University Corridor": {
+      "tenant_node_count": 8,
+      "category_distribution": {
+        "Artisan Boutique / Specialty Retail": 6,
+        "Convenience Retail / Essential Services": 2
+      },
+      "tenant_diversity_entropy": 0.3494,
+      "avg_store_viability_index": 33.44,
+      "total_precinct_hourly_footfall": 1322,
+      "estimated_multi_stop_dwell_retention": 0.572
+    },
+    "Southbank Promenade & Waterfront": {
+      "tenant_node_count": 5,
+      "category_distribution": {
+        "Convenience Retail / Essential Services": 4,
+        "Artisan Boutique / Specialty Retail": 1
+      },
+      "tenant_diversity_entropy": 0.3109,
+      "avg_store_viability_index": 65.79,
+      "total_precinct_hourly_footfall": 3600,
+      "estimated_multi_stop_dwell_retention": 0.559
+    }
+  }
+}
