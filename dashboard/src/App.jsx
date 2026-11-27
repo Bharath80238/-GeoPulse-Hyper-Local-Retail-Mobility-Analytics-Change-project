@@ -1,13 +1,26 @@
 
 import { useEffect, useState } from "react";
 import Papa from "papaparse";
+
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid,
-  Tooltip, ResponsiveContainer, LineChart, Line
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  LineChart,
+  Line,
 } from "recharts";
+
 import {
-  Activity, MapPin, Users, Footprints, RefreshCw
+  Activity,
+  MapPin,
+  Users,
+  Footprints,
 } from "lucide-react";
+
 import "./App.css";
 
 function App() {
@@ -21,7 +34,19 @@ function App() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [activeMenu, setActiveMenu] = useState("overview");
 
+  // Sidebar Navigation
+  const navigateTo = (sectionId, menuName) => {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    setActiveMenu(menuName);
+  };
+
+  // Load CSV Data
   useEffect(() => {
     async function loadData() {
       try {
@@ -36,8 +61,13 @@ function App() {
         const results = await Promise.all(
           files.map(async (file) => {
             const response = await fetch(`/data/${file}`);
-            if (!response.ok) throw new Error(`Could not load ${file}`);
+
+            if (!response.ok) {
+              throw new Error(`Could not load ${file}`);
+            }
+
             const csv = await response.text();
+
             return Papa.parse(csv, {
               header: true,
               skipEmptyLines: true,
@@ -63,22 +93,30 @@ function App() {
     loadData();
   }, []);
 
+  // Get Summary Metrics
   const getMetric = (keyword) => {
     const item = data.summary.find((row) =>
       Object.values(row).some((value) =>
-        String(value).toLowerCase().includes(keyword.toLowerCase())
+        String(value)
+          .toLowerCase()
+          .includes(keyword.toLowerCase())
       )
     );
 
     if (!item) return 0;
 
-    const values = Object.values(item);
-    const number = values.find((value) => typeof value === "number");
+    const number = Object.values(item).find(
+      (value) => typeof value === "number"
+    );
+
     return number ?? 0;
   };
 
+  // KPI Calculations
   const footfall = data.daily.reduce(
-    (sum, row) => sum + (Number(row.Total_Count) || 0), 0
+    (sum, row) =>
+      sum + (Number(row.Total_Count) || 0),
+    0
   );
 
   const gpsRecords = getMetric("total gps records");
@@ -86,8 +124,10 @@ function App() {
   const sensorCount = data.sensors.length;
 
   const topSensors = [...data.sensors]
-    .sort((a, b) =>
-      Number(b.Total_Pedestrian_Count) - Number(a.Total_Pedestrian_Count)
+    .sort(
+      (a, b) =>
+        Number(b.Total_Pedestrian_Count) -
+        Number(a.Total_Pedestrian_Count)
     )
     .slice(0, 10);
 
@@ -95,117 +135,227 @@ function App() {
     Number(number || 0).toLocaleString("en-IN");
 
   if (loading) {
-    return <div className="loading">Loading GeoPulse Dashboard...</div>;
+    return (
+      <div className="loading">
+        Loading GeoPulse Dashboard...
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="loading">Error: {error}</div>;
+    return (
+      <div className="loading">
+        Error: {error}
+      </div>
+    );
   }
 
   return (
     <div className="dashboard">
+
+      {/* Sidebar */}
       <aside className="sidebar">
+
         <div className="brand">
           <MapPin size={28} />
           <span>GeoPulse</span>
         </div>
 
         <p className="menu-label">ANALYTICS</p>
-        <div className="menu-item active">
-          <Activity size={19} /> Overview
-        </div>
-        <div className="menu-item">
-          <Footprints size={19} /> Footfall Analysis
-        </div>
-        <div className="menu-item">
-          <MapPin size={19} /> Mobility Insights
-        </div>
-        <div className="menu-item">
-          <Users size={19} /> Sensor Activity
-        </div>
+
+        <button
+          className={`menu-item ${
+            activeMenu === "overview" ? "active" : ""
+          }`}
+          onClick={() =>
+            navigateTo("overview", "overview")
+          }
+        >
+          <Activity size={19} />
+          Overview
+        </button>
+
+        <button
+          className={`menu-item ${
+            activeMenu === "footfall" ? "active" : ""
+          }`}
+          onClick={() =>
+            navigateTo("footfall", "footfall")
+          }
+        >
+          <Footprints size={19} />
+          Footfall Analysis
+        </button>
+
+        <button
+          className={`menu-item ${
+            activeMenu === "mobility" ? "active" : ""
+          }`}
+          onClick={() =>
+            navigateTo("mobility", "mobility")
+          }
+        >
+          <MapPin size={19} />
+          Mobility Insights
+        </button>
+
+        <button
+          className={`menu-item ${
+            activeMenu === "sensors" ? "active" : ""
+          }`}
+          onClick={() =>
+            navigateTo("sensors", "sensors")
+          }
+        >
+          <Users size={19} />
+          Sensor Activity
+        </button>
 
         <div className="sidebar-footer">
-          Hyper-Local Retail<br />Mobility Analytics
+          Hyper-Local Retail
+          <br />
+          Mobility Analytics
         </div>
+
       </aside>
 
+      {/* Main Dashboard */}
       <main className="main-content">
-        <header className="topbar">
+
+        {/* Header */}
+        <header className="topbar" id="overview">
+
           <div>
             <h1>Analytics Overview</h1>
-            <p>Melbourne Mobility & Pedestrian Insights</p>
+            <p>
+              Melbourne Mobility & Pedestrian Insights
+            </p>
           </div>
+
           <div className="live-status">
             <span className="status-dot"></span>
             Data Dashboard
           </div>
+
         </header>
 
+        {/* Welcome Banner */}
         <section className="welcome">
+
           <div>
             <h2>Welcome to GeoPulse</h2>
+
             <p>
-              Understand pedestrian activity and GPS mobility patterns
-              through real project data.
+              Understand pedestrian activity and GPS
+              mobility patterns through real project data.
             </p>
           </div>
+
           <Activity size={48} />
+
         </section>
 
+        {/* KPI Cards */}
         <section className="kpi-grid">
+
           <div className="kpi-card">
-            <div className="kpi-icon purple"><Footprints /></div>
+            <div className="kpi-icon purple">
+              <Footprints />
+            </div>
+
             <p>Total Pedestrian Footfall</p>
             <h2>{formatNumber(footfall)}</h2>
             <span>Week 1 data</span>
           </div>
 
           <div className="kpi-card">
-            <div className="kpi-icon blue"><Activity /></div>
+            <div className="kpi-icon blue">
+              <Activity />
+            </div>
+
             <p>Total GPS Records</p>
             <h2>{formatNumber(gpsRecords)}</h2>
             <span>GPS mobility data</span>
           </div>
 
           <div className="kpi-card">
-            <div className="kpi-icon green"><Users /></div>
+            <div className="kpi-icon green">
+              <Users />
+            </div>
+
             <p>Unique Devices</p>
             <h2>{formatNumber(devices)}</h2>
             <span>Tracked devices</span>
           </div>
 
           <div className="kpi-card">
-            <div className="kpi-icon orange"><MapPin /></div>
+            <div className="kpi-icon orange">
+              <MapPin />
+            </div>
+
             <p>Total Sensors</p>
             <h2>{formatNumber(sensorCount)}</h2>
             <span>Sensor locations</span>
           </div>
+
         </section>
 
+        {/* Charts */}
         <section className="chart-grid">
-          <div className="chart-card">
+
+          {/* Daily Footfall */}
+          <div className="chart-card" id="footfall">
+
             <h3>Daily Pedestrian Footfall</h3>
-            <p className="chart-subtitle">Total pedestrian count by day</p>
+
+            <p className="chart-subtitle">
+              Total pedestrian count by day
+            </p>
+
             <ResponsiveContainer width="100%" height={280}>
               <BarChart data={data.daily}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  vertical={false}
+                />
+
                 <XAxis dataKey="Day" />
                 <YAxis />
                 <Tooltip />
-                <Bar dataKey="Total_Count" fill="#7564e8" radius={[6, 6, 0, 0]} />
+
+                <Bar
+                  dataKey="Total_Count"
+                  fill="#7564e8"
+                  radius={[6, 6, 0, 0]}
+                />
+
               </BarChart>
             </ResponsiveContainer>
+
           </div>
 
+          {/* Hourly Activity */}
           <div className="chart-card">
+
             <h3>Hourly Pedestrian Activity</h3>
-            <p className="chart-subtitle">Footfall trends across 24 hours</p>
+
+            <p className="chart-subtitle">
+              Footfall trends across 24 hours
+            </p>
+
             <ResponsiveContainer width="100%" height={280}>
               <LineChart data={data.hourly}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  vertical={false}
+                />
+
                 <XAxis dataKey="Hour" />
                 <YAxis />
                 <Tooltip />
+
                 <Line
                   type="monotone"
                   dataKey="Total_Count"
@@ -213,19 +363,33 @@ function App() {
                   strokeWidth={3}
                   dot={false}
                 />
+
               </LineChart>
             </ResponsiveContainer>
+
           </div>
 
-          <div className="chart-card">
+          {/* GPS Mobility */}
+          <div className="chart-card" id="mobility">
+
             <h3>Hourly GPS Mobility</h3>
-            <p className="chart-subtitle">GPS pings and active devices</p>
+
+            <p className="chart-subtitle">
+              GPS pings and active devices
+            </p>
+
             <ResponsiveContainer width="100%" height={280}>
               <LineChart data={data.mobility}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  vertical={false}
+                />
+
                 <XAxis dataKey="Hour" />
                 <YAxis />
                 <Tooltip />
+
                 <Line
                   type="monotone"
                   dataKey="Total_GPS_Pings"
@@ -233,6 +397,7 @@ function App() {
                   strokeWidth={3}
                   name="GPS Pings"
                 />
+
                 <Line
                   type="monotone"
                   dataKey="Active_Devices"
@@ -240,37 +405,63 @@ function App() {
                   strokeWidth={3}
                   name="Active Devices"
                 />
+
               </LineChart>
             </ResponsiveContainer>
+
           </div>
 
-          <div className="chart-card">
+          {/* Top Sensors */}
+          <div className="chart-card" id="sensors">
+
             <h3>Top 10 Busiest Sensors</h3>
-            <p className="chart-subtitle">Sensors ranked by pedestrian count</p>
+
+            <p className="chart-subtitle">
+              Sensors ranked by pedestrian count
+            </p>
+
             <ResponsiveContainer width="100%" height={280}>
-              <BarChart data={topSensors} layout="vertical">
-                <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+              <BarChart
+                data={topSensors}
+                layout="vertical"
+              >
+
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  horizontal={false}
+                />
+
                 <XAxis type="number" />
+
                 <YAxis
                   type="category"
                   dataKey="Sensor_ID"
                   width={55}
                 />
+
                 <Tooltip />
+
                 <Bar
                   dataKey="Total_Pedestrian_Count"
                   fill="#f59e0b"
                   radius={[0, 6, 6, 0]}
                 />
+
               </BarChart>
             </ResponsiveContainer>
+
           </div>
+
         </section>
 
+        {/* Footer */}
         <footer className="footer">
-          GeoPulse Analytics Dashboard | Built with React & CSV Data
+          GeoPulse Analytics Dashboard |
+          Built with React & CSV Data
         </footer>
+
       </main>
+
     </div>
   );
 }
