@@ -134,6 +134,13 @@ function App() {
   const formatNumber = (number) =>
     Number(number || 0).toLocaleString("en-IN");
 
+const busiestSensor = topSensors[0];
+
+const averageFootfall =
+  data.daily.length > 0
+    ? Math.round(footfall / data.daily.length)
+    : 0;
+
   if (loading) {
     return (
       <div className="loading">
@@ -299,6 +306,37 @@ function App() {
           </div>
 
         </section>
+
+        {/* Project Insights */}
+<section className="insights-section">
+  <h2>Project Insights</h2>
+
+  <div className="insights-grid">
+
+    <div className="insight-card">
+      <h3>Average Daily Footfall</h3>
+      <p>{formatNumber(averageFootfall)}</p>
+      <span>Average pedestrian count per day</span>
+    </div>
+
+    <div className="insight-card">
+      <h3>Busiest Sensor</h3>
+      <p>
+        {busiestSensor
+          ? `Sensor ${busiestSensor.Sensor_ID}`
+          : "No Data"}
+      </p>
+      <span>Highest pedestrian activity</span>
+    </div>
+
+    <div className="insight-card">
+      <h3>Active GPS Devices</h3>
+      <p>{formatNumber(devices)}</p>
+      <span>Unique tracked devices</span>
+    </div>
+
+  </div>
+</section>
 
         {/* Charts */}
         <section className="chart-grid">
